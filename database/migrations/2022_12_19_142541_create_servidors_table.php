@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('servidors', function (Blueprint $table) {
             $table->id();
-            $table->string('cpf');
-            $table->string('matricula');
+            $table->string('cpf')->unique();
+            $table->string('matricula')->unique();
 
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
