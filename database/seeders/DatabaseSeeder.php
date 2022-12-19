@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
             CargoSeeder::class,
             UserSeeder::class,
             TipoMovimentoSeeder::class,
+            PredioSeeder::class,
         ]);
     }
 }
