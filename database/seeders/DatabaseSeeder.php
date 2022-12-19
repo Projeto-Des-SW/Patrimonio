@@ -20,6 +20,9 @@ class DatabaseSeeder extends Seeder
             TipoMovimentoSeeder::class,
             PredioSeeder::class,
             SalaSeeder::class,
+            OrigemSeeder::class,
+            ClassificacaoSeeder::class,
+            SituacaoSeeder::class
         ]);
     }
 }
