@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             TipoMovimentoSeeder::class,
             PredioSeeder::class,
+            SalaSeeder::class,
         ]);
     }
 }
