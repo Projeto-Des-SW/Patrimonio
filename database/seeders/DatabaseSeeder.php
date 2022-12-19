@@ -22,7 +22,8 @@ class DatabaseSeeder extends Seeder
             SalaSeeder::class,
             OrigemSeeder::class,
             ClassificacaoSeeder::class,
-            SituacaoSeeder::class
+            SituacaoSeeder::class,
+            PatrimonioSeeder::class
         ]);
     }
 }
