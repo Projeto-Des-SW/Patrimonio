@@ -15,7 +15,7 @@ class ServidorSeeder extends Seeder
      */
     public function run()
     {
-        Servidor::factory(1)->create(['user_id', 1]);
-        Servidor::factory(1)->create(['user_id', 2]);
+        Servidor::factory(1)->create(['user_id' => 1]);
+        Servidor::factory(1)->create(['user_id' => 2]);
     }
 }
