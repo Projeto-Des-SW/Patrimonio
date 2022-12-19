@@ -15,6 +15,11 @@ return new class extends Migration
     {
         Schema::create('codigos', function (Blueprint $table) {
             $table->id();
+            $table->string('codigo')->unique();
+
+            $table->unsignedBigInteger('patrimonio_id');
+            $table->foreign('patrimonio_id')->references('id')->on('patrimonios');
+
             $table->timestamps();
         });
     }
