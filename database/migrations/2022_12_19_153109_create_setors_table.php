@@ -15,10 +15,14 @@ return new class extends Migration
     {
         Schema::create('setors', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
 
             $table->string('nome');
             $table->string('codigo');
+
+            $table->unsignedBigInteger('setor_pai_id')->nullable();
+            $table->foreign('setor_pai_id')->references('id')->on('setors');
+
+            $table->timestamps();
         });
     }
 

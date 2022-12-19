@@ -23,7 +23,10 @@ class DatabaseSeeder extends Seeder
             OrigemSeeder::class,
             ClassificacaoSeeder::class,
             SituacaoSeeder::class,
-            PatrimonioSeeder::class
+            PatrimonioSeeder::class,
+            MovimentoSeeder::class,
+            MovimentoPatrimonioSeeder::class,
+            SetorSeeder::class
         ]);
     }
 }
