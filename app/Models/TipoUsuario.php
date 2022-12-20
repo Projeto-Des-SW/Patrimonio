@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class TipoUsuario extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['nome'];
+
+    public function users(){
+        return $this->hasMany(User::class);
+    }
 }
