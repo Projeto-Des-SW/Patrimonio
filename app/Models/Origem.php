@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Origem extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['nome'];
+
+    public function patrimonios()
+    {
+        return $this->hasMany(Patrimonio::class);
+    }
 }
