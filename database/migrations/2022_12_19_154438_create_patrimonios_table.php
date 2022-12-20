@@ -36,6 +36,9 @@ return new class extends Migration
 
             $table->unsignedInteger('sala_id');
             $table->foreign('sala_id')->references('id')->on('salas');
+
+            $table->unsignedInteger('situacao_id');
+            $table->foreign('situacao_id')->references('id')->on('situacaos');
         });
     }
 

@@ -22,6 +22,7 @@ class PatrimonioFactory extends Factory
             'descricao' => $this->faker->sentence,
             'servidor_id' => 2,
             'classificacao_id' => 1,
+            'situacao_id' => 1,
             'origem_id' => 1,
             'sala_id' => 1
         ];
