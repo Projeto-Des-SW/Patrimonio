@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Cargo extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['nome'];
+
+    public function servidores (){
+        return $this->hasMany(Servidor::class);
+    }
 }
