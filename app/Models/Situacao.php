@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Situacao extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['nome'];
+
+    public function patrimonios(){
+        return $this->hasMany(Patrimonio::class);
+    }
 }
