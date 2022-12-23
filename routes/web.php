@@ -13,10 +13,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('predio/listar', [\App\Http\Controllers\PredioController::class, 'index'])->name('predio.index');
+
+Route::get('predio/cadastrar', [\App\Http\Controllers\PredioController::class, 'create'])->name('predio.create');
+Route::post('predio/store', [\App\Http\Controllers\PredioController::class, 'store'])->name('predio.store');
+
+Route::get('predio/{predio_id}/editar', [\App\Http\Controllers\PredioController::class, 'edit'])->name('predio.edit');
+Route::post('predio/update', [\App\Http\Controllers\PredioController::class, 'update'])->name('predio.update');
+
+Route::get('predio/{predio_id}/delete', [\App\Http\Controllers\PredioController::class, 'delete'])->name('predio.delete');
+
+
