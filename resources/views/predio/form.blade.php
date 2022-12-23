@@ -1,4 +1,7 @@
 <div class="row">
+    @if(isset($predio))
+        <input type="hidden" name="predio_id" value="{{$predio->id}}">
+    @endif
     <div class="col-sm-12">
         <label for="nome_cientifico">Nome:<strong style="color: red">*</strong></label>
         <input class="form-control @error('nome') is-invalid @enderror" id="nome" type="text"

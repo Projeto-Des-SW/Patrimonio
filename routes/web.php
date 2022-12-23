@@ -28,4 +28,14 @@ Route::post('predio/update', [\App\Http\Controllers\PredioController::class, 'up
 
 Route::get('predio/{predio_id}/delete', [\App\Http\Controllers\PredioController::class, 'delete'])->name('predio.delete');
 
+Route::get('predio/{predio_id}/sala/listar', [\App\Http\Controllers\SalaController::class, 'index'])->name('sala.index');
+
+Route::get('predio/{predio_id}/sala/cadastrar', [\App\Http\Controllers\SalaController::class, 'create'])->name('sala.create');
+Route::post('sala/store', [\App\Http\Controllers\SalaController::class, 'store'])->name('sala.store');
+
+Route::get('sala/{sala_id}/editar', [\App\Http\Controllers\SalaController::class, 'edit'])->name('sala.edit');
+Route::post('sala/update', [\App\Http\Controllers\SalaController::class, 'update'])->name('sala.update');
+
+Route::get('sala/{sala_id}/delete', [\App\Http\Controllers\SalaController::class, 'delete'])->name('sala.delete');
+
 

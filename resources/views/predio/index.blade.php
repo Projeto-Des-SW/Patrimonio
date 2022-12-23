@@ -23,7 +23,7 @@
                 <td>{{$predio->nome}}</td>
                 <td>{{$predio->created_at}}</td>
                 <td class="text-center"><a class="btn btn-primary" href="{{route('predio.edit', ['predio_id' => $predio->id])}}">Editar</a> <a
-                        class="btn btn-danger" href="{{route('predio.delete', ['predio_id' => $predio->id])}}">Deletar</a></td>
+                        class="btn btn-danger" href="{{route('predio.delete', ['predio_id' => $predio->id])}}">Deletar</a> <a class="btn btn-primary" href="{{route('sala.index', ['predio_id' => $predio->id])}}">Salas</a></td>
             </tr>
         @endforeach
         </tbody>
