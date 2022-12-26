@@ -38,4 +38,16 @@ Route::post('sala/update', [\App\Http\Controllers\SalaController::class, 'update
 
 Route::get('sala/{sala_id}/delete', [\App\Http\Controllers\SalaController::class, 'delete'])->name('sala.delete');
 
+Route::get('cargo/listar', [\App\Http\Controllers\CargoController::class, 'index'])->name('cargo.index');
+
+Route::get('cargo/cadastrar', [\App\Http\Controllers\CargoController::class, 'create'])->name('cargo.create');
+Route::post('cargo/store', [\App\Http\Controllers\CargoController::class, 'store'])->name('cargo.store');
+
+Route::get('cargo/{cargo_id}/editar', [\App\Http\Controllers\CargoController::class, 'edit'])->name('cargo.edit');
+Route::post('cargo/update', [\App\Http\Controllers\CargoController::class, 'update'])->name('cargo.update');
+
+Route::get('cargo/{cargo_id}/delete', [\App\Http\Controllers\CargoController::class, 'delete'])->name('cargo.delete');
+
+
+
 

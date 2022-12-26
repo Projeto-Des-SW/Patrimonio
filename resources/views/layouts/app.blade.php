@@ -29,6 +29,12 @@
             </div>
         </main>
     @endif
+
+    @hasSection('dashboard')
+        <main class="py-4">
+            @yield('dashboard')
+        </main>
+    @endif
 </div>
 </body>
 </html>

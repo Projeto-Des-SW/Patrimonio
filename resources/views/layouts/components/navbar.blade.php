@@ -8,7 +8,16 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav me-auto">
-
+                @auth
+                    @if(\Illuminate\Support\Facades\Auth::user()->tipo_usuario_id == 1)
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('predio.index') }}">{{ __('Prédios') }}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('cargo.index') }}">{{ __('Cargos') }}</a>
+                        </li>
+                    @endif
+                @endauth
             </ul>
 
             <!-- Right Side Of Navbar -->
@@ -28,7 +37,8 @@
                     @endif
                 @else
                     <li class="nav-item dropdown">
-                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                           data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                             {{ Auth::user()->name }}
                         </a>
 
