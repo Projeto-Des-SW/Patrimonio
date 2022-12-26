@@ -16,6 +16,9 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('cargo.index') }}">{{ __('Cargos') }}</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('classificacao.index') }}">{{ __('Classificações') }}</a>
+                        </li>
                     @endif
                 @endauth
             </ul>
