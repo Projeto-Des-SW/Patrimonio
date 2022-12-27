@@ -55,6 +55,14 @@ Route::post('servidor/update', [\App\Http\Controllers\ServidorController::class,
 Route::get('servidor/{servidor_id}/delete', [\App\Http\Controllers\ServidorController::class, 'delete'])->name('servidor.delete');
 Route::get('servidor/{servidor_id}/restore', [\App\Http\Controllers\ServidorController::class, 'restore'])->name('servidor.restore');
 
+Route::get('setor/listar/{setor_pai_id?}', [\App\Http\Controllers\SetorController::class, 'index'])->name('setor.index');
+Route::get('setor/cadastrar/{setor_pai_id?}', [\App\Http\Controllers\SetorController::class, 'create'])->name('setor.create');
+Route::post('setor/store', [\App\Http\Controllers\SetorController::class, 'store'])->name('setor.store');
+Route::get('setor/{setor_id}/editar', [\App\Http\Controllers\SetorController::class, 'edit'])->name('setor.edit');
+Route::post('setor/update', [\App\Http\Controllers\SetorController::class, 'update'])->name('setor.update');
+Route::get('setor/{setor_id}/delete', [\App\Http\Controllers\SetorController::class, 'delete'])->name('setor.delete');
+Route::get('setor/{setor_id}/restore', [\App\Http\Controllers\SetorController::class, 'restore'])->name('setor.restore');
+
 
 
 

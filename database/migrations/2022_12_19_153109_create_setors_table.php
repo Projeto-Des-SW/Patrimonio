@@ -18,6 +18,7 @@ return new class extends Migration
 
             $table->string('nome');
             $table->string('codigo');
+            $table->boolean('setor_folha')->default(true);
 
             $table->unsignedBigInteger('setor_pai_id')->nullable();
             $table->foreign('setor_pai_id')->references('id')->on('setors');
