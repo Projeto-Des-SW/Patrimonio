@@ -30,9 +30,9 @@
         </main>
     @endif
 
-    @hasSection('dashboard')
+    @hasSection('card')
         <main class="py-4">
-            @yield('dashboard')
+            @yield('card')
         </main>
     @endif
 </div>
