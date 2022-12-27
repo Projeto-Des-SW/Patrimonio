@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index']);
 
 Route::get('predio/listar', [\App\Http\Controllers\PredioController::class, 'index'])->name('predio.index');
 Route::get('predio/cadastrar', [\App\Http\Controllers\PredioController::class, 'create'])->name('predio.create');
@@ -45,6 +46,14 @@ Route::post('classificacao/store', [\App\Http\Controllers\ClassificacaoControlle
 Route::get('classificacao/{classificacao_id}/editar', [\App\Http\Controllers\ClassificacaoController::class, 'edit'])->name('classificacao.edit');
 Route::post('classificacao/update', [\App\Http\Controllers\ClassificacaoController::class, 'update'])->name('classificacao.update');
 Route::get('classificacao/{classificacao_id}/delete', [\App\Http\Controllers\ClassificacaoController::class, 'delete'])->name('classificacao.delete');
+
+Route::get('servidor/listar', [\App\Http\Controllers\ServidorController::class, 'index'])->name('servidor.index');
+Route::get('servidor/cadastrar', [\App\Http\Controllers\ServidorController::class, 'create'])->name('servidor.create');
+Route::post('servidor/store', [\App\Http\Controllers\ServidorController::class, 'store'])->name('servidor.store');
+Route::get('servidor/{servidor_id}/editar', [\App\Http\Controllers\ServidorController::class, 'edit'])->name('servidor.edit');
+Route::post('servidor/update', [\App\Http\Controllers\ServidorController::class, 'update'])->name('servidor.update');
+Route::get('servidor/{servidor_id}/delete', [\App\Http\Controllers\ServidorController::class, 'delete'])->name('servidor.delete');
+Route::get('servidor/{servidor_id}/restore', [\App\Http\Controllers\ServidorController::class, 'restore'])->name('servidor.restore');
 
 
 
