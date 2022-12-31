@@ -29,6 +29,12 @@
             </div>
         </main>
     @endif
+
+    @hasSection('card')
+        <main class="py-4">
+            @yield('card')
+        </main>
+    @endif
 </div>
 </body>
 </html>
