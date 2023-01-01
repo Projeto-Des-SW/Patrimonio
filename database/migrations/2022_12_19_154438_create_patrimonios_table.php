@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('tipo');
             $table->string('nota_fiscal')->nullable(); //VerificarDepois
             $table->string('descricao');
+            $table->boolean('aprovado')->default(true);
 
             $table->unsignedInteger('servidor_id');
             $table->foreign('servidor_id')->references('id')->on('servidors');
