@@ -63,6 +63,17 @@ Route::post('setor/update', [\App\Http\Controllers\SetorController::class, 'upda
 Route::get('setor/{setor_id}/delete', [\App\Http\Controllers\SetorController::class, 'delete'])->name('setor.delete');
 Route::get('setor/{setor_id}/restore', [\App\Http\Controllers\SetorController::class, 'restore'])->name('setor.restore');
 
+Route::get('patrimonio/listar', [\App\Http\Controllers\PatrimonioController::class, 'index'])->name('patrimonio.index');
+Route::get('patrimonio/cadastrar', [\App\Http\Controllers\PatrimonioController::class, 'create'])->name('patrimonio.create');
+Route::post('patrimonio/store', [\App\Http\Controllers\PatrimonioController::class, 'store'])->name('patrimonio.store');
+Route::get('patrimonio/{patrimonio_id}/editar', [\App\Http\Controllers\PatrimonioController::class, 'edit'])->name('patrimonio.edit');
+Route::post('patrimonio/update', [\App\Http\Controllers\PatrimonioController::class, 'update'])->name('patrimonio.update');
+Route::get('patrimonio/{patrimonio_id}/delete', [\App\Http\Controllers\PatrimonioController::class, 'delete'])->name('patrimonio.delete');
+Route::get('patrimonio/{patrimonio_id}/restore', [\App\Http\Controllers\PatrimonioController::class, 'restore'])->name('patrimonio.restore');
+Route::post('patrimonio/getSalas', [\App\Http\Controllers\PatrimonioController::class, 'getSalas'])->name('getSalas');
+
+
+
 
 
 
