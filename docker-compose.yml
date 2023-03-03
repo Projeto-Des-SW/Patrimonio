@@ -1,0 +1,52 @@
+version: '3.1'
+
+services:
+    db:
+        image: postgres:latest
+        container_name: db
+        restart: unless-stopped
+        environment:
+            - POSTGRES_USER=${DB_USERNAME}
+            - POSTGRES_PASSWORD=${DB_PASSWORD}
+            - POSTGRES_DB=${DB_DATABASE}
+        ports:
+            - "2345:5432"
+        volumes:
+            - app_db:/var/lib/postgresql/data
+        networks:
+            app-network:
+                aliases:
+                    - app-network-db
+
+    webserver:
+        image: nginx:alpine
+        container_name: webserver
+        volumes:
+            - ./:/var/www
+            - ./docker/nginx/conf.d/:/etc/nginx/conf.d/
+        networks:
+            - app-network
+        restart: unless-stopped
+        tty: true
+        ports:
+            - "${DOCKER_NGINX_HTTP_PORT}:80"
+            - "${DOCKER_NGINX_HTTPS_PORT}:443"
+
+    app:
+        build:
+            context: .
+            dockerfile: ./docker/php/Dockerfile
+        container_name: app
+        networks:
+            - app-network
+        restart: unless-stopped
+        working_dir: /var/www
+        volumes:
+            - ./:/var/www
+            - ./docker/php/local.ini:/usr/local/etc/php/conf.d/local.ini
+
+volumes:
+    app_db:
+
+networks:
+    app-network:
