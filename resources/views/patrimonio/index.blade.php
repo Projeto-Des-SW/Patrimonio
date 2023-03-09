@@ -22,7 +22,7 @@
         @foreach($patrimonios as $patrimonio)
             <tr>
                 <td>{{$patrimonio->id}}</td>
-                <td>{{$patrimonio->sala->nome}}</td>
+                <td>{{$patrimonio->nome}}</td>
                 <td>{{$patrimonio->sala->predio->nome}}</td>
                 <td>{{$patrimonio->sala->nome}}</td>
                 <td> 
