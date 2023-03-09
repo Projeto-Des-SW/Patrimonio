@@ -17,9 +17,16 @@
             <tr>
                 <td>{{$predio->nome}}</td>
                 <td>{{$predio->created_at}}</td>
-                <td class="text-center"><a class="btn btn-primary" href="{{route('predio.edit', ['predio_id' => $predio->id])}}">Editar</a> 
-                <a class="btn btn-danger" href="{{route('predio.delete', ['predio_id' => $predio->id])}}">Deletar</a> 
-                <a class="btn btn-primary" href="{{route('sala.index', ['predio_id' => $predio->id])}}">Salas</a>
+                <td class="text-center">
+                    <a class="btn btn-primary rounded-circle" href="{{route('predio.edit', ['predio_id' => $predio->id])}}">
+                        <img src="{{URL::asset('/assets/edit_icon.svg')}}" width="15px" alt="Icon de edição"> 
+                    </a>    
+                    <a class="btn btn-danger rounded-circle" href="{{route('predio.delete', ['predio_id' => $predio->id])}}">
+                        <img src="{{URL::asset('/assets/delete.svg')}}" width="20px" alt="Icon de remoção">                         
+                    </a> 
+                    <a class="btn btn-primary rounded-circle" href="{{route('sala.index', ['predio_id' => $predio->id])}}">
+                        <img src="{{URL::asset('/assets/salas.svg')}}" width="20px" alt="Icon de salas">                         
+                    </a>
             </td>
             </tr>
         @endforeach
