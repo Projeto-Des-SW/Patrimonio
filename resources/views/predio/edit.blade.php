@@ -6,8 +6,9 @@
         @csrf
         @include('predio.form')
         <div class="row mt-4">
-            <div class="col-3">
-                <button type="submit" class="btn btn-success w-100">Alterar</button>
+            <div class="d-flex justify-content-between">
+                <button type="submit" style="width: 150px" class="btn btn-success">Salvar</button>
+                <a style="width: 150px" class="btn btn-danger" href="{{route('predio.delete', ['predio_id' => $predio->id])}}"> Deletar </a>
             </div>
         </div>
     </form>
