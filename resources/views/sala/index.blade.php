@@ -19,8 +19,16 @@
                 <td>{{$sala->nome}}</td>
                 <td>{{$sala->telefone}}</td>
                 <td>{{$sala->created_at}}</td>
-                <td class="text-center"><a class="btn btn-primary" href="{{route('sala.edit', ['sala_id' => $sala->id])}}">Editar</a> <a
-                        class="btn btn-danger" href="{{route('sala.delete', ['sala_id' => $sala->id])}}">Deletar</a></td>
+                <td class="text-center">
+                    <a class="btn btn-primary rounded-circle" href="{{route('sala.edit', ['sala_id' => $sala->id])}}">
+                    <img src="{{URL::asset('/assets/edit_icon.svg')}}" width="15px" alt="Icon de edição"> 
+                    </a> 
+                    <a
+                        class="btn btn-danger rounded-circle" href="{{route('sala.delete', ['sala_id' => $sala->id])}}">
+                        <img src="{{URL::asset('/assets/delete.svg')}}" width="20px" alt="Icon de remoção">                         
+
+                    </a>
+                </td>
             </tr>
         @endforeach
         </tbody>
