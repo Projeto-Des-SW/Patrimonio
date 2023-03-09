@@ -1,15 +1,14 @@
 @extends('layouts.app')
 @section('content')
-    <h3 class="text-center">Edição de Classificação</h3>
+@include('layouts.components.header', ['page_title' => 'Editar Classificação', 'back' => true])
+
     <form method="POST" action="{{route('classificacao.update')}}" enctype="multipart/form-data">
         @csrf
         @include('classificacao.form')
         <div class="row mt-4">
-            <div class="col-3">
-                <a class="btn btn-secondary w-100" href="{{route('classificacao.index')}}">Voltar</a>
-            </div>
-            <div class="col-3 offset-6">
-                <button type="submit" class="btn btn-success w-100">Alterar</button>
+        <div class="d-flex justify-content-between">
+                <button type="submit" style="width: 150px" class="btn btn-success">Salvar</button>
+                <a style="width: 150px" class="btn btn-danger" href="{{route('classificacao.delete', ['classificacao_id' => $classificacao->id])}}"> Deletar </a>
             </div>
         </div>
     </form>

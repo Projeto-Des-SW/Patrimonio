@@ -3,7 +3,7 @@
     <div class="row">
     @include('layouts.components.header', ['page_title' => 'Salas - Prédio '.$predio->nome, 'back' => true])        
     </div>
-
+ 
     <table class="table table-hover table-responsive mx-2 mt-4">
         <thead>
         <tr style="background-color: #d3d3d4">
@@ -23,12 +23,11 @@
                 <td>{{$sala->created_at}}</td>
                 <td class="text-center">
                     <a class="btn btn-primary rounded-circle" href="{{route('sala.edit', ['sala_id' => $sala->id])}}">
-                    <img src="{{URL::asset('/assets/edit_icon.svg')}}" width="15px" alt="Icon de edição"> 
+                        <img src="{{URL::asset('/assets/edit_icon.svg')}}" width="15px" alt="Icon de edição"> 
                     </a> 
                     <a
                         class="btn btn-danger rounded-circle" href="{{route('sala.delete', ['sala_id' => $sala->id])}}">
                         <img src="{{URL::asset('/assets/delete.svg')}}" width="20px" alt="Icon de remoção">                         
-
                     </a>
                 </td>
             </tr>
