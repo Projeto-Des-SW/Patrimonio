@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="../../sass/forms.scss" type="text/css">
 <div class="row">
     @if(isset($servidor))
         <input type="hidden" name="servidor_id" value="{{$servidor->id}}">
@@ -5,7 +6,7 @@
 
     <div class="col-sm-6">
         <label for="name">Nome:<strong style="color: red">*</strong></label>
-        <input class="form-control @error('name') is-invalid @enderror" id="name" type="text"
+        <input class="form-control form-input @error('name') is-invalid @enderror" id="name" type="text"
                name="name" @if(isset($servidor)) value="{{$servidor->user->name}}"
                @else value="{{old('name')}}" @endif required
                autocomplete="name" autofocus>

@@ -1,0 +1,13 @@
+.form-input {
+    background-color: #F5F5F5;
+    border: none;
+    border-radius: 10px;
+
+    padding: 9px 15px;
+
+    outline: none;
+
+    &:active {
+        outline: none
+    }
+}

@@ -2,7 +2,8 @@
 @section('content')
     <div class="row">
         <div class="col-9">
-            <h3 class="text-center">Servidores</h3>
+            @include('layouts.components.header', ['page_title' => 'Servidores', 'back' => false])
+
         </div>
     </div>
 
