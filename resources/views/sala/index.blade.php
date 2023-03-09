@@ -1,12 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <div class="row">
-        <div class="col-9">
-            <h3 class="text-center">Lista de Salas</h3>
-        </div>
-        <div class="col-3">
-            <a class="w-100 btn btn-primary" href="{{route('sala.create', ['predio_id' => $predio->id])}}">Cadastrar</a>
-        </div>
+    @include('layouts.components.header', ['page_title' => 'Salas - Prédio '.$predio->nome, 'back' => true])        
     </div>
 
     <table class="table table-hover table-responsive mx-2 mt-4">
@@ -31,8 +26,8 @@
         </tbody>
     </table>
 
-    <div class="row mt-4">
-        <div class="col-3"><a class="btn btn-secondary w-100" href="{{route('predio.index')}}">Voltar</a></div>
+    <div class="col-3">
+        <a class="w-100 btn btn-primary" href="{{route('sala.create', ['predio_id' => $predio->id])}}">Cadastrar</a>
     </div>
 
 @endsection
