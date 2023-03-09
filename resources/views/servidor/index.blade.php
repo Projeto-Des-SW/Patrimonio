@@ -49,7 +49,7 @@
 
     <div class="d-flex" style="max-width: 300px">
         <a class="w-100 btn btn-primary" style="margin-right: 10px" href="{{route('servidor.create')}}">Cadastrar</a>
-        <a class="w-100 btn btn-outline-primary" href="{{route('servidor.create')}}">Cargos</a>
+        <a class="w-100 btn btn-outline-primary" href="{{ route('cargo.index') }}">Cargos</a>
     </div>
 
 
