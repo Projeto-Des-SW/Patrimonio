@@ -17,7 +17,7 @@
     </div>
 
     <div class="col-sm-6">
-        <label for="email">E-Mail:<strong style="color: red">*</strong></label>
+        <label for="email">E-mail:<strong style="color: red">*</strong></label>
         <input class="form-control @error('email') is-invalid @enderror"
                name="email" @if(isset($servidor)) value="{{$servidor->user->email}}"
                @else value="{{old('email')}}" @endif required
