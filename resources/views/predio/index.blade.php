@@ -1,12 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <div class="row">
-        <div class="col-9">
-            <h3 class="text-center">Lista de Prédios</h3>
-        </div>
-        <div class="col-3">
-            <a class="w-100 btn btn-primary" href="{{route('predio.create')}}">Cadastrar</a>
-        </div>
+    @include('layouts.components.header', ['page_title' => 'Prédios', 'back' => false])
     </div>
 
     <table class="table table-hover table-responsive mx-2 mt-4">
@@ -22,11 +17,16 @@
             <tr>
                 <td>{{$predio->nome}}</td>
                 <td>{{$predio->created_at}}</td>
-                <td class="text-center"><a class="btn btn-primary" href="{{route('predio.edit', ['predio_id' => $predio->id])}}">Editar</a> <a
-                        class="btn btn-danger" href="{{route('predio.delete', ['predio_id' => $predio->id])}}">Deletar</a> <a class="btn btn-primary" href="{{route('sala.index', ['predio_id' => $predio->id])}}">Salas</a></td>
+                <td class="text-center"><a class="btn btn-primary" href="{{route('predio.edit', ['predio_id' => $predio->id])}}">Editar</a> 
+                <a class="btn btn-danger" href="{{route('predio.delete', ['predio_id' => $predio->id])}}">Deletar</a> 
+                <a class="btn btn-primary" href="{{route('sala.index', ['predio_id' => $predio->id])}}">Salas</a>
+            </td>
             </tr>
         @endforeach
         </tbody>
     </table>
+    <div class="col-3">
+            <a class="w-100 btn btn-primary" href="{{route('predio.create')}}">Cadastrar</a>
+        </div>
 
 @endsection
