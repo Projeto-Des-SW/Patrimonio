@@ -2,7 +2,8 @@
 @section('content')
     <div class="row">
         <div class="col-9">
-            <h3 class="text-center">Servidores</h3>
+            @include('layouts.components.header', ['page_title' => 'Servidores', 'back' => false])
+
         </div>
     </div>
 
@@ -48,7 +49,7 @@
 
     <div class="d-flex" style="max-width: 300px">
         <a class="w-100 btn btn-primary" style="margin-right: 10px" href="{{route('servidor.create')}}">Cadastrar</a>
-        <a class="w-100 btn btn-outline-primary" href="{{route('servidor.create')}}">Cargos</a>
+        <a class="w-100 btn btn-outline-primary" href="{{ route('cargo.index') }}">Cargos</a>
     </div>
 
 

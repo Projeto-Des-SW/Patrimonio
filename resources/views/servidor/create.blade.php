@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @section('content')
-    <h3 class="text-center">Cadastro de Servidor</h3>
+@include('layouts.components.header', ['page_title' => 'Criar servidor', 'back' => true])
+
     <form method="POST" action="{{route('servidor.store')}}" enctype="multipart/form-data">
         @csrf
         @include('servidor.form')
