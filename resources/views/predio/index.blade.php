@@ -7,6 +7,7 @@
     <table class="table table-hover table-responsive mx-2 mt-4">
         <thead>
         <tr style="background-color: #d3d3d4">
+            <th scope="col">#</th>
             <th scope="col">Nome</th>
             <th scope="col">Data de Criação</th>
             <th class="text-center" scope="col">Ações</th>
@@ -15,6 +16,7 @@
         <tbody>
         @foreach($predios as $predio)
             <tr>
+                <td>{{$predio->id}}</td>
                 <td>{{$predio->nome}}</td>
                 <td>{{$predio->created_at}}</td>
                 <td class="text-center">

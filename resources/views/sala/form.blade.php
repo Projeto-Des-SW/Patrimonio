@@ -7,7 +7,7 @@
 
     <div class="col-sm-6">
         <label for="nome">Nome:<strong style="color: red">*</strong></label>
-        <input class="form-control @error('nome') is-invalid @enderror" id="nome" type="text"
+        <input class="form-control form-input @error('nome') is-invalid @enderror" id="nome" type="text"
                name="nome" @if(isset($sala)) value="{{$sala->nome}}"
                @else value="{{old('nome')}}" @endif required
                autocomplete="nome" autofocus>
@@ -20,7 +20,7 @@
 
     <div class="col-sm-6">
         <label for="telefone">Telefone:<strong style="color: red">*</strong></label>
-        <input class="form-control @error('telefone') is-invalid @enderror" id="telefone" type="tel"
+        <input class="form-control form-input @error('telefone') is-invalid @enderror" id="telefone" type="tel"
                name="telefone" @if(isset($sala)) value="{{$sala->telefone}}"
                @else value="{{old('telefone')}}" @endif required
                autocomplete="telefone" autofocus>
