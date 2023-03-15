@@ -39,7 +39,8 @@ class ServidorController extends Controller
 
     public function edit($servidor_id)
     {
-        $servidor = Servidor::find($servidor_id);
+        $servidor = Servidor::withTrashed()
+            ->find($servidor_id);
         $cargos = Cargo::all();
         $tipo_usuarios = TipoUsuario::all();
         return view('servidor.edit', compact('servidor', 'cargos', 'tipo_usuarios'));
@@ -47,7 +48,7 @@ class ServidorController extends Controller
 
     public function update(Request $request)
     {
-        $servidor = Servidor::find($request->servidor_id);
+        $servidor = Servidor::withTrashed()->find($request->servidor_id);
         $user = $servidor->user;
         if ($request->password != null) {
             $user->update(['name' => $request->name,
