@@ -59,10 +59,9 @@ class SetorController extends Controller
     {
         $setor = Setor::find($setor_id);
         $patrimonio = Patrimonio::where('setor_id', $setor_id)->first();
-        if ($patrimonio == null) {
+        if (!$patrimonio) {
             $setor_filho = Setor::where('setor_pai_id', $setor_id)->first();
-            if($setor_filho == null)
-            {
+            if ($setor_filho) {
                 return redirect()->back()->with('fail', 'Não é possivel remover o setor, existem sub-setores vinculados a ele!');
             }
             $setor->delete();
