@@ -72,6 +72,14 @@ Route::get('patrimonio/{patrimonio_id}/delete', [\App\Http\Controllers\Patrimoni
 Route::get('patrimonio/{patrimonio_id}/restore', [\App\Http\Controllers\PatrimonioController::class, 'restore'])->name('patrimonio.restore');
 Route::post('patrimonio/getSalas', [\App\Http\Controllers\PatrimonioController::class, 'getSalas'])->name('getSalas');
 
+Route::get('movimento/listar', [\App\Http\Controllers\MovimentoController::class, 'index'])->name('movimento.index');
+Route::get('movimento/cadastrar', [\App\Http\Controllers\MovimentoController::class, 'create'])->name('movimento.create');
+Route::post('movimento/store', [\App\Http\Controllers\MovimentoController::class, 'store'])->name('movimento.store');
+Route::get('movimento/{movimento_id}/editar', [\App\Http\Controllers\MovimentoController::class, 'edit'])->name('movimento.edit');
+Route::post('movimento/update', [\App\Http\Controllers\MovimentoController::class, 'update'])->name('movimento.update');
+Route::get('movimento/{movimento_id}/delete', [\App\Http\Controllers\MovimentoController::class, 'delete'])->name('movimento.delete');
+Route::get('movimento/{movimento_id}/restore', [\App\Http\Controllers\MovimentoController::class, 'restore'])->name('movimento.restore');
+
 
 
 

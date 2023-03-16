@@ -51,6 +51,7 @@ class User extends Authenticatable
 
     public function servidor()
     {
-        return $this->hasOne(Servidor::class);
+        return $this->hasOne(Servidor::class)
+            ->withTrashed();
     }
 }
