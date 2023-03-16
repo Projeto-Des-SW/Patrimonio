@@ -28,6 +28,9 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('patrimonio.index') }}">{{ __('Patrimônios') }}</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('movimento.index') }}">{{ __('Movimentações') }}</a>
+                        </li>
                     @endif
                 @endauth
             </ul>
