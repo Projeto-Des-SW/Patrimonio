@@ -18,7 +18,6 @@ return new class extends Migration
             $table->timestamps();
 
             $table->string('nome');
-            $table->string('tipo');
             $table->string('nota_fiscal')->nullable(); //VerificarDepois
             $table->string('descricao');
             $table->boolean('aprovado')->default(true);

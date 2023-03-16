@@ -43,7 +43,6 @@ class PatrimonioController extends Controller
                 'origem_id' => $request->origem_id,
                 'situacao_id' => $request->situacao_id,
                 'sala_id' => $request->sala_id,
-                'tipo' => 'Patrimônio',
                 'servidor_id' => $request->servidor_id
             ]);
         } else {
@@ -54,7 +53,6 @@ class PatrimonioController extends Controller
                 'origem_id' => $request->origem_id,
                 'situacao_id' => $request->situacao_id,
                 'sala_id' => $request->sala_id,
-                'tipo' => 'Patrimônio',
                 'servidor_id' => $request->servidor_id,
                 'nota_fiscal' => $request->nota_fiscal
             ]);

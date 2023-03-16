@@ -14,7 +14,6 @@ class PatrimonioTest extends TestCase
 
         $expeted = [
             'nome', 
-            'tipo', 
             'nota_fiscal', 
             'aprovado', 
             'descricao', 

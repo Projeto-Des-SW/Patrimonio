@@ -9,7 +9,7 @@ class Patrimonio extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['nome', 'tipo', 'nota_fiscal', 'aprovado', 'descricao', 'servidor_id', 'classificacao_id', 'origem_id', 'sala_id', 'situacao_id'];
+    protected $fillable = ['nome', 'nota_fiscal', 'aprovado', 'descricao', 'servidor_id', 'classificacao_id', 'origem_id', 'sala_id', 'situacao_id'];
 
     public function servidor()
     {
