@@ -14,7 +14,8 @@ class Servidor extends Model
     protected $fillable = ['cpf', 'matricula', 'user_id', 'cargo_id'];
 
     public function user(){
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class)
+            ->withTrashed();
     }
 
     public function cargo(){
