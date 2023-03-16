@@ -1,16 +1,12 @@
 @extends('layouts.app')
 @section('content')
-    <h3 class="text-center">Edição de Setor</h3>
-    <form method="POST" action="{{route('setor.update')}}" enctype="multipart/form-data">
+@include('layouts.components.header', ['page_title' => 'Editar Setor', 'back' => true])
+<form method="POST" action="{{route('setor.update')}}" enctype="multipart/form-data">
         @csrf
         @include('setor.form')
-        <div class="row mt-4">
-            <div class="col-3">
-                <a class="btn btn-secondary w-100" href="{{route('setor.index')}}">Voltar</a>
-            </div>
-            <div class="col-3 offset-6">
-                <button type="submit" class="btn btn-success w-100">Alterar</button>
-            </div>
+        <div style="margin-top: 30px" class="d-flex justify-content-between">
+            <button style="max-width: 150px" type="submit" class="btn btn-success w-100" >Salvar</button> 
+            <a style="width: 150px" class="btn btn-danger" href="{{route('setor.delete', ['setor_id' => $setor->id])}}"> Deletar </a>
         </div>
     </form>
 @endsection
