@@ -70,6 +70,8 @@ Route::get('patrimonio/{patrimonio_id}/editar', [\App\Http\Controllers\Patrimoni
 Route::post('patrimonio/update', [\App\Http\Controllers\PatrimonioController::class, 'update'])->name('patrimonio.update');
 Route::get('patrimonio/{patrimonio_id}/delete', [\App\Http\Controllers\PatrimonioController::class, 'delete'])->name('patrimonio.delete');
 Route::get('patrimonio/{patrimonio_id}/restore', [\App\Http\Controllers\PatrimonioController::class, 'restore'])->name('patrimonio.restore');
+Route::get('patrimonio/{patrimonio_id}/codigos', [\App\Http\Controllers\PatrimonioController::class, 'codigosPatrimonio'])->name('patrimonio.codigo.index');
+Route::post('codigo/store', [\App\Http\Controllers\PatrimonioController::class, 'codigoStore'])->name('patrimonio.codigo.store');
 Route::post('patrimonio/getSalas', [\App\Http\Controllers\PatrimonioController::class, 'getSalas'])->name('getSalas');
 
 Route::get('movimento/listar', [\App\Http\Controllers\MovimentoController::class, 'index'])->name('movimento.index');

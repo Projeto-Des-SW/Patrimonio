@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Classificacao;
+use App\Models\Codigo;
 use App\Models\MovimentoPatrimonio;
 use App\Models\Origem;
 use App\Models\Predio;
@@ -36,7 +37,7 @@ class PatrimonioController extends Controller
     public function store(Request $request)
     {
         if (Auth::user()->user_id == 1) {
-            Patrimonio::create([
+            $patrimonio = Patrimonio::create([
                 'nome' => $request->nome,
                 'descricao' => $request->descricao,
                 'classificacao_id' => $request->classificacao_id,
@@ -46,7 +47,7 @@ class PatrimonioController extends Controller
                 'servidor_id' => $request->servidor_id
             ]);
         } else {
-            Patrimonio::create([
+            $patrimonio = Patrimonio::create([
                 'nome' => $request->nome,
                 'descricao' => $request->descricao,
                 'classificacao_id' => $request->classificacao_id,
@@ -57,7 +58,7 @@ class PatrimonioController extends Controller
                 'nota_fiscal' => $request->nota_fiscal
             ]);
         }
-        return redirect(route('patrimonio.index'))->with('success', 'Patrimônio Cadastrado com Sucesso!');
+        return redirect()->route('patrimonio.codigo.index', ['patrimonio_id' => $patrimonio->id])->with('success', 'Patrimônio Cadastrado com Sucesso, Adicione os Códigos ao Patrimônio.');
     }
 
     public function edit($patrimonio_id)
@@ -95,5 +96,16 @@ class PatrimonioController extends Controller
         $predio_id = json_decode($request->predio_id);
         $salas = Sala::where('predio_id', $predio_id)->get();
         return response()->json($salas);
+    }
+
+    public function codigosPatrimonio($patrimonio_id){
+        $patrimonio = Patrimonio::find($patrimonio_id);
+        return view('patrimonio.codigo.index_create', compact('patrimonio'));
+    }
+
+    public function codigoStore(Request $request)
+    {
+        Codigo::create($request->all());
+        return redirect()->route('patrimonio.codigo.index', ['patrimonio_id' => $request->patrimonio_id])->with('success', 'Código Cadastrado com Sucesso!');
     }
 }
