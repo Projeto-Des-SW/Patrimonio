@@ -3,7 +3,7 @@
     <div class="row">
         <div class="col-9">
             <h3 class="text-center">Lista de @if(isset($setor_pai))
-                    Setores de {{$setor_pai->nome}}
+                    Estrutura organizacional de {{$setor_pai->nome}}
                 @else
                     Coordenações
                 @endif</h3>
