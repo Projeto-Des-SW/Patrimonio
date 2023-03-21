@@ -18,7 +18,6 @@ class PatrimonioFactory extends Factory
     {
         return [
             'nome' => $this->faker->streetName,
-            'tipo' => 'Patrimônio',
             'descricao' => $this->faker->sentence,
             'servidor_id' => 2,
             'classificacao_id' => 1,
