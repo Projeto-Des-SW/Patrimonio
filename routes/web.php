@@ -81,6 +81,7 @@ Route::get('movimento/{movimento_id}/editar', [\App\Http\Controllers\MovimentoCo
 Route::post('movimento/update', [\App\Http\Controllers\MovimentoController::class, 'update'])->name('movimento.update');
 Route::get('movimento/{movimento_id}/delete', [\App\Http\Controllers\MovimentoController::class, 'delete'])->name('movimento.delete');
 Route::get('movimento/{movimento_id}/restore', [\App\Http\Controllers\MovimentoController::class, 'restore'])->name('movimento.restore');
+Route::post('movimento/store/patrimonio', [\App\Http\Controllers\MovimentoController::class, 'adicionarPatrimonio'])->name('movimento.patrimonio.store');
 
 
 
