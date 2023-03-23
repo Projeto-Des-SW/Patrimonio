@@ -114,4 +114,11 @@ class PatrimonioController extends Controller
         Codigo::create($request->all());
         return redirect()->route('patrimonio.codigo.index', ['patrimonio_id' => $request->patrimonio_id])->with('success', 'Código Cadastrado com Sucesso!');
     }
+
+    public function codigoDelete($codigo_id){
+        $codigo = Codigo::find($codigo_id);
+        $patrimonio = Patrimonio::find($codigo->patrimonio_id);
+        $codigo->delete();
+        return view('patrimonio.codigo.index_create', compact('patrimonio'));
+    }
 }
