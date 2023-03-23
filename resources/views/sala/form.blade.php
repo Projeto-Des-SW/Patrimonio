@@ -19,11 +19,9 @@
     </div>
 
     <div class="col-sm-6">
-        <label for="telefone">Telefone:<strong style="color: red">*</strong></label>
-        <input class="form-control form-input @error('telefone') is-invalid @enderror" id="telefone" type="tel"
-               name="telefone" @if(isset($sala)) value="{{$sala->telefone}}"
-               @else value="{{old('telefone')}}" @endif required
-               autocomplete="telefone" autofocus>
+        <label for="telefone">Telefone:</label>
+        <input class="form-control form-input" id="telefone" type="tel"
+               name="telefone">
         @error('telefone')
         <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>

@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('salas', function (Blueprint $table) {
             $table->id();
-            $table->string('telefone');
+            $table->string('telefone')->nullable();
             $table->string('nome');
 
             $table->unsignedInteger('predio_id');
