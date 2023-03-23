@@ -99,17 +99,17 @@
 
     <div class="col-4">
         <label for="data_compra">Data de compra:<strong style="color: red">*</strong></label>
-        <input class="form-control" type="date" id="data_compra" name="data_compra">            
+        <input class="form-control" type="date" id="data_compra" name="data_compra" @if(isset($patrimonio)) value="{{$patrimonio->data_compra}} @endif">            
     </div>
 
     <div class="col-4">
         <label for="valor">Valor do ítem:</label>
-        <input class="form-control" type="number" id="valor" name="valor" step="0.01" min="0.01" placeholder="0.00">         
+        <input class="form-control" type="number" id="valor" name="valor" step="0.01" min="0.01" placeholder="0.00" @if(isset($patrimonio)) value="{{$patrimonio->valor}} @endif">         
     </div>
 
 </div>
 
-<div  class="row mt-4">
+<div class="row mt-4">
     <div class="col-3">
         <div class="row">
             <label>Bem Privado?</label>
@@ -147,7 +147,24 @@
         @endif
     </div>           
 </div>
-            
+
+<div class="row mt-4">
+    <div class="col-12">
+        <label for="observacao">Observações pertinentes a este patrimônio:</label>
+        <textarea class="form-control @error('descricao') is-invalid @enderror" id="observacao" name="observacao" type="text" 
+            @if(isset($patrimonio)) value="{{$patrimonio->observacao}}"
+            @else value="{{old('observacao')}}"
+            @endif 
+            autocomplete="observacao">
+        </textarea>
+        @error('descricao')
+        <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+        @enderror
+    </div>  
+</div>
+
 <script>
     $("#predio_select").on('change', function () {
         var predio_id = $("#predio_select").val();

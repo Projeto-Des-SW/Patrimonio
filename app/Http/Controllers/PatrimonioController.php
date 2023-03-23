@@ -46,7 +46,8 @@ class PatrimonioController extends Controller
                 'sala_id' => $request->sala_id,
                 'servidor_id' => $request->servidor_id,
                 'data_compra' => $request->data_compra,
-                'valor' => $request->valor
+                'valor' => $request->valor,
+                'observacao' => $request->observacao
             ]);
         } else {
             $patrimonio = Patrimonio::create([
@@ -59,6 +60,7 @@ class PatrimonioController extends Controller
                 'servidor_id' => $request->servidor_id,
                 'data_compra' => $request->data_compra,
                 'valor' => $request->valor,
+                'observacao' => $request->observacao,
                 'nota_fiscal' => $request->nota_fiscal
             ]);
         }
