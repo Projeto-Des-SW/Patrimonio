@@ -19,6 +19,8 @@ class PatrimonioFactory extends Factory
         return [
             'nome' => $this->faker->streetName,
             'descricao' => $this->faker->sentence,
+            'data_compra' => $this->faker->date,
+            'valor' => $this->faker->numberBetween($min = 100, $max = 5000),
             'servidor_id' => 2,
             'classificacao_id' => 1,
             'situacao_id' => 1,

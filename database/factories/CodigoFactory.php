@@ -19,6 +19,7 @@ class CodigoFactory extends Factory
     {
         return [
             'codigo' => Str::random(10),
+            'patrimonio_id' => 1,
         ];
     }
 }

@@ -13,14 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('codigos', function (Blueprint $table) {
-            $table->id();
-            $table->string('codigo')->unique();
+        Schema::table('patrimonios', function (Blueprint $table) {
+            $table->date('data_compra');
 
-            $table->unsignedBigInteger('patrimonio_id');
-            $table->foreign('patrimonio_id')->references('id')->on('patrimonios')->onDelete('cascade');
-
-            $table->timestamps();
         });
     }
 
@@ -31,6 +26,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('codigo');
+        Schema::table('patrimonios', function (Blueprint $table) {
+            $table->dropColumn('data_compra');
+        });
     }
 };
