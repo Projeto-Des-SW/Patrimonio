@@ -10,7 +10,8 @@ class Classificacao extends Model
     use HasFactory;
 
     protected $fillable = [
-        'nome'
+        'nome',
+        'taxa_depre'
     ];
 
     public function patrimonios (){
