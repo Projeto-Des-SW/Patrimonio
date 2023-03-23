@@ -99,12 +99,12 @@
 
     <div class="col-4">
         <label for="data_compra">Data de compra:<strong style="color: red">*</strong></label>
-        <input class="form-control" type="date" id="data_compra" name="data_compra" @if(isset($patrimonio)) value="{{$patrimonio->data_compra}} @endif">            
+        <input class="form-control" type="date" id="data_compra" name="data_compra" @if(isset($patrimonio)) value="{{$patrimonio->data_compra}} @endif" required>            
     </div>
 
     <div class="col-4">
         <label for="valor">Valor do ítem:</label>
-        <input class="form-control" type="number" id="valor" name="valor" step="0.01" min="0.01" placeholder="0.00" @if(isset($patrimonio)) value="{{$patrimonio->valor}} @endif">         
+        <input class="form-control" type="number" id="valor" name="valor" step="0.01" min="0.01" placeholder="0.00" @if(isset($patrimonio)) value="{{$patrimonio->valor}} @endif" required>         
     </div>
 
 </div>
