@@ -34,16 +34,9 @@
 
 <div class="row mt-4">
     <div class="col-sm-6">
-        <label for="cpf">CPF:<strong style="color: red">*</strong></label>
-        <input class="form-control @error('cpf') is-invalid @enderror" id="cpf" type="text"
-               name="cpf" @if(isset($servidor)) value="{{$servidor->cpf}}"
-               @else value="{{old('cpf')}}" @endif required
-               autocomplete="cpf" autofocus>
-        @error('cpf')
-        <span class="invalid-feedback" role="alert">
-                <strong>{{ $message }}</strong>
-            </span>
-        @enderror
+        <label for="cpf">CPF:</label>
+        <input class="form-control" id="cpf" type="text"
+               name="cpf">
     </div>
 
     <div class="col-sm-6">

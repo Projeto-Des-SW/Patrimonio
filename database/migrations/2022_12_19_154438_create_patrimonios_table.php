@@ -22,6 +22,9 @@ return new class extends Migration
             $table->string('descricao');
             $table->boolean('aprovado')->default(true);
 
+            $table->date('data_compra');
+            $table->double('valor');
+
             $table->unsignedInteger('servidor_id');
             $table->foreign('servidor_id')->references('id')->on('servidors');
 
@@ -39,6 +42,8 @@ return new class extends Migration
 
             $table->unsignedInteger('situacao_id');
             $table->foreign('situacao_id')->references('id')->on('situacaos');
+
+            $table->string('observacao')->nullable();
         });
     }
 

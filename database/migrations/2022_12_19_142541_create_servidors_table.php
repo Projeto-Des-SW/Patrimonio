@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('servidors', function (Blueprint $table) {
             $table->id();
             $table->softDeletes();
-            $table->string('cpf')->unique();
+            $table->string('cpf')->unique()->nullable();
             $table->string('matricula')->unique();
 
             $table->unsignedBigInteger('user_id');

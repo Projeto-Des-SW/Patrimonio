@@ -17,7 +17,8 @@ class ClassificacaoFactory extends Factory
     public function definition()
     {
         return [
-            'nome' => 'Eletrônico'
+            'nome' => 'Eletrônico',
+            'taxa_depre' => 44.8,
         ];
     }
 }

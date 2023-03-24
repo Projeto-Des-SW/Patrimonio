@@ -44,7 +44,10 @@ class PatrimonioController extends Controller
                 'origem_id' => $request->origem_id,
                 'situacao_id' => $request->situacao_id,
                 'sala_id' => $request->sala_id,
-                'servidor_id' => $request->servidor_id
+                'servidor_id' => $request->servidor_id,
+                'data_compra' => $request->data_compra,
+                'valor' => $request->valor,
+                'observacao' => $request->observacao
             ]);
         } else {
             $patrimonio = Patrimonio::create([
@@ -55,6 +58,9 @@ class PatrimonioController extends Controller
                 'situacao_id' => $request->situacao_id,
                 'sala_id' => $request->sala_id,
                 'servidor_id' => $request->servidor_id,
+                'data_compra' => $request->data_compra,
+                'valor' => $request->valor,
+                'observacao' => $request->observacao,
                 'nota_fiscal' => $request->nota_fiscal
             ]);
         }
@@ -107,5 +113,12 @@ class PatrimonioController extends Controller
     {
         Codigo::create($request->all());
         return redirect()->route('patrimonio.codigo.index', ['patrimonio_id' => $request->patrimonio_id])->with('success', 'Código Cadastrado com Sucesso!');
+    }
+
+    public function codigoDelete($codigo_id){
+        $codigo = Codigo::find($codigo_id);
+        $patrimonio = Patrimonio::find($codigo->patrimonio_id);
+        $codigo->delete();
+        return view('patrimonio.codigo.index_create', compact('patrimonio'));
     }
 }

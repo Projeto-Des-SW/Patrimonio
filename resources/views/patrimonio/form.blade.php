@@ -97,42 +97,72 @@
         </select>
     </div>
 
+    <div class="col-4">
+        <label for="data_compra">Data de compra:<strong style="color: red">*</strong></label>
+        <input class="form-control" type="date" id="data_compra" name="data_compra" @if(isset($patrimonio)) value="{{$patrimonio->data_compra}} @endif" required>            
+    </div>
+
+    <div class="col-4">
+        <label for="valor">Valor do ítem:</label>
+        <input class="form-control" type="number" id="valor" name="valor" step="0.01" min="0.01" placeholder="0.00" @if(isset($patrimonio)) value="{{$patrimonio->valor}} @endif" required>         
+    </div>
+
+</div>
+
+<div class="row mt-4">
     <div class="col-3">
         <div class="row">
             <label>Bem Privado?</label>
             <div class="col-6">
                 <input class="form-check-input" type="radio" name="nota_fiscal_radio" id="nota_fiscal_sim"
-                       @if(isset($patrimonio) && $patrimonio->nota_fiscal != null) checked @endif>
+                @if(isset($patrimonio) && $patrimonio->nota_fiscal != null) checked @endif>
                 <label class="form-check-label" for="nota_fiscal_sim">Sim</label>
             </div>
             <div class="col-6">
                 <input class="form-check-input" type="radio" name="nota_fiscal_radio" id="nota_fiscal_nao"
-                       @if(isset($patrimonio) && $patrimonio->nota_fiscal == null || !isset($patrimonio)) checked
-                       @endif value="false">
-                <label class="form-check-label" for="nota_fiscal_nao">
-                    Não
-                </label>
+                    @if(isset($patrimonio) && $patrimonio->nota_fiscal == null || !isset($patrimonio)) checked
+                    @endif value="false">
+                    <label class="form-check-label" for="nota_fiscal_nao">
+                        Não
+                    </label>
             </div>
         </div>
     </div>
-
+            
     <div class="col-5" id="anexo_nota_fiscal" style="display: none;">
         <label>Anexar Nota Fiscal:<strong style="color: red">*</strong></label>
         <input class="form-control @error('nota_fiscal') is-invalid @enderror"
-               id="nota_fiscal"
-               type="file" name="nota_fiscal"
-               value="" autocomplete="nota_fiscal"
-               @if(isset($patrimonio) && $patrimonio->nota_fiscal != null) style="width: 135px" @endif >
-        @error('nota_fiscal')
+        id="nota_fiscal"
+        type="file" name="nota_fiscal"
+        value="" autocomplete="nota_fiscal"
+        @if(isset($patrimonio) && $patrimonio->nota_fiscal != null) style="width: 135px" @endif >
+            @error('nota_fiscal')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+                @enderror
+                @if(isset($patrimonio) && $patrimonio->nota_fiscal != null)
+            <span
+                style="border: 1px gray solid; border-radius: 10px; text-align: center; width: 250px; position: absolute; bottom: 0px; left: 155px; height: 38px; padding-top: 5px; background-color: #dcfadf">Um Arquivo Já Foi Enviado</span>
+        @endif
+    </div>           
+</div>
+
+<div class="row mt-4">
+    <div class="col-12">
+        <label for="observacao">Observações pertinentes a este patrimônio:</label>
+        <textarea class="form-control @error('descricao') is-invalid @enderror" id="observacao" name="observacao" type="text" 
+            @if(isset($patrimonio)) value="{{$patrimonio->observacao}}"
+            @else value="{{old('observacao')}}"
+            @endif 
+            autocomplete="observacao">
+        </textarea>
+        @error('descricao')
         <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>
             </span>
         @enderror
-        @if(isset($patrimonio) && $patrimonio->nota_fiscal != null)
-            <span
-                style="border: 1px gray solid; border-radius: 10px; text-align: center; width: 250px; position: absolute; bottom: 0px; left: 155px; height: 38px; padding-top: 5px; background-color: #dcfadf">Um Arquivo Já Foi Enviado</span>
-        @endif
-    </div>
+    </div>  
 </div>
 
 <script>

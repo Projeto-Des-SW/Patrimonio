@@ -14,10 +14,11 @@
                        @endif required
                        autocomplete="codigo" autofocus>
                 @error('codigo')
-                <span class="invalid-feedback" role="alert">
-                <strong>{{ $message }}</strong>
-            </span>
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
                 @enderror
+                <a href="{{route('patrimonio.codigo.delete', ['codigo_id' => $codigo->id])}}">Deletar</a>
             </div>
 
         @endforeach
