@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Patrimonio\StoreCodigoPatrimonioRequest;
+use App\Http\Requests\Patrimonio\StorePatrimonioRequest;
+use App\Http\Requests\Patrimonio\UpdatePatrimonioRequest;
 use App\Models\Classificacao;
 use App\Models\Codigo;
 use App\Models\MovimentoPatrimonio;
@@ -34,7 +37,7 @@ class PatrimonioController extends Controller
         return view('patrimonio.create', compact('setores', 'origens', 'predios', 'situacoes', 'servidores', 'classificacoes'));
     }
 
-    public function store(Request $request)
+    public function store(StorePatrimonioRequest $request)
     {
         if (Auth::user()->user_id == 1) {
             $patrimonio = Patrimonio::create([
@@ -79,7 +82,7 @@ class PatrimonioController extends Controller
         return view('patrimonio.edit', compact('patrimonio', 'setores', 'origens', 'predios', 'situacoes', 'servidores', 'classificacoes'));
     }
 
-    public function update(Request $request)
+    public function update(UpdatePatrimonioRequest $request)
     {
         Patrimonio::find($request->patrimonio_id)->update($request->all());
         return redirect(route('patrimonio.index'))->with('success', 'Patrimonio Editado com Sucesso!');
@@ -109,7 +112,7 @@ class PatrimonioController extends Controller
         return view('patrimonio.codigo.index_create', compact('patrimonio'));
     }
 
-    public function codigoStore(Request $request)
+    public function codigoStore(StoreCodigoPatrimonioRequest $request)
     {
         Codigo::create($request->all());
         return redirect()->route('patrimonio.codigo.index', ['patrimonio_id' => $request->patrimonio_id])->with('success', 'Código Cadastrado com Sucesso!');

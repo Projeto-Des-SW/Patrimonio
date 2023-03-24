@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Predio\StoreServidorRequest;
+use App\Http\Requests\Predio\UpdateServidorRequest;
 use App\Models\Cargo;
 use App\Models\TipoUsuario;
 use App\Models\User;
@@ -24,7 +26,7 @@ class ServidorController extends Controller
         return view('servidor.create', compact('cargos', 'tipo_usuarios'));
     }
 
-    public function store(Request $request)
+    public function store(StoreServidorRequest $request)
     {
         $user = User::create(['name' => $request->name,
             'email' => $request->email,
@@ -46,7 +48,7 @@ class ServidorController extends Controller
         return view('servidor.edit', compact('servidor', 'cargos', 'tipo_usuarios'));
     }
 
-    public function update(Request $request)
+    public function update(UpdateServidorRequest $request)
     {
         $servidor = Servidor::withTrashed()->find($request->servidor_id);
         $user = $servidor->user;

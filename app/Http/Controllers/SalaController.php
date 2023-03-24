@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Sala\StoreSalaRequest;
+use App\Http\Requests\Sala\UpdateSalaRequest;
 use App\Models\Patrimonio;
 use App\Models\Predio;
 use App\Models\Sala;
@@ -22,7 +24,7 @@ class SalaController extends Controller
         return view('sala.create', compact('predio'));
     }
 
-    public function store(Request $request)
+    public function store(StoreSalaRequest $request)
     {
         Sala::create($request->all());
         return redirect(route('sala.index', ['predio_id' => $request->predio_id]))->with('success', 'Sala Cadastrada com Sucesso!');
@@ -35,7 +37,7 @@ class SalaController extends Controller
         return view('sala.edit', compact('sala', 'predio'));
     }
 
-    public function update(Request $request)
+    public function update(UpdateSalaRequest $request)
     {
         Sala::find($request->sala_id)->update($request->all());
 

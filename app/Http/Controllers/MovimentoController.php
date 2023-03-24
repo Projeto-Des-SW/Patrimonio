@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Movimento\StoreMovimentoRequest;
+use App\Http\Requests\Movimento\UpdateMovimentoRequest;
 use App\Models\Movimento;
 use App\Models\Patrimonio;
 use App\Models\Servidor;
@@ -24,7 +26,7 @@ class MovimentoController extends Controller
         return view('movimento.create', compact('tipo_movimentos', 'servidores'));
     }
 
-    public function store(Request $request)
+    public function store(StoreMovimentoRequest $request)
     {
         $data = $request->all();
         $movimento = Movimento::create($data);
@@ -42,7 +44,7 @@ class MovimentoController extends Controller
         return view('movimento.edit', compact('movimento', 'tipo_movimentos', 'servidores', 'patrimonios'));
     }
 
-    public function update(Request $request)
+    public function update(UpdateMovimentoRequest $request)
     {
         $data = $request->all();
         $movimento = Movimento::find($data['movimento_id']);

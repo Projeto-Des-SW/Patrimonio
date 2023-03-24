@@ -1,0 +1,23 @@
+<?php
+
+namespace App\Http\Requests\Classificacao;
+
+use Illuminate\Contracts\Validation\Validator;
+use Illuminate\Foundation\Http\FormRequest;
+
+class UpdateClassificacaoRequest extends FormRequest
+{
+    
+    public function rules()
+    {
+        return [
+            'nome' => 'required|unique:classificacaos|max:255'
+        ];
+    }
+
+    public function failedValidation(Validator $validator)
+    {
+        $errors = $validator->errors();
+        return redirect()->back()->withErrors($errors)->withInput();
+    }
+}
