@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+
+
+use App\Http\Requests\Classificacao\StoreClassificacaoRequest;
+use App\Http\Requests\Classificacao\UpdateClassificacaoRequest;
 use App\Models\Classificacao;
 use App\Models\Patrimonio;
 use Illuminate\Http\Request;
@@ -18,7 +22,7 @@ class ClassificacaoController extends Controller
         return view('classificacao.create');
     }
 
-    public function store(Request $request)
+    public function store(StoreClassificacaoRequest $request)
     {
         classificacao::create($request->all());
         return redirect(route('classificacao.index'))->with('success', 'Classificação Cadastrada com Sucesso!');
@@ -30,7 +34,7 @@ class ClassificacaoController extends Controller
         return view('classificacao.edit', compact('classificacao'));
     }
 
-    public function update(Request $request)
+    public function update(UpdateClassificacaoRequest $request)
     {
         Classificacao::find($request->classificacao_id)->update($request->all());
         return redirect(route('classificacao.index'))->with('success', 'Classificação Editada com Sucesso!');

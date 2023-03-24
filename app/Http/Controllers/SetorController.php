@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+
+use App\Http\Requests\Sala\StoreSetorRequest;
+use App\Http\Requests\Sala\UpdateSetorRequest;
 use App\Models\Patrimonio;
 use Illuminate\Http\Request;
 use App\Models\Setor;
@@ -30,7 +33,7 @@ class SetorController extends Controller
 
     }
 
-    public function store(Request $request)
+    public function store(StoreSetorRequest $request)
     {
         if (isset($request->setor_pai_id) && $request->setor_pai_id != null) {
             $setor_pai = Setor::find($request->setor_pai_id);
@@ -49,7 +52,7 @@ class SetorController extends Controller
         return view('setor.edit', compact('setor'));
     }
 
-    public function update(Request $request)
+    public function update(UpdateSetorRequest $request)
     {
         Setor::find($request->setor_id)->update($request->all());
         return redirect(route('setor.index'))->with('success', 'Setor Editado com Sucesso!');

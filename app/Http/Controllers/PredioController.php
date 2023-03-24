@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Predio\StorePredioRequest;
+use App\Http\Requests\Predio\UpdatePredioRequest;
 use App\Models\Predio;
 use App\Models\Sala;
 use Illuminate\Http\Request;
@@ -19,7 +21,7 @@ class PredioController extends Controller
         return view('predio.create');
     }
 
-    public function store(Request $request)
+    public function store(StorePredioRequest $request)
     {
         Predio::create($request->all());
         return redirect(route('predio.index'))->with('success', 'Prédio Cadastrado com Sucesso!');
@@ -31,7 +33,7 @@ class PredioController extends Controller
         return view('predio.edit', compact('predio'));
     }
 
-    public function update(Request $request)
+    public function update(UpdatePredioRequest $request)
     {
         Predio::find($request->predio_id)->update($request->all());
         return redirect(route('predio.index'))->with('success', 'Predio Editado com Sucesso!');

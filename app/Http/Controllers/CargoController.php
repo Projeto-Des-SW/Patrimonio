@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Cargo\StoreCargoRequest;
+use App\Http\Requests\Cargo\UpdateCargoRequest;
 use App\Models\Cargo;
 use App\Models\Servidor;
 use Illuminate\Http\Request;
@@ -18,7 +20,7 @@ class CargoController extends Controller
         return view('cargo.create');
     }
 
-    public function store(Request $request)
+    public function store(StoreCargoRequest $request)
     {
         Cargo::create($request->all());
         return redirect(route('cargo.index'))->with('success', 'Cargo Cadastrado com Sucesso!');
@@ -30,7 +32,7 @@ class CargoController extends Controller
         return view('cargo.edit', compact('cargo'));
     }
 
-    public function update(Request $request)
+    public function update(UpdateCargoRequest $request)
     {
         Cargo::find($request->cargo_id)->update($request->all());
         return redirect(route('cargo.index'))->with('success', 'Cargo Editado com Sucesso!');
