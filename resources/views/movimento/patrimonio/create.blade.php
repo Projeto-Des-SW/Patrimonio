@@ -28,7 +28,7 @@
                 <td>{{$patrimonio->sala->nome}}</td>
                 <td>
                     <a class="btn btn-danger rounded-circle"
-                       href="{{route('patrimonio.delete', ['patrimonio_id' => $patrimonio->id])}}">
+                       href="{{route('movimento.patrimonio.delete', ['movimento_patrimonio_id' => $patrimonio->pivot->id])}}">
                         <img src="{{URL::asset('/assets/delete.svg')}}" width="20px" alt="Icon de remoção">
                     </a>
                 </td>
