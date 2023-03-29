@@ -9,6 +9,8 @@ class MovimentoPatrimonio extends Model
 {
     use HasFactory;
 
+    protected $table = 'movimento_patrimonios';
+
     protected $fillable = ['movimento_id', 'patrimonio_id'];
 
     public function movimento(){

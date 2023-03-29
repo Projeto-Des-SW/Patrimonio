@@ -9,7 +9,7 @@ class Movimento extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['observacao', 'servidor_destino_id', 'servidor_origem_id', 'tipo_movimento_id'];
+    protected $fillable = ['observacao', 'status' ,'servidor_destino_id', 'servidor_origem_id', 'tipo_movimento_id'];
 
     public function servidor_destino(){
         return $this->belongsTo(Servidor::class, 'servidor_destino_id')
@@ -23,7 +23,8 @@ class Movimento extends Model
 
     public function itens_movimento()
     {
-        return $this->belongsToMany(Patrimonio::class, 'movimento_patrimonios', 'movimento_id');
+        return $this->belongsToMany(Patrimonio::class, 'movimento_patrimonios', 'movimento_id')
+            ->withPivot('id');
     }
 
 

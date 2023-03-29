@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('movimentos', function (Blueprint $table) {
             $table->id();
             $table->string('observacao')->nullable();
+            $table->string('status')->default('Não Concluido');
 
             $table->unsignedInteger('servidor_destino_id');
             $table->foreign('servidor_destino_id')->references('id')->on('servidors');
