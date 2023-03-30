@@ -1,6 +1,14 @@
 # Release Notes
 
-## [Unreleased](https://github.com/laravel/laravel/compare/r1...master)
+## [Unreleased](https://github.com/laravel/laravel/compare/r2...master)
+
+## [r2](https://github.com/laravel/laravel/compare/r1...r2) - 2023-03-29
+
+- Movimentações individuais de patrimonio
+- - Emprestimos
+- 
+- - movimentos interno entre servidores
+- 
 
 ## [r1](https://github.com/laravel/laravel/compare/v9.3.11...r1) - 2023-03-22
 
