@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Patrimonio;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Contracts\Validation\Validator;
 
 class StoreCodigoPatrimonioRequest extends FormRequest
 {
@@ -11,11 +12,7 @@ class StoreCodigoPatrimonioRequest extends FormRequest
      *
      * @return bool
      */
-    public function authorize()
-    {
-        return false;
-    }
-
+ 
     /**
      * Get the validation rules that apply to the request.
      *
@@ -24,13 +21,13 @@ class StoreCodigoPatrimonioRequest extends FormRequest
     public function rules()
     {
         return [
-            'nome' => 'required|unique:patrimonios|max:255',
-            'patrimonio_id' => 'required|integer|exists:patrimonios,id'
+            'codigos' => 'required|unique:patrimonios|max:255',
+            
             
         ];
     }
 
-    public function failedValidation(Validator $validator)
+    public function failedValidator(Validator $validator)
     {
         $errors = $validator->errors();
         return redirect()->back()->withErrors($errors)->withInput();

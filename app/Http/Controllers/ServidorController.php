@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\Predio\StoreServidorRequest;
-use App\Http\Requests\Predio\UpdateServidorRequest;
+use App\Http\Requests\Servidor\StoreServidorRequest;
+use App\Http\Requests\Servidor\UpdateServidorRequest;
 use App\Models\Cargo;
 use App\Models\TipoUsuario;
 use App\Models\User;

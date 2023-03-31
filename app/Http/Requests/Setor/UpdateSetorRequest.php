@@ -11,8 +11,8 @@ class UpdateSetorRequest extends FormRequest
     public function rules()
     {
         return [
-            'nome' => 'required|unique:salas|max:255',
-            'codigo' => 'required|unique:salas|max:255',
+            'nome' => 'required|unique:setors|max:255',
+            'codigo' => 'required|unique:setors|max:255',
             'setor_pai_id' => 'nullable|integer|exists:setors,id'
         ];
     }
