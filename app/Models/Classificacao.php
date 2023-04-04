@@ -11,7 +11,8 @@ class Classificacao extends Model
 
     protected $fillable = [
         'nome',
-        'taxa_depre'
+        'residual',
+        'vida_util'
     ];
 
     public function patrimonios (){

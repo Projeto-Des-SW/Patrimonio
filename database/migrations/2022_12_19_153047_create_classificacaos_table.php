@@ -15,10 +15,14 @@ return new class extends Migration
     {
         Schema::create('classificacaos', function (Blueprint $table) {
             $table->id();
-            $table->string('nome');
-            $table->double('taxa_depre');
-
             $table->timestamps();
+
+            $table->string('nome');
+            $table->double('residual');
+            $table->integer('vida_util');
+
+
+
         });
     }
 
