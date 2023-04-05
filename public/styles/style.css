@@ -1,0 +1,39 @@
+* {
+    font-family: 'Nunito', sans-serif;
+}
+
+tbody, td, tfoot, th, thead, tr { 
+    border: none !important;
+}
+
+.header-border-bottom {
+    border-bottom: 1px solid #1A2876 !important;
+}
+
+.search-input {
+    width: 100%;
+    border-radius: 12px;
+    height: 48px;
+    border: none;
+    outline: none;
+    margin-left: 15px;
+    font-size: 18px;
+    padding: 1rem;
+}
+
+.whitesmoke-background {
+    background-color: whitesmoke;
+}
+
+table {
+    background-color: white;
+    border-radius: 12px;
+}
+
+path{
+    fill: red;
+}
+
+.navside-item  {
+    border: 5px solid red
+}

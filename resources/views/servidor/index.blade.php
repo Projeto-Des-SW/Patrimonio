@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <div class="row">
-        <div class="col-9">
+        <div class="">
             @include('layouts.components.header', ['page_title' => 'Servidores', 'back' => false])
 
         </div>

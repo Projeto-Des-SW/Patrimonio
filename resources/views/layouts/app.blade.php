@@ -8,8 +8,8 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
-
     <!-- Fonts -->
+    <link rel="stylesheet" href="/styles/style.css">
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
@@ -27,10 +27,10 @@
         </aside>
         
         @hasSection('content')
-            <main class="p-1 w-100 bg-light" style="height: 95vh;">
+            <main class="p-1 w-100 whitesmoke-background" style="height: 95vh;">
                 <div class="row">
                     @include('layouts.components.messages')
-                    <div class="shadow p-3 mb-5 bg-white rounded offset-2 col-8 mt-4">
+                    <div class="shadow p-3 mb-5 rounded offset-2 col-8 mt-4 whitesmoke-background">
                         @yield('content')
                     </div>
                 </div>
