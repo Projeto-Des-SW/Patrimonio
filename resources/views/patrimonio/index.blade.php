@@ -10,7 +10,7 @@
 
     <table class="table table-hover table-responsive mx-2 mt-4">
         <thead>
-        <tr style="background-color: #d3d3d4">
+        <tr>
             <th scope="col">#</th>
             <th scope="col">Nome</th>
             <th scope="col">Prédio</th>

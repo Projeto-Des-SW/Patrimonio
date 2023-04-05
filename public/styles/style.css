@@ -1,0 +1,7 @@
+* {
+    font-family: 'Nunito', sans-serif;
+}
+
+tbody, td, tfoot, th, thead, tr { 
+    border: none !important;
+}

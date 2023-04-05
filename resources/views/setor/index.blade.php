@@ -3,17 +3,16 @@
     <div class="row">
         <div class="col-9">
             <h3 class="text-center">Lista de @if(isset($setor_pai))
-                    Estrutura organizacional de {{$setor_pai->nome}}
+                    Setores de {{$setor_pai->nome}}
                 @else
                     Coordenações
                 @endif</h3>
         </div>
-        
     </div>
 
     <table class="table table-hover table-responsive mx-2 mt-4">
         <thead>
-        <tr style="background-color: #d3d3d4">
+        <tr>
             <th scope="col">#</th>
             <th scope="col">Nome</th>
             <th scope="col">Código</th>
