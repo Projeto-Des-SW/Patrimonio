@@ -5,3 +5,7 @@
 tbody, td, tfoot, th, thead, tr { 
     border: none !important;
 }
+
+body {
+    height: 100vh;
+}
