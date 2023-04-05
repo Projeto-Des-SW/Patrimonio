@@ -21,22 +21,28 @@
 <body>
 <div id="app">
     @include('layouts.components.navbar')
-    @hasSection('content')
-        <main class="py-4">
-            <div class="row">
-                @include('layouts.components.messages')
-                <div class="shadow p-3 mb-5 bg-white rounded offset-2 col-8 mt-4">
-                    @yield('content')
+    <div class="d-flex">
+        <aside>
+            @include('layouts.components.sidebar')
+        </aside>
+        
+        @hasSection('content')
+            <main class="p-1 w-100 bg-light" style="height: 95vh;">
+                <div class="row">
+                    @include('layouts.components.messages')
+                    <div class="shadow p-3 mb-5 bg-white rounded offset-2 col-8 mt-4">
+                        @yield('content')
+                    </div>
                 </div>
-            </div>
-        </main>
-    @endif
+            </main>
+        @endif
 
-    @hasSection('card')
-        <main class="py-4">
-            @yield('card')
-        </main>
-    @endif
+        @hasSection('card')
+            <main class="py-4">
+                @yield('card')
+            </main>
+        @endif
+    </div>
 </div>
 </body>
 </html>

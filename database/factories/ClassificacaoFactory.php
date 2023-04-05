@@ -17,8 +17,9 @@ class ClassificacaoFactory extends Factory
     public function definition()
     {
         return [
-            'nome' => 'Eletrônico',
-            'taxa_depre' => 44.8,
+            'nome' => 'APARELHOS DE MEDIÇÃO E ORIENTAÇÃO',
+            'residual' => 10,
+            'vida_util' => 180
         ];
     }
 }

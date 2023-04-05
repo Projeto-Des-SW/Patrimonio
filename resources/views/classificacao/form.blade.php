@@ -14,13 +14,24 @@
             </span>
         @enderror
 
-        <label for="taxa_depre">Taxa de depreciassão ao ano (%):<strong style="color: red">*</strong></label>
-        <input class="form-control form-input @error('taxa_depre') is-invalid @enderror" id="taxa_depre" type="number"
+        <label for="residual">Valor residual em meses (%):<strong style="color: red">*</strong></label>
+        <input class="form-control form-input @error('residual') is-invalid @enderror" id="residual" type="number"
             step="0.01" min="0.01" placeholder="0.00"
-            name="taxa_depre" @if(isset($classificacao)) value="{{$classificacao->taxa_depre}}"
-            @else value="{{old('taxa_depre')}}" @endif required
-            autocomplete="taxa_depre" autofocus>
-        @error('taxa_depre')
+            name="residual" @if(isset($classificacao)) value="{{$classificacao->residual}}"
+            @else value="{{old('residual')}}" @endif required
+            autocomplete="residual" autofocus>
+        @error('residual')
+        <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+        @enderror
+
+        <label for="vida_util">Vida útil (em meses):<strong style="color: red">*</strong></label>
+        <input class="form-control form-input @error('vida_util') is-invalid @enderror" id="vida_util" type="number"
+            name="vida_util" @if(isset($classificacao)) value="{{$classificacao->vida_util}}"
+            @else value="{{old('vida_util')}}" @endif required
+            autocomplete="vida_util" autofocus>
+        @error('vida_util')
         <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>
             </span>

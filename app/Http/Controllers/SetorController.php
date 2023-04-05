@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 
-use App\Http\Requests\Sala\StoreSetorRequest;
-use App\Http\Requests\Sala\UpdateSetorRequest;
+use App\Http\Requests\Setor\StoreSetorRequest;
+use App\Http\Requests\Setor\UpdateSetorRequest;
 use App\Models\Patrimonio;
 use Illuminate\Http\Request;
 use App\Models\Setor;
