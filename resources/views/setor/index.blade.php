@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <div class="row">
-        <div class="col-9">
+        <div class="">
             <h3 class="text-center">Lista de @if(isset($setor_pai))
                     Setores de {{$setor_pai->nome}}
                 @else
