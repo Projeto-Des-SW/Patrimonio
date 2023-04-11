@@ -48,3 +48,12 @@ path{
     height: 3rem;
     width: 3rem;
 }
+
+.info-label {
+    font-weight: 600;
+    font-size: 22px;
+}
+
+.info-value {
+    font-weight: 100;
+}

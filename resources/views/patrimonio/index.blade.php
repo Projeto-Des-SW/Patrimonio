@@ -55,16 +55,23 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="myModalLabel">Título do Modal</h5>
+                    <h5 class="modal-title" id="myModalLabel"></h5>
                     <button type="button" class="close" data-bs-dismiss="modal" aria-label="Fechar">
                     <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <p>Meses de depreciação: <span id="meses"></span></p>
-                    <p>Valor inicial do item: R$<span id="valor_inicial"></span></p>
-                    <p>Depreciação atual do item: R$<span id="depreciacao_atual"></span></p>
-                    <p>Valor atual do item: R$<span id="valor_atual"></span></p>
+                    <p class="info-label">Classificação: <span class="info-value" id="classificacao"></span></p>
+                    <p class="info-label">Valor residual: <span class="info-value" id="valor_residual"></span></p>
+                    <p class="info-label">Vida útil: <span class="info-value" id="vida_util"></span></p>
+
+                    <div style="margin-top: 45px"> 
+                        <p class="info-label">Meses de depreciação: <span class="info-value" id="meses"></span></p>
+                        <p class="info-label">Valor inicial do item: <span class="info-value" id="valor_inicial">R$</span></p>
+                        <p class="info-label">Depreciação atual do item: <span class="info-value" id="depreciacao_atual"></span></p>
+                        <p class="info-label">Valor atual do item: <span class="info-value" id="valor_atual"></span></p>
+                    </div> 
+                    
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
@@ -91,8 +98,10 @@
             var classificacao = button.data('param2') 
 
             var modal = $(this)
-            
+
             var depreciacaoMensal = ((patrimonio.valor - classificacao.residual) / classificacao.vida_util).toFixed(2);
+
+            console.log(classificacao)
 
             var data = new Date(patrimonio.data_compra);
             var dataAtual = new Date();
@@ -108,10 +117,20 @@
             var valorAtual = (patrimonio.valor - (diferencaMeses * depreciacaoMensal)).toFixed(2)
 
 
-            modal.find('#meses').text(diferencaMeses) 
-            modal.find('#valor_inicial').text(Number(patrimonio.valor).toFixed(2)) 
-            modal.find('#depreciacao_atual').text(depreciacaoAtual) 
-            modal.find('#valor_atual').text(valorAtual) 
+            modal.find('#myModalLabel').text(`Depreciação: ${patrimonio.nome}`)
+
+            modal.find('#classificacao').text(`${classificacao.nome}`) 
+            modal.find('#vida_util').text(`${classificacao.vida_util} meses`) 
+            modal.find('#valor_residual').text(`R$ ${classificacao.residual}`) 
+
+            modal.find('#meses').text(`${diferencaMeses} meses`) 
+            modal.find('#valor_inicial').text(`R$ ${Number(patrimonio.valor).toFixed(2)}`) 
+            modal.find('#depreciacao_atual').text(`R$ ${depreciacaoAtual}`) 
+            
+            Number(valorAtual) > Number(classificacao.residual) ? 
+            modal.find('#valor_atual').text(`R$ ${valorAtual}`) : 
+            modal.find('#valor_atual').text(`R$ ${classificacao.residual} (Valor residual)`) 
+            
         })
     });
 
