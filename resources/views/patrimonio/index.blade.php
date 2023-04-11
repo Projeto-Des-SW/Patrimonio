@@ -33,7 +33,7 @@
                        href="{{route('patrimonio.delete', ['patrimonio_id' => $patrimonio->id])}}">
                         <img src="{{URL::asset('/assets/delete.svg')}}" width="20px" alt="Icon de remoção">
                     </a>
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal" data-param1="{{ $patrimonio }}">
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal" data-param1="{{ $patrimonio }}" data-param2="{{ $patrimonio -> classificacao }}">
                         <img src="{{URL::asset('/assets/money.svg')}}" width="11px" alt="Depreciação do Item">
                     </button>
                 </td>
@@ -61,8 +61,10 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    Conteúdo do Modal aqui...
-                    <p>Param1: <span id="param1"></span></p>
+                    <p>Meses de depreciação: <span id="meses"></span></p>
+                    <p>Valor inicial do item: R$<span id="valor_inicial"></span></p>
+                    <p>Depreciação atual do item: R$<span id="depreciacao_atual"></span></p>
+                    <p>Valor atual do item: R$<span id="valor_atual"></span></p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
@@ -84,11 +86,32 @@
 
     $(document).ready(function() {
         $('#myModal').on('show.bs.modal', function (event) {
-            var button = $(event.relatedTarget) // Botão que acionou o modal
-            var param1 = button.data('param1') // Extrai informações dos dados do botão
-            console.log(param1)
+            var button = $(event.relatedTarget) 
+            var patrimonio = button.data('param1')
+            var classificacao = button.data('param2') 
+
             var modal = $(this)
-            modal.find('#param1').text(param1) // Insere informações nos campos do modal
+            
+            var depreciacaoMensal = ((patrimonio.valor - classificacao.residual) / classificacao.vida_util).toFixed(2);
+
+            var data = new Date(patrimonio.data_compra);
+            var dataAtual = new Date();
+
+            var anoData = data.getFullYear();
+            var mesData = data.getMonth();
+            var anoAtual = dataAtual.getFullYear();
+            var mesAtual = dataAtual.getMonth();
+
+            var diferencaMeses = (anoAtual - anoData) * 12 + (mesAtual - mesData);
+
+            var depreciacaoAtual = (diferencaMeses * depreciacaoMensal).toFixed(2)
+            var valorAtual = (patrimonio.valor - (diferencaMeses * depreciacaoMensal)).toFixed(2)
+
+
+            modal.find('#meses').text(diferencaMeses) 
+            modal.find('#valor_inicial').text(Number(patrimonio.valor).toFixed(2)) 
+            modal.find('#depreciacao_atual').text(depreciacaoAtual) 
+            modal.find('#valor_atual').text(valorAtual) 
         })
     });
 
