@@ -18,14 +18,14 @@
                 <td>{{$predio->id}}</td>
                 <td>{{$predio->nome}}</td>
                 <td>{{$predio->created_at}}</td>
-                <td class="text-center">
-                    <a class="btn btn-primary rounded-circle" href="{{route('predio.edit', ['predio_id' => $predio->id])}}">
+                <td class="text-center d-flex justify-content-around">
+                    <a class="btn btn-primary rounded-circle d-flex justify-content-center align-items-center action-button" href="{{route('predio.edit', ['predio_id' => $predio->id])}}">
                         <img src="{{URL::asset('/assets/edit_icon.svg')}}" width="15px" alt="Icon de edição"> 
                     </a>    
-                    <a class="btn btn-danger rounded-circle" href="{{route('predio.delete', ['predio_id' => $predio->id])}}">
+                    <a class="btn btn-danger rounded-circle d-flex justify-content-center align-items-center action-button" href="{{route('predio.delete', ['predio_id' => $predio->id])}}">
                         <img src="{{URL::asset('/assets/delete.svg')}}" width="20px" alt="Icon de remoção">                         
                     </a> 
-                    <a class="btn btn-primary rounded-circle" href="{{route('sala.index', ['predio_id' => $predio->id])}}">
+                    <a class="btn btn-primary rounded-circle d-flex justify-content-center align-items-center action-button" href="{{route('sala.index', ['predio_id' => $predio->id])}}">
                         <img src="{{URL::asset('/assets/salas.svg')}}" width="20px" alt="Icon de salas">                         
                     </a>
             </td>

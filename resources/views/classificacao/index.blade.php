@@ -19,12 +19,12 @@
                 <td>{{$classificacao->id}}</td>
                 <td>{{$classificacao->nome}}</td>
                 <td>{{$classificacao->created_at}}</td>
-                <td class="text-center">
-                <a class="btn btn-primary rounded-circle" href="{{route('classificacao.edit', ['classificacao_id' => $classificacao->id])}}">
+                <td class="text-center d-flex justify-content-around">
+                <a class="btn btn-primary rounded-circle d-flex justify-content-center align-items-center action-button" href="{{route('classificacao.edit', ['classificacao_id' => $classificacao->id])}}">
                         <img src="{{URL::asset('/assets/edit_icon.svg')}}" width="15px" alt="Icon de edição"> 
                     </a> 
                     <a
-                        class="btn btn-danger rounded-circle" href="{{route('classificacao.delete', ['classificacao_id' => $classificacao->id])}}">
+                    class="btn btn-danger rounded-circle d-flex justify-content-center align-items-center action-button" href="{{route('classificacao.delete', ['classificacao_id' => $classificacao->id])}}">
                         <img src="{{URL::asset('/assets/delete.svg')}}" width="20px" alt="Icon de remoção">                         
                     </a>
                 </td>
