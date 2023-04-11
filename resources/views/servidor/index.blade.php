@@ -32,14 +32,14 @@
                         <span>Desativado</span>
                     @endif
                 </td>
-                <td>
-                    <a class="btn btn-primary rounded-circle" href="{{route('servidor.edit', ['servidor_id' => $servidor->id])}}">
+                <td class="d-flex justify-content-around">
+                    <a class="btn btn-primary rounded-circle d-flex justify-content-center align-items-center action-button" href="{{route('servidor.edit', ['servidor_id' => $servidor->id])}}">
                         <img src="{{URL::asset('/assets/edit_icon.svg')}}" width="15px" alt="Icon de edição"> 
                     </a>
                     @if($servidor->deleted_at == null)
-                    <a class="btn btn-danger" href="{{route('servidor.delete', ['servidor_id' => $servidor->id])}}">DESATIVAR</a>
+                    <a class="btn btn-danger d-flex align-items-center" href="{{route('servidor.delete', ['servidor_id' => $servidor->id])}}">DESATIVAR</a>
                     @else
-                        <a class="btn btn-success" href="{{route('servidor.restore', ['servidor_id' => $servidor->id])}}">ATIVAR</a>
+                        <a class="btn btn-success d-flex align-items-center" href="{{route('servidor.restore', ['servidor_id' => $servidor->id])}}">ATIVAR</a>
                     @endif
                 </td>
             </tr>

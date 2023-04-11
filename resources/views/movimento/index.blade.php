@@ -30,11 +30,11 @@
                         {{Str::limit($item->nome, 15)}}@if($index < 2),@endif
                     @endforeach
                 </td>
-                <td>
-                <a class="btn btn-primary rounded-circle" href="{{route('movimento.edit', ['movimento_id' => $movimento->id])}}">
+                <td class="d-flex justify-content-around">
+                <a class="btn btn-primary rounded-circle d-flex justify-content-center align-items-center action-button" href="{{route('movimento.edit', ['movimento_id' => $movimento->id])}}">
                     <img src="{{URL::asset('/assets/edit_icon.svg')}}" width="15px" alt="Icon de edição">
                 </a>
-                <a class="btn btn-danger rounded-circle" href="{{route('movimento.delete', ['movimento_id' => $movimento->id])}}">
+                <a class="btn btn-danger rounded-circle d-flex justify-content-center align-items-center action-button" href="{{route('movimento.delete', ['movimento_id' => $movimento->id])}}">
                     <img src="{{URL::asset('/assets/delete.svg')}}" width="20px" alt="Icon de remoção">
                 </a>
             </td>

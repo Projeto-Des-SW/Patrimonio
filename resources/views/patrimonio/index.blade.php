@@ -24,17 +24,17 @@
                 <td>{{$patrimonio->nome}}</td>
                 <td>{{$patrimonio->sala->predio->nome}}</td>
                 <td>{{$patrimonio->sala->nome}}</td>
-                <td>
-                    <a class="btn btn-primary rounded-circle"
+                <td class="d-flex justify-content-around">
+                    <a class="btn btn-primary rounded-circle d-flex justify-content-center align-items-center action-button"
                        href="{{route('patrimonio.edit', ['patrimonio_id' => $patrimonio->id])}}">
-                        <img src="{{URL::asset('/assets/edit_icon.svg')}}" width="15px" alt="Icon de edição">
+                        <img class="icon-button" src="{{URL::asset('/assets/edit_icon.svg')}}" alt="Icon de edição">
                     </a>
-                    <a class="btn btn-danger rounded-circle"
+                    <a class="btn btn-danger rounded-circle d-flex justify-content-center align-items-center action-button"
                        href="{{route('patrimonio.delete', ['patrimonio_id' => $patrimonio->id])}}">
                         <img src="{{URL::asset('/assets/delete.svg')}}" width="20px" alt="Icon de remoção">
                     </a>
                     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal" data-param1="{{ $patrimonio }}">
-                        Abrir Modal
+                        <img src="{{URL::asset('/assets/money.svg')}}" width="11px" alt="Depreciação do Item">
                     </button>
                 </td>
             </tr>

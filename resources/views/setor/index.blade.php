@@ -25,15 +25,15 @@
                 <td>{{$setor->id}}</td>
                 <td>{{$setor->nome}}</td>
                 <td>{{$setor->codigo}}</td>
-                <td class="text-center">
-                    <a class="btn btn-primary rounded-circle" href="{{route('setor.edit', ['setor_id' => $setor->id])}}">
+                <td class="text-center d-flex justify-content-around">
+                    <a class="btn btn-primary rounded-circle d-flex justify-content-center align-items-center action-button" href="{{route('setor.edit', ['setor_id' => $setor->id])}}">
                         <img src="{{URL::asset('/assets/edit_icon.svg')}}" width="15px" alt="Icon de edição"> 
                     </a>    
-                    <a class="btn btn-danger rounded-circle" href="{{route('setor.delete', ['setor_id' => $setor->id])}}">
+                    <a class="btn btn-danger rounded-circle d-flex justify-content-center align-items-center action-button" href="{{route('setor.delete', ['setor_id' => $setor->id])}}">
                         <img src="{{URL::asset('/assets/delete.svg')}}" width="20px" alt="Icon de remoção">                         
                     </a> 
 
-                    <a class="btn btn-primary rounded-circle" href="{{route('setor.index', ['setor_pai_id' => $setor->id])}}">
+                    <a class="btn btn-primary rounded-circle d-flex justify-content-center align-items-center action-button" href="{{route('setor.index', ['setor_pai_id' => $setor->id])}}">
                         <img src="{{URL::asset('/assets/setores.svg')}}" width="20px"    alt="Icon de edição"> 
                     </a> 
                 </td>

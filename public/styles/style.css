@@ -37,3 +37,14 @@ path{
 .navside-item  {
     border: 5px solid red
 }
+
+.icon-button {
+    height: 2.5rem;
+    width: 2.5rem;
+    padding: 10px;
+}
+
+.action-button {
+    height: 3rem;
+    width: 3rem;
+}
