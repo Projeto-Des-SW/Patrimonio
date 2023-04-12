@@ -126,8 +126,8 @@ class MovimentoController extends Controller
             $servidor_destino_id = $data['servidor_destino_id'];
             if($movimento->servidor_origem_id != $servidor_origem_id || $movimento->servidor_destino_id != $servidor_destino_id)
                 return false;
-            return true;
         }
+        return true;
 
     }
 }
