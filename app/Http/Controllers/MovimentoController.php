@@ -124,10 +124,10 @@ class MovimentoController extends Controller
         if(count($movimento->itens_movimento) > 0) {
             $servidor_origem_id = $data['servidor_origem_id'];
             $servidor_destino_id = $data['servidor_destino_id'];
-            if($movimento->servidor_origem_id != $servidor_origem_id || $movimento->servidor_destino_id != $servidor_destino_id)
+            if($movimento->servidor_origem_id != $servidor_origem_id)
                 return false;
-            return true;
         }
+        return true;
 
     }
 }

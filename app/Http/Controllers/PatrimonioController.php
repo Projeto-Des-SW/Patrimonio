@@ -115,6 +115,7 @@ class PatrimonioController extends Controller
     public function codigoStore(StoreCodigoPatrimonioRequest $request)
     {
         Codigo::create($request->all());
+
         return redirect()->route('patrimonio.codigo.index', ['patrimonio_id' => $request->patrimonio_id])->with('success', 'Código Cadastrado com Sucesso!');
     }
 

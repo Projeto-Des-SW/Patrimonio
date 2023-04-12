@@ -7,7 +7,7 @@
 
     </div>
 
-    <table class="table table-hover table-responsive mx-2 mt-4">
+    <table class="table table-hover table-responsive mx-2 mt-4" id="patrimonio_table">
         <thead>
         <tr>
             <th scope="col">#</th>
@@ -65,13 +65,13 @@
                     <p class="info-label">Valor residual: <span class="info-value" id="valor_residual"></span></p>
                     <p class="info-label">Vida útil: <span class="info-value" id="vida_util"></span></p>
 
-                    <div style="margin-top: 45px"> 
+                    <div style="margin-top: 45px">
                         <p class="info-label">Meses de depreciação: <span class="info-value" id="meses"></span></p>
                         <p class="info-label">Valor inicial do item: <span class="info-value" id="valor_inicial">R$</span></p>
                         <p class="info-label">Depreciação atual do item: <span class="info-value" id="depreciacao_atual"></span></p>
                         <p class="info-label">Valor atual do item: <span class="info-value" id="valor_atual"></span></p>
-                    </div> 
-                    
+                    </div>
+
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
@@ -85,7 +85,7 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="{{ asset('js/script.js') }}"></script>
 
-<script> 
+<script>
 
     function exibirModal() {
         $('#myModal').modal('show');
@@ -93,9 +93,9 @@
 
     $(document).ready(function() {
         $('#myModal').on('show.bs.modal', function (event) {
-            var button = $(event.relatedTarget) 
+            var button = $(event.relatedTarget)
             var patrimonio = button.data('param1')
-            var classificacao = button.data('param2') 
+            var classificacao = button.data('param2')
 
             var modal = $(this)
 
@@ -119,19 +119,43 @@
 
             modal.find('#myModalLabel').text(`Depreciação: ${patrimonio.nome}`)
 
-            modal.find('#classificacao').text(`${classificacao.nome}`) 
-            modal.find('#vida_util').text(`${classificacao.vida_util} meses`) 
-            modal.find('#valor_residual').text(`R$ ${classificacao.residual}`) 
+            modal.find('#classificacao').text(`${classificacao.nome}`)
+            modal.find('#vida_util').text(`${classificacao.vida_util} meses`)
+            modal.find('#valor_residual').text(`R$ ${classificacao.residual}`)
 
-            modal.find('#meses').text(`${diferencaMeses} meses`) 
-            modal.find('#valor_inicial').text(`R$ ${Number(patrimonio.valor).toFixed(2)}`) 
-            modal.find('#depreciacao_atual').text(`R$ ${depreciacaoAtual}`) 
-            
-            Number(valorAtual) > Number(classificacao.residual) ? 
-            modal.find('#valor_atual').text(`R$ ${valorAtual}`) : 
-            modal.find('#valor_atual').text(`R$ ${classificacao.residual} (Valor residual)`) 
-            
+            modal.find('#meses').text(`${diferencaMeses} meses`)
+            modal.find('#valor_inicial').text(`R$ ${Number(patrimonio.valor).toFixed(2)}`)
+            modal.find('#depreciacao_atual').text(`R$ ${depreciacaoAtual}`)
+
+            Number(valorAtual) > Number(classificacao.residual) ?
+            modal.find('#valor_atual').text(`R$ ${valorAtual}`) :
+            modal.find('#valor_atual').text(`R$ ${classificacao.residual} (Valor residual)`)
+
         })
     });
 
 </script>
+
+<script>
+    $(document).ready(function () {
+        $('#patrimonio_table').DataTable({
+            searching: true,
+            "language": {
+                "search": "Pesquisar: ",
+                "lengthMenu": "Mostrar _MENU_ registros por página",
+                "info": "Exibindo página _PAGE_ de _PAGES_",
+                "infoEmpty": "Nenhum registro disponível",
+                "zeroRecords": "Nenhum registro disponível",
+                "paginate": {
+                    "previous": "Anterior",
+                    "next": "Próximo"
+                }
+            },
+            "columnDefs": [{
+                "targets": [4],
+                "orderable": false
+            }]
+        });
+    });
+</script>
+

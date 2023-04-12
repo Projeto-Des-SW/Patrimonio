@@ -17,6 +17,5 @@ class TipoMovimentoSeeder extends Seeder
     {
         TipoMovimento::factory(1)->create(['nome' => 'Transferência']);
         TipoMovimento::factory(1)->create(['nome' => 'Emprestimo']);
-        TipoMovimento::factory(1)->create(['nome' => 'Devolução']);
     }
 }
