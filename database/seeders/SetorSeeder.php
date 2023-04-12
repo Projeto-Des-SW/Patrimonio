@@ -15,7 +15,16 @@ class SetorSeeder extends Seeder
      */
     public function run()
     {
-        Setor::factory(2)->create();
-        Setor::factory(1)->create(['setor_pai_id' => 1]);
+        $arquivo_csv = database_path('seeders/Setores.csv'); // caminho do arquivo CSV
+        $dados_csv = array_map(function($linha) {
+            return explode('#', $linha);
+        }, file($arquivo_csv)); // lê o arquivo CSV
+
+        foreach ($dados_csv as $linha) {
+            $setor = new Setor();
+            $setor->nome = $linha[0];
+            $setor->codigo = $linha[1];   
+            $setor->save();
+        }
     }
 }
