@@ -6,35 +6,6 @@
 
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <!-- Left Side Of Navbar -->
-            <ul class="navbar-nav me-auto">
-                @auth
-                    @if(\Illuminate\Support\Facades\Auth::user()->tipo_usuario_id == 1)
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('predio.index') }}">{{ __('Prédios') }}</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('cargo.index') }}">{{ __('Cargos') }}</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('classificacao.index') }}">{{ __('Classificações') }}</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('servidor.index') }}">{{ __('Servidores') }}</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('setor.index') }}">{{ __('Setores') }}</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('patrimonio.index') }}">{{ __('Patrimônios') }}</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('movimento.index') }}">{{ __('Movimentações') }}</a>
-                        </li>
-                    @endif
-                @endauth
-            </ul>
-
             <!-- Right Side Of Navbar -->
             <ul class="navbar-nav ms-auto">
                 <!-- Authentication Links -->

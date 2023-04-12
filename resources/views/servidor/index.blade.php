@@ -1,13 +1,13 @@
 @extends('layouts.app')
 @section('content')
     <div class="row">
-        <div class="col-9">
+        <div class="">
             @include('layouts.components.header', ['page_title' => 'Servidores', 'back' => false])
 
         </div>
     </div>
 
-    <table class="table table-hover table-responsive mt-4">
+    <table class="table table-hover table-responsive mt-4" id="servidor_table">
         <thead>
         <tr>
             <th scope="col">#</th>
@@ -32,14 +32,14 @@
                         <span>Desativado</span>
                     @endif
                 </td>
-                <td>
-                    <a class="btn btn-primary rounded-circle" href="{{route('servidor.edit', ['servidor_id' => $servidor->id])}}">
-                        <img src="{{URL::asset('/assets/edit_icon.svg')}}" width="15px" alt="Icon de edição"> 
+                <td class="d-flex justify-content-around">
+                    <a class="btn btn-primary rounded-circle d-flex justify-content-center align-items-center action-button" href="{{route('servidor.edit', ['servidor_id' => $servidor->id])}}">
+                        <img src="{{URL::asset('/assets/edit_icon.svg')}}" width="15px" alt="Icon de edição">
                     </a>
                     @if($servidor->deleted_at == null)
-                    <a class="btn btn-danger" href="{{route('servidor.delete', ['servidor_id' => $servidor->id])}}">DESATIVAR</a>
+                    <a class="btn btn-danger d-flex align-items-center" href="{{route('servidor.delete', ['servidor_id' => $servidor->id])}}">DESATIVAR</a>
                     @else
-                        <a class="btn btn-success" href="{{route('servidor.restore', ['servidor_id' => $servidor->id])}}">ATIVAR</a>
+                        <a class="btn btn-success d-flex align-items-center" href="{{route('servidor.restore', ['servidor_id' => $servidor->id])}}">ATIVAR</a>
                     @endif
                 </td>
             </tr>
@@ -51,6 +51,29 @@
         <a class="w-100 btn btn-primary" style="margin-right: 10px" href="{{route('servidor.create')}}">Cadastrar</a>
         <a class="w-100 btn btn-outline-primary" href="{{ route('cargo.index') }}">Cargos</a>
     </div>
+
+    <script>
+        $(document).ready(function () {
+            $('#servidor_table').DataTable({
+                searching: true,
+                "language": {
+                    "search": "Pesquisar: ",
+                    "lengthMenu": "Mostrar _MENU_ registros por página",
+                    "info": "Exibindo página _PAGE_ de _PAGES_",
+                    "infoEmpty": "Nenhum registro disponível",
+                    "zeroRecords": "Nenhum registro disponível",
+                    "paginate": {
+                        "previous": "Anterior",
+                        "next": "Próximo"
+                    }
+                },
+                "columnDefs": [{
+                    "targets": [5],
+                    "orderable": false
+                }]
+            });
+        });
+    </script>
 
 
 @endsection
