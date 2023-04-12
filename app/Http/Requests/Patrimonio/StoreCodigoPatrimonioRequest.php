@@ -12,7 +12,7 @@ class StoreCodigoPatrimonioRequest extends FormRequest
      *
      * @return bool
      */
- 
+
     /**
      * Get the validation rules that apply to the request.
      *
@@ -21,13 +21,11 @@ class StoreCodigoPatrimonioRequest extends FormRequest
     public function rules()
     {
         return [
-            'codigos' => 'required|unique:patrimonios|max:255',
-            
-            
+            'codigo' => 'required|unique:codigos|max:255',
         ];
     }
 
-    public function failedValidator(Validator $validator)
+    public function failedValidation(Validator $validator)
     {
         $errors = $validator->errors();
         return redirect()->back()->withErrors($errors)->withInput();
