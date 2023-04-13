@@ -11,6 +11,7 @@ class Classificacao extends Model
 
     protected $fillable = [
         'nome',
+        'codigo',
         'residual',
         'vida_util'
     ];

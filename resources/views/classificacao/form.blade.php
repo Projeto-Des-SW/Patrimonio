@@ -2,13 +2,24 @@
     @if(isset($classificacao))
         <input type="hidden" name="classificacao_id" value="{{$classificacao->id}}">
     @endif
-    <div class="col-sm-6">
+    <div class="col-sm-8">
         <label for="nome">Nome:<strong style="color: red">*</strong></label>
         <input class="form-control form-input @error('nome') is-invalid @enderror" id="nome" type="text"
                name="nome" @if(isset($classificacao)) value="{{$classificacao->nome}}"
                @else value="{{old('nome')}}" @endif required
                autocomplete="nome" autofocus>
         @error('nome')
+        <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+        @enderror
+
+        <label for="codigo">Código:<strong style="color: red">*</strong></label>
+        <input class="form-control form-input @error('codigo') is-invalid @enderror" id="codigo" type="text"
+               name="codigo" @if(isset($classificacao)) value="{{$classificacao->codigo}}"
+               @else value="{{old('codigo')}}" @endif required
+               autocomplete="codigo" autofocus>
+        @error('codigo')
         <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>
             </span>
@@ -35,6 +46,6 @@
         <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>
             </span>
-        @enderror
+        @enderror  
     </div>
 </div>
