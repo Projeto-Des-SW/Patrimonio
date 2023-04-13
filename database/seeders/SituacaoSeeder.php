@@ -15,6 +15,9 @@ class SituacaoSeeder extends Seeder
      */
     public function run()
     {
-        Situacao::factory(1)->create();
+        Situacao::factory(1)->create(['nome' => 'Servível']);
+        Situacao::factory(1)->create(['nome' => 'Inservível']);
+        Situacao::factory(1)->create(['nome' => 'Alienado']);
+
     }
 }
