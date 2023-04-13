@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <div class="row">
-    @include('layouts.components.header', ['page_title' => 'Classificações', 'back' => false])
+    @include('layouts.components.header', ['page_title' => 'Classificação Contábil', 'back' => false])
     </div>
 
     <table class="table table-hover table-responsive mx-2 mt-4" id="classificacao_table">

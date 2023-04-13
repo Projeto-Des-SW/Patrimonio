@@ -50,7 +50,7 @@
     <div class="d-flex" style="max-width:600px">
         <a class="w-100 btn btn-primary" style="margin-right: 10px" href="{{route('movimento.create')}}">Cadastrar
             item</a>
-        <a class="w-100 btn btn btn-outline-primary" style="margin-right: 10px" href="{{route('classificacao.index')}}">Classificações</a>
+        <a class="w-100 btn btn btn-outline-primary" style="margin-right: 10px" href="{{route('classificacao.index')}}">Classificação Contábil</a>
         <a class="w-100 btn btn btn-outline-primary" style="margin-right: 10px">Origens</a>
         <a class="w-100 btn btn btn-outline-primary" style="margin-right: 10px">Situações</a>
     </div>

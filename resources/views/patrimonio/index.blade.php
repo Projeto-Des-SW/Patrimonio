@@ -11,7 +11,7 @@
         <thead>
         <tr>
             <th scope="col">#</th>
-            <th scope="col">Nome</th>
+            <th scope="col">Nome do ítem</th>
             <th scope="col">Prédio</th>
             <th scope="col">Sala</th>
             <th class="text-center" scope="col">Ações</th>
@@ -45,7 +45,7 @@
     <div class="d-flex" style="max-width:600px">
         <a class="w-100 btn btn-primary" style="margin-right: 10px" href="{{route('patrimonio.create')}}">Cadastrar
             item</a>
-        <a class="w-100 btn btn btn-outline-primary" style="margin-right: 10px" href="{{route('classificacao.index')}}">Classificações</a>
+        <a class="w-100 btn btn btn-outline-primary" style="margin-right: 10px" href="{{route('classificacao.index')}}">Classificação Contábil</a>
         <a class="w-100 btn btn btn-outline-primary" style="margin-right: 10px">Origens</a>
         <a class="w-100 btn btn btn-outline-primary" style="margin-right: 10px">Situações</a>
     </div>
