@@ -18,6 +18,7 @@ return new class extends Migration
             $table->timestamps();
 
             $table->string('nome');
+            $table->string('codigo')->unique();
             $table->double('residual');
             $table->integer('vida_util');
 

@@ -17,7 +17,7 @@ class OrigemFactory extends Factory
     public function definition()
     {
         return [
-            'nome' => 'Bem Doado'
+            'nome' => 'Origem'
         ];
     }
 }

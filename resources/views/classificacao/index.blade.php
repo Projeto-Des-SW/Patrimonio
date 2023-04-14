@@ -1,13 +1,14 @@
 @extends('layouts.app')
 @section('content')
     <div class="row">
-    @include('layouts.components.header', ['page_title' => 'Classificações', 'back' => false])
+    @include('layouts.components.header', ['page_title' => 'Classificação Contábil', 'back' => false])
     </div>
 
     <table class="table table-hover table-responsive mx-2 mt-4" id="classificacao_table">
         <thead>
         <tr>
             <th scope="col">#</th>
+            <th scope="col">Código</th>
             <th scope="col">Nome</th>
             <th scope="col">Data de Criação</th>
             <th class="text-center" scope="col">Ações</th>
@@ -17,6 +18,7 @@
         @foreach($classificacaos as $classificacao)
             <tr>
                 <td>{{$classificacao->id}}</td>
+                <td>{{$classificacao->codigo}}</td>
                 <td>{{$classificacao->nome}}</td>
                 <td>{{$classificacao->created_at}}</td>
                 <td class="text-center d-flex justify-content-around">

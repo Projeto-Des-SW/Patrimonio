@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    @include('layouts.components.header', ['page_title' => 'Criar Classificação', 'back' => true])
+    @include('layouts.components.header', ['page_title' => 'Criar Classificação Contábil', 'back' => true])
 
     <form method="POST" action="{{route('classificacao.store')}}" enctype="multipart/form-data">
         @csrf

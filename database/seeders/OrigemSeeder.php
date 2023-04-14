@@ -15,6 +15,8 @@ class OrigemSeeder extends Seeder
      */
     public function run()
     {
-        Origem::factory(1)->create();
+        Origem::factory(1)->create(['nome' => 'Doação']);
+        Origem::factory(1)->create(['nome' => 'Comodata']);
+        Origem::factory(1)->create(['nome' => 'Pessoal']);
     }
 }

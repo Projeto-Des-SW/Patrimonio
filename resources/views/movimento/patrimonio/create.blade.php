@@ -13,7 +13,7 @@
         <thead>
         <tr style="background-color: #d3d3d4">
             <th scope="col">#</th>
-            <th scope="col">Nome</th>
+            <th scope="col">Nome do ítem</th>
             <th scope="col">Prédio</th>
             <th scope="col">Sala</th>
             <th class="text-center" scope="col">Ações</th>
