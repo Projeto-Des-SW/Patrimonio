@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -85,7 +84,7 @@ Route::get('movimento/{movimento_id}/restore', [\App\Http\Controllers\MovimentoC
 Route::post('movimento/store/patrimonio', [\App\Http\Controllers\MovimentoController::class, 'adicionarPatrimonio'])->name('movimento.patrimonio.store');
 Route::get('movimento/delete/patrimonio/{movimento_patrimonio_id}', [\App\Http\Controllers\MovimentoController::class, 'removerPatrimonio'])->name('movimento.patrimonio.delete');
 
-
+Route::get('/gerar-relatorio-patrimonio', [\App\Http\Controllers\PatrimonioController::class, 'gerarRelatorio'])->name('pdf.patrimonio');
 
 
 

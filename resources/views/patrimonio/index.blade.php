@@ -50,6 +50,14 @@
         <a class="w-100 btn btn btn-outline-primary" style="margin-right: 10px">Situações</a>
     </div>
 
+
+    <!-- Adicione este trecho no seu arquivo Blade da listagem -->
+    <div>
+        <a href="{{ route('pdf.patrimonio') }}" target="_blank" class="btn btn-primary">Gerar PDF</a>
+    </div>
+
+
+
 <!-- Modal -->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
