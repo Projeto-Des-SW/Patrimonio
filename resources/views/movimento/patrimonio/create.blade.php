@@ -42,6 +42,14 @@
         </tbody>
     </table>
 
+    @if(isset($movimento->itens_movimento[0]))
+        <div class="row">
+            <div class="col-4 offset-8">
+                <button type="button" class="btn btn-success w-100" data-bs-toggle="modal" data-bs-target="#conclusaoModal">Concluir</button>
+            </div>
+        </div>
+    @endif
 </div>
 
 @include('movimento.patrimonio.modal_form')
+@include('movimento.patrimonio.modal_conclusao')

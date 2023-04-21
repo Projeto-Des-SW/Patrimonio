@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Movimento\ConcluirMovimentoRequest;
 use App\Http\Requests\Movimento\StoreMovimentoRequest;
 use App\Http\Requests\Movimento\UpdateMovimentoRequest;
 use App\Models\Movimento;
 use App\Models\MovimentoPatrimonio;
 use App\Models\Patrimonio;
+use App\Models\Predio;
 use App\Models\Servidor;
 use App\Models\TipoMovimento;
 use Illuminate\Http\Request;
@@ -41,16 +43,20 @@ class MovimentoController extends Controller
         $movimento = Movimento::find($movimento_id);
         $tipo_movimentos = TipoMovimento::all();
         $servidores = Servidor::all();
+        $predios = Predio::all();
         $patrimonios = Patrimonio::where('servidor_id', $movimento->servidor_origem->id)
             ->get();
 
-        return view('movimento.edit', compact('movimento', 'tipo_movimentos', 'servidores', 'patrimonios'));
+        return view('movimento.edit', compact('movimento', 'tipo_movimentos', 'servidores', 'patrimonios', 'predios'));
     }
 
     public function update(UpdateMovimentoRequest $request)
     {
         $data = $request->all();
         $movimento = Movimento::find($data['movimento_id']);
+
+        if($movimento->status == 'Concluido')
+            return redirect()->route('movimento.index')->with('fail', 'Não é possivel editar um movimento já concluido!');
 
         if(!$this->verificarServidores($data))
         {
@@ -82,6 +88,8 @@ class MovimentoController extends Controller
     {
         $data = $request->all();
         $movimento = Movimento::find($data['movimento_id']);
+        if($movimento->status == 'Concluido')
+            return redirect()->route('movimento.index')->with('fail', 'Não é possivel editar um movimento já concluido!');
         $patrimonio = Patrimonio::find($data['patrimonio_id']);
 
         $item_movimento = $movimento->itens_movimento()
@@ -119,7 +127,7 @@ class MovimentoController extends Controller
         return true;
     }
 
-    private function  verificarItensMovimento($data, $movimento)
+    private function verificarItensMovimento($data, $movimento)
     {
         if(count($movimento->itens_movimento) > 0) {
             $servidor_origem_id = $data['servidor_origem_id'];
@@ -129,5 +137,28 @@ class MovimentoController extends Controller
         }
         return true;
 
+    }
+
+    public function concluirMovimentacao(ConcluirMovimentoRequest $request)
+    {
+        $data = $request->all();
+        $movimento = Movimento::find($data['movimento_id']);
+
+        if($movimento->status == 'Concluido')
+            return redirect()->route('movimento.index')->with('fail', 'Não é possivel editar um movimento já concluido!');
+
+        $patrimonios = $movimento->itens_movimento;
+
+        foreach ($patrimonios as $patrimonio)
+        {
+            $patrimonio->sala_id = $data['sala_id'];
+            $patrimonio->servidor_id = $movimento->servidor_destino_id;
+            $patrimonio->update();
+        }
+
+        $movimento->status = 'Concluido';
+        $movimento->update();
+
+        return redirect()->route('movimento.index')->with('success', 'Movimento concluido com sucesso!');
     }
 }
