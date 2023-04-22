@@ -17,6 +17,7 @@ use App\Models\Situacao;
 use Illuminate\Http\Request;
 use App\Models\Patrimonio;
 use Illuminate\Support\Facades\Auth;
+use PDF;
 
 class PatrimonioController extends Controller
 {
@@ -36,6 +37,13 @@ class PatrimonioController extends Controller
         $servidores = Servidor::all();
         return view('patrimonio.create', compact('setores', 'origens', 'predios', 'situacoes', 'servidores', 'classificacoes'));
     }
+
+    public function gerarRelatorio() {
+        $patrimonio = Patrimonio::all();
+        $pdf = PDF::loadView('pdf.patrimonio', ['patrimonio' => $patrimonio]);
+        return $pdf->stream('relatorio_patrimonio.pdf');
+    }
+
 
     public function store(StorePatrimonioRequest $request)
     {
