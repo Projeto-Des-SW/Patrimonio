@@ -4,7 +4,9 @@
 
     <form method="POST" action="{{route('predio.update')}}" enctype="multipart/form-data">
         @csrf
+        @method('PUT')
         @include('predio.form')
+        
         <div class="row mt-4">
             <div class="d-flex justify-content-between">
                 <button type="submit" style="width: 150px" class="btn btn-success">Salvar</button>
