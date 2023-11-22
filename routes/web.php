@@ -64,7 +64,7 @@ Route::prefix('classificacao')->name('classificacao.')->group(function () {
     Route::post('/store', [ClassificacaoController::class, 'store'])->name('store');
     Route::get('/{classificacao_id}/editar', [ClassificacaoController::class, 'edit'])->name('edit');
     Route::post('/update', [ClassificacaoController::class, 'update'])->name('update');
-    Route::get('/{classificacao_id}/delete', [ClassificacaoController::class, 'delete'])->name('delete');
+    Route::delete('/{classificacao_id}/delete', [ClassificacaoController::class, 'delete'])->name('delete');
 });
 
 Route::prefix('servidor')->name('servidor.')->group(function () {
@@ -72,8 +72,8 @@ Route::prefix('servidor')->name('servidor.')->group(function () {
     Route::get('/cadastrar', [ServidorController::class, 'create'])->name('create');
     Route::post('/store', [ServidorController::class, 'store'])->name('store');
     Route::get('/{servidor_id}/editar', [ServidorController::class, 'edit'])->name('edit');
-    Route::post('/update', [ServidorController::class, 'update'])->name('update');
-    Route::get('/{servidor_id}/delete', [ServidorController::class, 'delete'])->name('delete');
+    Route::put('/update', [ServidorController::class, 'update'])->name('update');
+    Route::delete('/{servidor_id}/delete', [ServidorController::class, 'delete'])->name('delete');
     Route::get('/{servidor_id}/restore', [ServidorController::class, 'restore'])->name('restore');
 });
 
@@ -82,9 +82,9 @@ Route::prefix('setor')->name('setor.')->group(function () {
     Route::get('/cadastrar/{setor_pai_id?}', [SetorController::class, 'create'])->name('create');
     Route::post('/store', [SetorController::class, 'store'])->name('store');
     Route::get('/{setor_id}/editar', [SetorController::class, 'edit'])->name('edit');
-    Route::post('/update', [SetorController::class, 'update'])->name('update');
-    Route::get('/{setor_id}/delete', [SetorController::class, 'delete'])->name('delete');
-    Route::get('/{setor_id}/restore', [SetorController::class, 'restore'])->name('restore');
+    Route::put('/update', [SetorController::class, 'update'])->name('update');
+    Route::delete('/{setor_id}/delete', [SetorController::class, 'delete'])->name('delete');
+    // Route::get('/{setor_id}/restore', [SetorController::class, 'restore'])->name('restore');
 });
 
 Route::prefix('patrimonio')->name('patrimonio.')->group(function () {
@@ -92,7 +92,7 @@ Route::prefix('patrimonio')->name('patrimonio.')->group(function () {
     Route::get('/cadastrar', [PatrimonioController::class, 'create'])->name('create');
     Route::post('/store', [PatrimonioController::class, 'store'])->name('store');
     Route::get('/{patrimonio_id}/editar', [PatrimonioController::class, 'edit'])->name('edit');
-    Route::post('/update', [PatrimonioController::class, 'update'])->name('update');
+    Route::put('/update', [PatrimonioController::class, 'update'])->name('update');
     Route::get('/{patrimonio_id}/delete', [PatrimonioController::class, 'delete'])->name('delete');
     Route::get('/{patrimonio_id}/restore', [PatrimonioController::class, 'restore'])->name('restore');
     Route::get('/{patrimonio_id}/codigos', [PatrimonioController::class, 'codigosPatrimonio'])->name('codigo.index');
@@ -115,7 +115,3 @@ Route::prefix('movimento')->name('movimento.')->group(function () {
     Route::post('/concluir', [MovimentoController::class, 'concluirMovimentacao'])->name('concluir');
     Route::get('/delete/patrimonio/{movimento_patrimonio_id}', [MovimentoController::class, 'removerPatrimonio'])->name('patrimonio.delete');
 });
-
-
-// se erro em gerar_relatorio_patrimonio
-//      adicionar aqui a rota no final
