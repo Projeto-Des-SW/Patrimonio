@@ -164,8 +164,8 @@
     $("#predio_select").on('change', function () {
         var predio_id = $("#predio_select").val();
         $.ajax({
-            type: 'POST',
-            url: '{{ route('getSalas') }}',
+            type: 'GET',
+            url: '{{ route('patrimonio.getSalas') }}',
             data: 'predio_id=' + predio_id,
             headers:
                 {

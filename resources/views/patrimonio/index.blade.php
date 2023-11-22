@@ -53,7 +53,7 @@
 
     <!-- Adicione este trecho no seu arquivo Blade da listagem -->
     <div>
-        <a href="{{ route('pdf.patrimonio') }}" target="_blank" class="btn btn-primary">Gerar PDF</a>
+        <a href="{{ route('patrimonio.pdf.patrimonio') }}" target="_blank" class="btn btn-primary">Gerar PDF</a>
     </div>
 
 

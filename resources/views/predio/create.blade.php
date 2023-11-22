@@ -5,6 +5,7 @@
     <form method="POST" action="{{route('predio.store')}}" enctype="multipart/form-data">
         @csrf
         @include('predio.form')
+        
         <div class="row mt-4">
             <div class="col-3">
                 <button type="submit" class="btn btn-success w-100">Cadastrar</button>

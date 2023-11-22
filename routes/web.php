@@ -26,8 +26,10 @@ use App\Http\Controllers\MovimentoController;
 
 Auth::routes();
 
-Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/home', [HomeController::class, 'index']);
+Route::name('home')->group(function () {
+    Route::get('/', [HomeController::class, 'index']);
+    Route::get('/home', [HomeController::class, 'index']);
+});
 
 Route::prefix('predio')->name('predio.')->group(function () {
     Route::get('/listar', [PredioController::class, 'index'])->name('index');
@@ -43,8 +45,8 @@ Route::prefix('predio')->name('sala.')->group(function () {
     Route::get('/{predio_id}/sala/cadastrar', [SalaController::class, 'create'])->name('create');
     Route::post('/sala/store', [SalaController::class, 'store'])->name('store');
     Route::get('/sala/{sala_id}/editar', [SalaController::class, 'edit'])->name('edit');
-    Route::post('/sala/update', [SalaController::class, 'update'])->name('update');
-    Route::get('/sala/{sala_id}/delete', [SalaController::class, 'delete'])->name('delete');
+    Route::put('/sala/update', [SalaController::class, 'update'])->name('update');
+    Route::delete('/sala/{sala_id}/delete', [SalaController::class, 'delete'])->name('delete');
 });
 
 Route::prefix('cargo')->name('cargo.')->group(function () {
@@ -52,8 +54,8 @@ Route::prefix('cargo')->name('cargo.')->group(function () {
     Route::get('/cadastrar', [CargoController::class, 'create'])->name('create');
     Route::post('/store', [CargoController::class, 'store'])->name('store');
     Route::get('/{cargo_id}/editar', [CargoController::class, 'edit'])->name('edit');
-    Route::post('/update', [CargoController::class, 'update'])->name('update');
-    Route::get('/{cargo_id}/delete', [CargoController::class, 'delete'])->name('delete');
+    Route::put('/update', [CargoController::class, 'update'])->name('update');
+    Route::delete('/{cargo_id}/delete', [CargoController::class, 'delete'])->name('delete');
 });
 
 Route::prefix('classificacao')->name('classificacao.')->group(function () {
@@ -96,10 +98,10 @@ Route::prefix('patrimonio')->name('patrimonio.')->group(function () {
     Route::get('/{patrimonio_id}/codigos', [PatrimonioController::class, 'codigosPatrimonio'])->name('codigo.index');
     Route::get('/codigos/{codigo_id}/delete', [PatrimonioController::class, 'codigoDelete'])->name('codigo.delete');
     Route::post('/codigo/store', [PatrimonioController::class, 'codigoStore'])->name('codigo.store');
-});
 
-Route::post('patrimonio/getSalas', [PatrimonioController::class, 'getSalas'])->name('getSalas');
-Route::get('/gerar-relatorio-patrimonio', [PatrimonioController::class, 'gerarRelatorio'])->name('pdf.patrimonio');     // em observacao
+    Route::post('/getSalas', [PatrimonioController::class, 'getSalas'])->name('getSalas');
+    Route::get('/gerar-relatorio-patrimonio', [PatrimonioController::class, 'gerarRelatorio'])->name('pdf.patrimonio');
+});
 
 Route::prefix('movimento')->name('movimento.')->group(function () {
     Route::get('/listar', [MovimentoController::class, 'index'])->name('index');
