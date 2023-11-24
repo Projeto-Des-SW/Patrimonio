@@ -99,7 +99,7 @@ Route::prefix('patrimonio')->name('patrimonio.')->group(function () {
     Route::get('/codigos/{codigo_id}/delete', [PatrimonioController::class, 'codigoDelete'])->name('codigo.delete');
     Route::post('/codigo/store', [PatrimonioController::class, 'codigoStore'])->name('codigo.store');
 
-    Route::post('/getSalas', [PatrimonioController::class, 'getSalas'])->name('getSalas');
+    Route::get('/getSalas', [PatrimonioController::class, 'getSalas'])->name('getSalas');
     Route::get('/gerar-relatorio-patrimonio', [PatrimonioController::class, 'gerarRelatorio'])->name('pdf.patrimonio');
 });
 
