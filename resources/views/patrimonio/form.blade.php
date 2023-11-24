@@ -82,9 +82,7 @@
     <div class="col-6">
         <label>Sala:<strong style="color: red">*</strong></label>
         <select class="form-control" id="sala_select" name="sala_id" required>
-            @foreach ($predios->salas as $sala)
-                <option value="{{ $sala->id }}">{{ $sala->nome }}</option>
-            @endforeach
+            <option selected disabled>Selecione uma Sala</option>
         </select>
     </div>
 </div>
