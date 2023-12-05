@@ -4,6 +4,7 @@
 
     <form method="POST" action="{{route('patrimonio.update')}}" enctype="multipart/form-data">
         @csrf
+        @method('PUT')
         @include('patrimonio.form')
         <div style="margin-top: 30px" class="d-flex justify-content-between">
             <a style="width: 150px" class="btn btn-primary" href="{{route('patrimonio.codigo.index', ['patrimonio_id' => $patrimonio->id])}}"> Códigos </a>

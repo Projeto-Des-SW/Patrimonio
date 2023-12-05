@@ -22,9 +22,16 @@
                     <a class="btn btn-primary rounded-circle d-flex justify-content-center align-items-center action-button" href="{{route('predio.edit', ['predio_id' => $predio->id])}}">
                         <img src="{{URL::asset('/assets/edit_icon.svg')}}" width="15px" alt="Icon de edição">
                     </a>
-                    <a class="btn btn-danger rounded-circle d-flex justify-content-center align-items-center action-button" href="{{route('predio.delete', ['predio_id' => $predio->id])}}">
-                        <img src="{{URL::asset('/assets/delete.svg')}}" width="20px" alt="Icon de remoção">
-                    </a>
+
+                    <form action="{{route('predio.delete', ['predio_id' => $predio->id])}}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        
+                        <button class="btn btn-danger rounded-circle d-flex justify-content-center align-items-center action-button" href="#" type="submit">
+                            <img src="{{URL::asset('/assets/delete.svg')}}" width="20px" alt="Icon de remoção">
+                        </button>
+                    </form>
+
                     <a class="btn btn-primary rounded-circle d-flex justify-content-center align-items-center action-button" href="{{route('sala.index', ['predio_id' => $predio->id])}}">
                         <img src="{{URL::asset('/assets/salas.svg')}}" width="20px" alt="Icon de salas">
                     </a>
