@@ -12,6 +12,6 @@ class TipoUsuario extends Model
     protected $fillable = ['nome'];
 
     public function users(){
-        return $this->hasMany(User::class);
+        return $this->belongsToMany(User::class, 'user_roles', 'tipos_usuarios_id', 'user_id');
     }
 }
