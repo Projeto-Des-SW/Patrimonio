@@ -15,6 +15,7 @@ class StoreMovimentoRequest extends FormRequest
             'servidor_destino_id' => 'required|integer|exists:servidors,id',
             'servidor_origem_id' => 'required|integer|exists:servidors,id',
             'tipo_movimento_id' => 'required|integer|exists:tipo_movimentos,id',
+            'data_movimento' => 'required|date'
         ];
     }
 

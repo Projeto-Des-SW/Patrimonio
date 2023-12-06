@@ -19,7 +19,8 @@ class MovimentoFactory extends Factory
         return [
             'servidor_destino_id' => 2,
             'servidor_origem_id' => 1,
-            'tipo_movimento_id' => 1
+            'tipo_movimento_id' => 1,
+            'data_movimento' => now()
         ];
     }
 }

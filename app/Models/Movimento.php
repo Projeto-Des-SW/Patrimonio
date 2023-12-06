@@ -9,7 +9,7 @@ class Movimento extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['observacao', 'status' ,'servidor_destino_id', 'servidor_origem_id', 'tipo_movimento_id'];
+    protected $fillable = ['observacao', 'status' ,'servidor_destino_id', 'servidor_origem_id', 'tipo_movimento_id', 'data_movimento'];
 
     public function servidor_destino(){
         return $this->belongsTo(Servidor::class, 'servidor_destino_id')
