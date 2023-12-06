@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('observacao')->nullable();
             $table->string('status')->default('Não Concluido');
             $table->date('data_movimento');
+            $table->date('data_conclusao')->nullable();
 
             $table->unsignedInteger('servidor_destino_id');
             $table->foreign('servidor_destino_id')->references('id')->on('servidors');

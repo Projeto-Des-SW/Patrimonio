@@ -158,6 +158,7 @@ class MovimentoController extends Controller
         }
 
         $movimento->status = 'Concluido';
+        $movimento->data_conclusao = now();
         $movimento->update();
 
         return redirect()->route('movimento.index')->with('success', 'Movimento concluido com sucesso!');
