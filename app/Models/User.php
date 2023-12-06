@@ -45,8 +45,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function tipo_usuario(){
-        return $this->belongsTo(TipoUsuario::class);
+    public function tipo_usuarios(){
+        return $this->belongsToMany(TipoUsuario::class, 'user_roles', 'user_id', 'tipo_usuarios_id');
     }
 
     public function servidor()
