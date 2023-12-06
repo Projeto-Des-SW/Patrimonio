@@ -1,7 +1,7 @@
 <nav class="bg-white">
     <ul class="navbar-nav px-6" style="width: 240px;">
         @auth
-            @if(\Illuminate\Support\Facades\Auth::user()->tipo_usuario_id == 1)
+            @if(Auth::user()->tipo_usuarios()->first()->id == 1)
                 @include('layouts.components.navitem', ['route' => __('Prédios'), 'route_link' => route('predio.index'), 'route_route_name' => 'predio', 'icon_name' => 'predio.svg'])
                 @include('layouts.components.navitem', ['route' => __('Cargos'), 'route_link' => route('cargo.index'), 'route_route_name' => 'cargo', 'icon_name' => 'cargos.svg'])
                 @include('layouts.components.navitem', ['route' => __('Classificação Contábil'), 'route_link' => route('classificacao.index'), 'route_route_name' => 'classificacao', 'icon_name' => 'classificacao.svg'])
