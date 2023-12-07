@@ -23,7 +23,6 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'tipo_usuario_id'
     ];
 
     /**
@@ -46,7 +45,7 @@ class User extends Authenticatable
     ];
 
     public function tipoUsuarios(){
-        return $this->belongsToMany(TipoUsuario::class, 'user_roles', 'user_id', 'tipo_usuarios_id');
+        return $this->belongsToMany(Role::class, 'user_role', 'user_id', 'role_id');
     }
 
     public function servidor()
