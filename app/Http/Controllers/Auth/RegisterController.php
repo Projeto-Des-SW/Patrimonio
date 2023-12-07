@@ -79,7 +79,7 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
         ]);
 
-        $user->tipo_usuarios()->sync(2);
+        $user->tipoUsuarios()->sync(2);
 
         Servidor::create(['user_id' => $user->id,
             'matricula' => $data['matricula'],

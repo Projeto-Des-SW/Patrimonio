@@ -16,13 +16,13 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        User::factory()->create(['email' => 'admin@admin.com'])->tipo_usuarios()->sync(1);
+        User::factory()->create(['email' => 'admin@admin.com'])->tipoUsuarios()->sync(1);
         Servidor::factory(1)->create(['user_id' => 1]);
 
-        User::factory()->create(['email' => 'servidor@servidor.com'])->tipo_usuarios()->sync(2);
+        User::factory()->create(['email' => 'servidor@servidor.com'])->tipoUsuarios()->sync(2);
         Servidor::factory(1)->create(['user_id' => 2]);
 
-        User::factory()->create(['email' => 'servidor2@servidor.com'])->tipo_usuarios()->sync(2);
+        User::factory()->create(['email' => 'servidor2@servidor.com'])->tipoUsuarios()->sync(2);
         Servidor::factory(1)->create(['user_id' => 3]);
     }
 }
