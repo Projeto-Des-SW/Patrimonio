@@ -32,20 +32,22 @@
                             <span>Desativado</span>
                         @endif
                     </td>
-                    <td class="d-flex justify-content-around">
-                        <a class="btn btn-primary rounded-circle d-flex justify-content-center align-items-center action-button"
-                            href="{{ route('servidor.edit', ['servidor_id' => $servidor->id]) }}">
-                            <img src="{{ URL::asset('/assets/edit_icon.svg') }}" width="15px" alt="Icon de edição">
-                        </a>
-                        @if ($servidor->deleted_at == null)
+                    <td class="d-flex justify-content-around align-items-center">
+                        @if (Auth::user()->hasAnyRoles(['Administrador', 'Servidor']))
+                            <a class="btn btn-primary rounded-circle action-button"
+                                href="{{ route('servidor.edit', ['servidor_id' => $servidor->id]) }}">
+                                <img src="{{ URL::asset('/assets/edit_icon.svg') }}" width="15px" alt="Icon de edição">
+                            </a>
+                        @endif
+                        
+                        @if ($servidor->user->hasAnyRoles('Servidor') && $servidor->deleted_at == null)
                             <form action="{{ route('servidor.delete', ['servidor_id' => $servidor->id]) }}" method="post">
                                 @csrf
                                 @method('DELETE')
-                                <button class="btn btn-danger d-flex align-items-center" type="submit">DESATIVAR</button>
+                                <button class="btn btn-danger" type="submit">DESATIVAR</button>
                             </form>
                             
-                        @else
-                            <a class="btn btn-success d-flex align-items-center"
+                            <a class="btn btn-success"
                                 href="{{ route('servidor.restore', ['servidor_id' => $servidor->id]) }}">ATIVAR</a>
                         @endif
                     </td>
