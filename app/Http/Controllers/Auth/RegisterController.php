@@ -75,11 +75,10 @@ class RegisterController extends Controller
         $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
-            // 'tipo_usuario_id' => 2,
             'password' => Hash::make($data['password']),
         ]);
 
-        $user->tipoUsuarios()->sync(2);
+        $user->roles()->sync(2);
 
         Servidor::create(['user_id' => $user->id,
             'matricula' => $data['matricula'],

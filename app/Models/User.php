@@ -44,7 +44,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function tipoUsuarios(){
+    public function roles(){
         return $this->belongsToMany(Role::class, 'user_role', 'user_id', 'role_id');
     }
 
@@ -56,6 +56,6 @@ class User extends Authenticatable
 
     public function hasAnyRoles($tipo)
     {
-        return $this->tipoUsuarios()->whereIn('nome', $tipo)->exists();
+        return $this->roles()->whereIn('nome', $tipo)->exists();
     }
 }

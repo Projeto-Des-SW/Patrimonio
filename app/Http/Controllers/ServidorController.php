@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\Servidor\StoreServidorRequest;
 use App\Http\Requests\Servidor\UpdateServidorRequest;
 use App\Models\Cargo;
-use App\Models\TipoUsuario;
+use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\Servidor;
@@ -22,52 +22,64 @@ class ServidorController extends Controller
     public function create()
     {
         $cargos = Cargo::all();
-        $tipo_usuarios = TipoUsuario::all();
-        return view('servidor.create', compact('cargos', 'tipo_usuarios'));
+        $roles = Role::all();
+        return view('servidor.create', compact('cargos', 'roles'));
     }
 
     public function store(StoreServidorRequest $request)
     {
-        $user = User::create(['name' => $request->name,
+        $user = User::create([
+            'name' => $request->name,
             'email' => $request->email,
-            'password' => Hash::make($request->password),
-            'tipo_usuario_id' => $request->tipo_usuario_id]);
-        Servidor::create(['user_id' => $user->id,
+            'password' => Hash::make($request->password)
+
+        ]);
+        
+        $user->roles()->attach($request->role_id);
+
+        Servidor::create(
+            ['user_id' => $user->id,
             'cpf' => $request->cpf,
             'matricula' => $request->matricula,
-            'cargo_id' => $request->cargo_id]);
+            'cargo_id' => $request->cargo_id
+        ]);
+
         return redirect(route('servidor.index'))->with('success', 'Servidor Cadastrado com Sucesso!');
     }
 
     public function edit($servidor_id)
     {
-        $servidor = Servidor::withTrashed()
-            ->find($servidor_id);
+        $servidor = Servidor::withTrashed()->find($servidor_id);
         $cargos = Cargo::all();
-        $tipo_usuarios = TipoUsuario::all();
-        return view('servidor.edit', compact('servidor', 'cargos', 'tipo_usuarios'));
+        $roles = Role::all();
+        return view('servidor.edit', compact('servidor', 'cargos', 'roles'));
     }
 
     public function update(UpdateServidorRequest $request)
     {
         $servidor = Servidor::withTrashed()->find($request->servidor_id);
         $user = $servidor->user;
+
         if ($request->password != null) {
-            $user->update(['name' => $request->name,
+            $user->update([
+                'name' => $request->name,
                 'email' => $request->email,
                 'password' => Hash::make($request->password),
-                'tipo_usuario_id' => $request->tipo_usuario_id]);
+                'role_id' => $request->role_id
+            ]);
         } else {
             $user->update([
                 'name' => $request->name,
                 'email' => $request->email,
-                'tipo_usuario_id' => $request->tipo_usuario_id,
+                'role_id' => $request->role_id,
                 'password' => $user->password
             ]);
         }
-        $servidor->update(['cpf' => $request->cpf,
+        $servidor->update([
+            'cpf' => $request->cpf,
             'matricula' => $request->matricula,
-            'cargo_id' => $request->cargo_id]);
+            'cargo_id' => $request->cargo_id
+        ]);
         return redirect(route('servidor.index'))->with('success', 'Servidor Editado com Sucesso!');
     }
 
