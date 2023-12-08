@@ -56,6 +56,10 @@ class User extends Authenticatable
 
     public function hasAnyRoles($tipo)
     {
+        if (!is_array($tipo)) {
+            $tipo = [$tipo];
+        }
+        
         return $this->roles()->whereIn('nome', $tipo)->exists();
     }
 }
