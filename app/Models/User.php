@@ -53,4 +53,9 @@ class User extends Authenticatable
         return $this->hasOne(Servidor::class)
             ->withTrashed();
     }
+
+    public function hasAnyRoles($tipo)
+    {
+        return $this->tipoUsuarios()->whereIn('nome', $tipo)->exists();
+    }
 }
