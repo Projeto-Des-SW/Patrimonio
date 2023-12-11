@@ -32,13 +32,12 @@ class ServidorController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password)
-
         ]);
         
-        $user->roles()->attach($request->role_id);
+        $user->roles()->sync($request->role_id);
 
-        Servidor::create(
-            ['user_id' => $user->id,
+        Servidor::create([
+            'user_id' => $user->id,
             'cpf' => $request->cpf,
             'matricula' => $request->matricula,
             'cargo_id' => $request->cargo_id
@@ -65,16 +64,21 @@ class ServidorController extends Controller
                 'name' => $request->name,
                 'email' => $request->email,
                 'password' => Hash::make($request->password),
-                'role_id' => $request->role_id
+                // 'role_id' => $request->role_id
             ]);
+            $user->roles()->sync($request->role_id);
+
         } else {
             $user->update([
                 'name' => $request->name,
                 'email' => $request->email,
-                'role_id' => $request->role_id,
+                // 'role_id' => $request->role_id,
                 'password' => $user->password
             ]);
+            $user->roles()->sync($request->role_id);
+
         }
+
         $servidor->update([
             'cpf' => $request->cpf,
             'matricula' => $request->matricula,
