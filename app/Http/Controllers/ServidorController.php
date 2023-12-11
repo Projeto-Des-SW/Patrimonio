@@ -64,7 +64,6 @@ class ServidorController extends Controller
                 'name' => $request->name,
                 'email' => $request->email,
                 'password' => Hash::make($request->password),
-                // 'role_id' => $request->role_id
             ]);
             $user->roles()->sync($request->role_id);
 
@@ -72,7 +71,6 @@ class ServidorController extends Controller
             $user->update([
                 'name' => $request->name,
                 'email' => $request->email,
-                // 'role_id' => $request->role_id,
                 'password' => $user->password
             ]);
             $user->roles()->sync($request->role_id);
