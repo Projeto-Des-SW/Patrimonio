@@ -46,7 +46,7 @@ class User extends Authenticatable
     ];
 
     public function roles(){
-        return $this->belongsToMany(Role::class, 'user_role', 'user_id', 'role_id');
+        return $this->belongsToMany(Role::class, 'role_user', 'user_id', 'role_id');
     }
 
     public function servidor()
@@ -55,12 +55,8 @@ class User extends Authenticatable
             ->withTrashed();
     }
 
-    public function hasAnyRoles($tipo)
-    {
-        if (!is_array($tipo)) {
-            $tipo = [$tipo];
-        }
-        
+    public function hasAnyRoles(array $tipo)
+    {        
         return $this->roles()->whereIn('nome', $tipo)->exists();
     }
 }
