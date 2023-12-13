@@ -13,10 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('tipo_movimentos', function (Blueprint $table) {
+        Schema::create('setores', function (Blueprint $table) {
             $table->id();
 
             $table->string('nome');
+            $table->string('codigo');
+            $table->boolean('setor_folha')->default(true);
+
+            $table->unsignedBigInteger('setor_pai_id')->nullable();
+            $table->foreign('setor_pai_id')->references('id')->on('setores');
 
             $table->timestamps();
         });
@@ -29,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tipo_movimentos');
+        Schema::dropIfExists('setores');
     }
 };

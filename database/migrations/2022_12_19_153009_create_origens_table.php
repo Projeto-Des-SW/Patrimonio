@@ -13,17 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('classificacaos', function (Blueprint $table) {
+        Schema::create('origens', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
-
             $table->string('nome');
-            $table->string('codigo')->unique();
-            $table->double('residual');
-            $table->integer('vida_util');
 
-
-
+            $table->timestamps();
         });
     }
 
@@ -34,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('classificacaos');
+        Schema::dropIfExists('origens');
     }
 };
