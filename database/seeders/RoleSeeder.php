@@ -2,11 +2,11 @@
 
 namespace Database\Seeders;
 
-use App\Models\TipoUsuario;
+use App\Models\Role;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class TipoUsuarioSeeder extends Seeder
+class RoleSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,7 +15,7 @@ class TipoUsuarioSeeder extends Seeder
      */
     public function run()
     {
-        TipoUsuario::factory(1)->create(['nome' => 'Administrador']);
-        TipoUsuario::factory(1)->create(['nome' => 'Servidor']);
+        Role::factory(1)->create(['nome' => 'Administrador']);
+        Role::factory(1)->create(['nome' => 'Servidor']);
     }
 }
