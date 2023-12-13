@@ -12,9 +12,9 @@ class UpdateMovimentoRequest extends FormRequest
     {
         return [
             'observacao' => 'nullable|string|max:255',
-            'servidor_destino_id' => 'required|integer|exists:servidors,id',
-            'servidor_origem_id' => 'required|integer|exists:servidors,id',
-            'tipo_movimento_id' => 'required|integer|exists:tipo_movimentos,id',
+            'servidor_destino_id' => 'required|integer|exists:servidores,id',
+            'servidor_origem_id' => 'required|integer|exists:servidores,id',
+            'tipo_movimento_id' => 'required|integer|exists:tipos_movimento,id',
             'data_movimento' => 'required|date'
         ];
     }

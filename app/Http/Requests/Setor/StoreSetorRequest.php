@@ -11,9 +11,9 @@ class StoreSetorRequest extends FormRequest
     public function rules()
     {
         return [
-            'nome' => 'required|unique:setors|max:255',
-            'codigo' => 'required|unique:setors|max:255',
-            'setor_pai_id' => 'nullable|integer|exists:setors,id'
+            'nome' => 'required|unique:setores|max:255',
+            'codigo' => 'required|unique:setores|max:255',
+            'setor_pai_id' => 'nullable|integer|exists:setores,id'
         ];
     }
 

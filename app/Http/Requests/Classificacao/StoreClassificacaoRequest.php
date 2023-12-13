@@ -11,7 +11,7 @@ class StoreClassificacaoRequest extends FormRequest
     public function rules()
     {
         return [
-            'nome' => 'required|unique:classificacaos|max:255'
+            'nome' => 'required|unique:classificacoes|max:255'
         ];
     }
 

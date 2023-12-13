@@ -11,6 +11,8 @@ class Servidor extends Model
     use HasFactory;
     use SoftDeletes;
 
+    protected $table = 'servidores';
+
     protected $fillable = ['cpf', 'matricula', 'user_id', 'cargo_id'];
 
     public function user(){

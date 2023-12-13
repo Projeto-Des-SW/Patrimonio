@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('servidors', function (Blueprint $table) {
+        Schema::create('servidores', function (Blueprint $table) {
             $table->id();
             $table->softDeletes();
             $table->string('cpf')->unique()->nullable();
@@ -36,6 +36,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('servidors');
+        Schema::dropIfExists('servidores');
     }
 };

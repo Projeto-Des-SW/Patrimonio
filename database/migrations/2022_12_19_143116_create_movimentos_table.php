@@ -21,14 +21,14 @@ return new class extends Migration
             $table->date('data_conclusao')->nullable();
 
             $table->unsignedInteger('servidor_destino_id');
-            $table->foreign('servidor_destino_id')->references('id')->on('servidors');
+            $table->foreign('servidor_destino_id')->references('id')->on('servidores');
 
             $table->unsignedInteger('servidor_origem_id');
-            $table->foreign('servidor_origem_id')->references('id')->on('servidors');
+            $table->foreign('servidor_origem_id')->references('id')->on('servidores');
 
 
             $table->unsignedInteger('tipo_movimento_id');
-            $table->foreign('tipo_movimento_id')->references('id')->on('tipo_movimentos');
+            $table->foreign('tipo_movimento_id')->references('id')->on('tipos_movimento');
 
             $table->timestamps();
         });

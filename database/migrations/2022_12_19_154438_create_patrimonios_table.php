@@ -26,22 +26,22 @@ return new class extends Migration
             $table->double('valor');
 
             $table->unsignedInteger('servidor_id');
-            $table->foreign('servidor_id')->references('id')->on('servidors');
+            $table->foreign('servidor_id')->references('id')->on('servidores');
 
             $table->unsignedInteger('setor_id')->nullable();
-            $table->foreign('setor_id')->references('id')->on('setors');
+            $table->foreign('setor_id')->references('id')->on('setores');
 
             $table->unsignedInteger('classificacao_id');
-            $table->foreign('classificacao_id')->references('id')->on('classificacaos');
+            $table->foreign('classificacao_id')->references('id')->on('classificacoes');
 
             $table->unsignedInteger('origem_id');
-            $table->foreign('origem_id')->references('id')->on('origems');
+            $table->foreign('origem_id')->references('id')->on('origens');
 
             $table->unsignedInteger('sala_id');
             $table->foreign('sala_id')->references('id')->on('salas');
 
             $table->unsignedInteger('situacao_id');
-            $table->foreign('situacao_id')->references('id')->on('situacaos');
+            $table->foreign('situacao_id')->references('id')->on('situacoes');
 
             $table->string('observacao')->nullable();
         });
