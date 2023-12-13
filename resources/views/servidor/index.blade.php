@@ -40,7 +40,7 @@
                             </a>
                         @endif
                         
-                        @if ($servidor->user->hasAnyRoles('Servidor') && $servidor->deleted_at == null)
+                        @if ($servidor->user->hasAnyRoles(['Servidor']) && $servidor->deleted_at == null)
                             <form action="{{ route('servidor.delete', ['servidor_id' => $servidor->id]) }}" method="post">
                                 @csrf
                                 @method('DELETE')
