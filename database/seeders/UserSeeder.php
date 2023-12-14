@@ -22,7 +22,6 @@ class UserSeeder extends Seeder
         User::factory()->create(['email' => 'servidor@servidor.com'])->roles()->attach(2);
         Servidor::factory(1)->create(['user_id' => 2]);
 
-        User::factory()->create(['email' => 'servidor2@servidor.com'])->roles()->attach(2);
-        Servidor::factory(1)->create(['user_id' => 3]);
+        User::factory()->create(['email' => 'diretor@diretor.com'])->roles()->attach(3);
     }
 }
