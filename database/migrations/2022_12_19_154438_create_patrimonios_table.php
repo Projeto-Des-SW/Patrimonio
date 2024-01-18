@@ -25,7 +25,7 @@ return new class extends Migration
 
             $table->foreignId('servidor_id')->constrained('servidores');
             $table->foreignId('setor_id')->constrained('setores')->nullable();
-            $table->foreignId('classificacao_id')->constrained('classificacoes');
+            $table->foreignId('subgrupo_id')->constrained('subgrupos');
             $table->foreignId('origem_id')->constrained('origens');
             $table->foreignId('sala_id')->constrained();
             $table->foreignId('situacao_id')->constrained('situacoes');
