@@ -13,12 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('salas', function (Blueprint $table) {
+        Schema::create('subgrupos', function (Blueprint $table) {
             $table->id();
             $table->string('nome');
-            $table->string('telefone')->nullable();
+            $table->string('marca');
+            $table->string('modelo');
 
-            $table->foreignId('predio_id')->constrained();
+            $table->foreignId('classificacao_id')->constrained('classificacoes');
 
             $table->timestamps();
         });
@@ -31,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('salas');
+        Schema::dropIfExists('subgrupos');
     }
 };
