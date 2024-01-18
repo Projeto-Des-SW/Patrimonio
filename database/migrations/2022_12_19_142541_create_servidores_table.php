@@ -15,17 +15,14 @@ return new class extends Migration
     {
         Schema::create('servidores', function (Blueprint $table) {
             $table->id();
-            $table->softDeletes();
             $table->string('cpf')->unique()->nullable();
             $table->string('matricula')->unique();
 
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
-
-            $table->unsignedBigInteger('cargo_id');
-            $table->foreign('cargo_id')->references('id')->on('cargos');
+            $table->foreignId('user_id')->constrained();
+            $table->foreignId('cargo_id')->constrained();
 
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

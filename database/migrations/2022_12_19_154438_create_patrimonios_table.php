@@ -15,35 +15,22 @@ return new class extends Migration
     {
         Schema::create('patrimonios', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
-
             $table->string('nome');
             $table->string('nota_fiscal')->nullable(); //VerificarDepois
             $table->string('descricao');
             $table->boolean('aprovado')->default(true);
-
+            $table->string('observacao')->nullable();
             $table->date('data_compra');
             $table->double('valor');
 
-            $table->unsignedInteger('servidor_id');
-            $table->foreign('servidor_id')->references('id')->on('servidores');
+            $table->foreignId('servidor_id')->constrained('servidores');
+            $table->foreignId('setor_id')->constrained('setores')->nullable();
+            $table->foreignId('classificacao_id')->constrained('classificacoes');
+            $table->foreignId('origem_id')->constrained('origens');
+            $table->foreignId('sala_id')->constrained();
+            $table->foreignId('situacao_id')->constrained('situacoes');
 
-            $table->unsignedInteger('setor_id')->nullable();
-            $table->foreign('setor_id')->references('id')->on('setores');
-
-            $table->unsignedInteger('classificacao_id');
-            $table->foreign('classificacao_id')->references('id')->on('classificacoes');
-
-            $table->unsignedInteger('origem_id');
-            $table->foreign('origem_id')->references('id')->on('origens');
-
-            $table->unsignedInteger('sala_id');
-            $table->foreign('sala_id')->references('id')->on('salas');
-
-            $table->unsignedInteger('situacao_id');
-            $table->foreign('situacao_id')->references('id')->on('situacoes');
-
-            $table->string('observacao')->nullable();
+            $table->timestamps();
         });
     }
 
