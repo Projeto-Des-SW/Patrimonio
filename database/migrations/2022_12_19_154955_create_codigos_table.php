@@ -17,8 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('codigo')->unique();
 
-            $table->unsignedBigInteger('patrimonio_id');
-            $table->foreign('patrimonio_id')->references('id')->on('patrimonios')->onDelete('cascade');
+            $table->foreignId('patrimonio_id')->constrained()->cascadeOnDelete();
 
             $table->timestamps();
         });

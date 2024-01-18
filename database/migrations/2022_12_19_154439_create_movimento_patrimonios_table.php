@@ -15,14 +15,10 @@ return new class extends Migration
     {
         Schema::create('movimento_patrimonios', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('movimento_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('patrimonio_id')->constrained();
+
             $table->timestamps();
-
-            $table->unsignedBigInteger('movimento_id');
-            $table->foreign('movimento_id')->references('id')->on('movimentos')->onDelete('cascade');
-
-            $table->unsignedBigInteger('patrimonio_id');
-            $table->foreign('patrimonio_id')->references('id')->on('patrimonios');
-
         });
     }
 
