@@ -22,10 +22,11 @@ class PatrimonioFactory extends Factory
             'data_compra' => $this->faker->date,
             'valor' => $this->faker->numberBetween($min = 100, $max = 5000),
             'servidor_id' => 2,
-            'classificacao_id' => 1,
+            'subgrupo_id' => 1,
             'situacao_id' => 1,
             'origem_id' => 1,
-            'sala_id' => 1
+            'sala_id' => 1,
+            'setor_id' => 1
         ];
     }
 }
