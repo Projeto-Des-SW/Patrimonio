@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('codigo');
             $table->boolean('setor_folha')->default(true);
 
-            $table->foreignId('setor_pai_id')->constrained('setores')->nullable();
+            $table->foreignId('setor_pai_id')->nullable()->constrained('setores');
 
             $table->timestamps();
         });
