@@ -10,18 +10,19 @@
             <ul class="navbar-nav ms-auto">
                 <!-- Authentication Links -->
                 @guest
-                    @if (Route::has('login'))
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">{{ __('Entrar') }}</a>
-                        </li>
-                    @endif
-
-                    @if (Route::has('register'))
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('register') }}">{{ __('Registre-se') }}</a>
-                        </li>
-                    @endif
+                    
                 @else
+
+                    <div class="nav-link nav-item">
+                        <a href="{{route('patrimonio.index')}}">Patrimônio</a>
+                        <a href="{{route('predio.index')}}">Prédios</a>
+                        <a href="{{route('cargo.index')}}">Cargos</a>
+                        <a href="{{route('classificacao.index')}}">Classificacão Contábil</a>
+                        <a href="{{route('movimento.index')}}">Movimentacões</a>
+                        <a href="{{route('setor.index')}}">Setores</a>
+                    </div>
+
+
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -45,3 +46,7 @@
         </div>
     </div>
 </nav>
+
+<script>
+    
+</script>

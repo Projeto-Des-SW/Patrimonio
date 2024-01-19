@@ -1,0 +1,18 @@
+
+
+
+.form-home{
+    border-radius: 10px;
+    background-color: rgb(217, 215, 250);
+    width: 500px;
+    height: 450px;
+    padding: 20px 30px;
+    
+}
+.form-home div{
+    padding: 15px 0px;
+}
+
+@media (width < 800px) {
+    
+}

@@ -1,0 +1,16 @@
+
+.form-register{
+   width: 707px; 
+   height: 580px;
+   border-radius: 10px;
+   color: #1A2876;
+    
+}
+.form-register div{
+    padding: 5px 5px
+    
+}
+.btn-blue{
+    background-color: #1A2876;
+    color: white;
+}

@@ -23,13 +23,13 @@ class ClassificacaoSeeder extends Seeder
         ]);
 
         Classificacao::factory(1)->create([
-            'nome' => 'EQUIPAM/ UTENSÍLIOS MEDICOS, ODONTO, LAB E HOSP',
+            'nome' => 'EQUIPAM/ UTENSÍLIOS MÉDICOS, ODONTO, LÁB E HOSP',
             'residual' => 20,
             'vida_util' => 180
         ]);
 
         Classificacao::factory(1)->create([
-            'nome' => 'APARELHO E EQUIPAMENTO P/ ESPORTES E DIVERSOES',
+            'nome' => 'APARELHO E EQUIPAMENTO P/ ESPORTES E DIVERSÕES',
             'residual' => 10,
             'vida_util' => 120
         ]);
@@ -59,7 +59,7 @@ class ClassificacaoSeeder extends Seeder
         ]);
 
         Classificacao::factory(1)->create([
-            'nome' => 'MÁQUINAS FERRAMENTAS E UTENSÍLIOS DE OFICINA',
+            'nome' => 'MÁQUINAS, FERRAMENTAS E UTENSÍLIOS DE OFICINA',
             'residual' => 10,
             'vida_util' => 120
         ]);
@@ -77,25 +77,25 @@ class ClassificacaoSeeder extends Seeder
         ]);
 
         Classificacao::factory(1)->create([
-            'nome' => 'EQUIPAMENTOS PEÇAS E ACESSÓRIOS P/ AUTOMÓVEIS',
+            'nome' => 'EQUIPAMENTOS, PEÇAS E ACESSÓRIOS P/ AUTOMÓVEIS',
             'residual' => 10,
             'vida_util' => 60
         ]);
 
         Classificacao::factory(1)->create([
-            'nome' => 'EQUIPAMENTOS PEÇAS E ACESSÓRIOS MARÍTIMOS',
+            'nome' => 'EQUIPAMENTOS, PEÇAS E ACESSÓRIOS MARÍTIMOS',
             'residual' => 10,
             'vida_util' => 180
         ]);
 
         Classificacao::factory(1)->create([
-            'nome' => 'EQUIPAMENTOS PEÇAS E ACESSÓRIOS AERONAUTICOS',
+            'nome' => 'EQUIPAMENTOS, PEÇAS E ACESSÓRIOS AERONÁUTICOS',
             'residual' => 10,
             'vida_util' => 360
         ]);
 
         Classificacao::factory(1)->create([
-            'nome' => 'EQUIPAMENTOS PEÇAS E ACESSÓRIOS PROTEÇÃO AO VOO',
+            'nome' => 'EQUIPAMENTOS, PEÇAS E ACESSÓRIOS PROTEÇÃO AO VOO',
             'residual' => 10,
             'vida_util' => 360
         ]);
@@ -125,7 +125,7 @@ class ClassificacaoSeeder extends Seeder
         ]);
 
         Classificacao::factory(1)->create([
-            'nome' => 'MÁQUINAS E ITENSÍLIOS AGROPECUÁRIOS/RODOVIÁRIO',
+            'nome' => 'MÁQUINAS E UTENSÍLIOS AGROPECUÁRIOS/RODOVIÁRIO',
             'residual' => 10,
             'vida_util' => 120
         ]);
@@ -143,13 +143,13 @@ class ClassificacaoSeeder extends Seeder
         ]);
 
         Classificacao::factory(1)->create([
-            'nome' => 'MÁQUINAS E EQUIPAMENTOS ELETRO -ELETRONICOS',
+            'nome' => 'MÁQUINAS E EQUIPAMENTOS ELETRO-ELETRONICOS',
             'residual' => 10,
             'vida_util' => 120
         ]);
 
         Classificacao::factory(1)->create([
-            'nome' => 'MÁQUINAS UTENSÍLIOS E EQUIPAMENTOS DIVERSOS',
+            'nome' => 'MÁQUINAS, UTENSÍLIOS E EQUIPAMENTOS DIVERSOS',
             'residual' => 10,
             'vida_util' => 120
         ]);
@@ -173,7 +173,7 @@ class ClassificacaoSeeder extends Seeder
         ]);
 
         Classificacao::factory(1)->create([
-            'nome' => 'MÁQUINAS E UTENSÍLIOS DE ESCRITORIO',
+            'nome' => 'MÁQUINAS E UTENSÍLIOS DE ESCRITÓRIO',
             'residual' => 10,
             'vida_util' => 120
         ]);
@@ -209,7 +209,7 @@ class ClassificacaoSeeder extends Seeder
         ]);
 
         Classificacao::factory(1)->create([
-            'nome' => 'EQUIPAMENTOS PARA ÁUDIO VÍDEO E FOTO',
+            'nome' => 'EQUIPAMENTOS PARA ÁUDIO, VÍDEO E FOTO',
             'residual' => 10,
             'vida_util' => 120
         ]);
@@ -257,7 +257,7 @@ class ClassificacaoSeeder extends Seeder
         ]);
 
         Classificacao::factory(1)->create([
-            'nome' => 'ERONAVES',
+            'nome' => 'AERONAVES',
             'residual' => 0,
             'vida_util' => 0
         ]);

@@ -9,8 +9,14 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
+    <!-- styles-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/layouts/footer.css">
+    <link rel="stylesheet" href="../css/layouts/navbar.css">
+    
+
     <!-- Fonts -->
-    <link rel="stylesheet" href="/styles/style.css">
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
@@ -30,34 +36,22 @@
 
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.js"></script>
 
+    @yield('css')
 </head>
 
 <body>
-    <div id="app">
-        @include('layouts.components.navbar')
-        <div class="d-flex">
-            <aside>
-                @include('layouts.components.sidebar')
-            </aside>
+    @include('layouts.components.navbar')
+    
+    <main class="p-1 w-100 whitesmoke-background" style="height: 95vh;">
+        
+        @include('layouts.components.messages')
+        @yield('content')
+            
+        
+    </main>
 
-            @hasSection('content')
-                <main class="p-1 w-100 whitesmoke-background" style="height: 95vh;">
-                    <div class="row">
-                        @include('layouts.components.messages')
-                        <div class="shadow p-3 mb-5 rounded offset-2 col-8 mt-4 whitesmoke-background">
-                            @yield('content')
-                        </div>
-                    </div>
-                </main>
-            @endif
+    @include('layouts.components.footer')
 
-            @hasSection('card')
-                <main class="py-4">
-                    @yield('card')
-                </main>
-            @endif
-        </div>
-    </div>
 </body>
 
 </html>

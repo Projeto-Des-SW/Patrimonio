@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('descricao');
             $table->boolean('aprovado')->default(true);
 
-            $table->date('data_compra');
+            $table->date('data_compra')->nullable();
             $table->double('valor');
 
             $table->unsignedInteger('servidor_id');

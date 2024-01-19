@@ -1,0 +1,54 @@
+
+body {
+    height: 100vh ;
+    width: 100%; 
+}
+
+footer{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: #1A2876;
+    
+    height:max-content;
+    position: static;
+    bottom: 0;
+}
+
+.logo-ufape{
+    width: 60px;
+}
+.logo-lmts{
+    width: 110px;
+}
+
+
+
+
+
+@media (width < 992px) {
+    .Text-conteudo-homepage{
+        font-size: 16px;
+        width: 100%;
+    }
+}
+@media (width < 768px) {
+    .home-page-container{
+        flex-direction: column;
+    }
+    .Text-conteudo-homepage{
+        font-size: 14px;
+        width: 100%;
+    }
+}
+@media (width < 576px) {
+    .form-homepage{
+        width: 60vh;
+    }
+    .Text-conteudo-homepage{
+        font-size: 12px;
+        width: 75%;
+    }
+}

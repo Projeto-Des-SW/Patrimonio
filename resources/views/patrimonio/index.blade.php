@@ -7,55 +7,57 @@
 
     </div>
 
-    <table class="table table-hover table-responsive mx-2 mt-4" id="patrimonio_table">
-        <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Nome do ítem</th>
-                <th scope="col">Prédio</th>
-                <th scope="col">Sala</th>
-                <th class="text-center" scope="col">Ações</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ($patrimonios as $patrimonio)
+    <div class="container">
+        <table class="table table-hover shadow-lg" style="border-radius: 10px; overflow:hidden; ">
+            <thead class="text-md-center" style="background-color: #1A2876; color: white;">
                 <tr>
-                    <td>{{ $patrimonio->id }}</td>
-                    <td>{{ $patrimonio->nome }}</td>
-                    <td>{{ $patrimonio->sala->predio->nome }}</td>
-                    <td>{{ $patrimonio->sala->nome }}</td>
-                    <td class="d-flex justify-content-around">
-                        <a class="btn btn-primary rounded-circle d-flex justify-content-center align-items-center action-button"
-                            href="{{ route('patrimonio.edit', ['patrimonio_id' => $patrimonio->id]) }}">
-                            <img class="icon-button" src="{{ URL::asset('/assets/edit_icon.svg') }}" alt="Icon de edição">
-                        </a>
-                        <a class="btn btn-danger rounded-circle d-flex justify-content-center align-items-center action-button"
-                            href="{{ route('patrimonio.delete', ['patrimonio_id' => $patrimonio->id]) }}">
-                            <img src="{{ URL::asset('/assets/delete.svg') }}" width="20px" alt="Icon de remoção">
-                        </a>
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal"
-                            data-param1="{{ $patrimonio }}" data-param2="{{ $patrimonio->classificacao }}">
-                            <img src="{{ URL::asset('/assets/money.svg') }}" width="11px" alt="Depreciação do Item">
-                        </button>
-                    </td>
+                    <th >ID</th>
+                    <th >Nome</th>
+                    <th >Prédio</th>
+                    <th >Sala</th>
+                    <th >Ações</th>
                 </tr>
-            @endforeach
-        </tbody>
-    </table>
-
-    <div class="d-flex" style="max-width:600px">
-        <a class="w-100 btn btn-primary" style="margin-right: 10px" href="{{ route('patrimonio.create') }}">Cadastrar
-            item</a>
-        <a class="w-100 btn btn btn-outline-primary" style="margin-right: 10px"
-            href="{{ route('classificacao.index') }}">Classificação Contábil</a>
-        <a class="w-100 btn btn btn-outline-primary" style="margin-right: 10px">Origens</a>
-        <a class="w-100 btn btn btn-outline-primary" style="margin-right: 10px">Situações</a>
+            </thead>
+            <tbody>
+                @foreach ($patrimonios as $patrimonio)
+                    <tr class="text-md-center">
+                        <td class="py-4">{{ $patrimonio->id }}</td>
+                        <td class="py-4">{{ $patrimonio->nome }}</td>
+                        <td class="py-4">{{ $patrimonio->sala->predio->nome }}</td>
+                        <td class="py-4">{{ $patrimonio->sala->nome }}</td>
+                        <td class="py-4">
+                            <div>
+                                <a class=""
+                                    href="{{ route('patrimonio.edit', ['patrimonio_id' => $patrimonio->id]) }}">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                                        <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                                        <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
+                                    </svg>
+                                </a>
+                                <a class=""
+                                    href="{{ route('patrimonio.delete', ['patrimonio_id' => $patrimonio->id]) }}">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
+                                        <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5M11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47M8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5"/>
+                                    </svg>
+                                </a>
+                                <button type="button" data-bs-toggle="modal" data-bs-target="#myModal"
+                                    data-param1="{{ $patrimonio }}" data-param2="{{ $patrimonio->classificacao }}">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
+                                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+                                        <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
     </div>
 
-
-    <!-- Adicione este trecho no seu arquivo Blade da listagem -->
-    <div>
-        <a href="{{ route('patrimonio.pdf.patrimonio') }}" target="_blank" class="btn btn-primary">Gerar PDF</a>
+    <div class="d-flex" style="max-width:300px">
+        <a class="w-100 btn btn-primary" style="margin-right: 10px" href="{{ route('patrimonio.create') }}">Cadastrar
+            item</a>
     </div>
 
 
