@@ -15,12 +15,13 @@ return new class extends Migration
     {
         Schema::create('classificacoes', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
 
             $table->string('nome');
             $table->string('codigo')->unique();
             $table->double('residual');
             $table->integer('vida_util');
+
+            $table->timestamps();
         });
     }
 

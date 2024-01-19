@@ -16,15 +16,18 @@ class Patrimonio extends Model
         return $this->belongsTo(Servidor::class);
     }
 
-    public function classificacao(){
-        return $this->belongsTo(Classificacao::class);
+    public function subgrupo()
+    {
+        return $this->belongsTo(Subgrupo::class);
     }
 
-    public function origem(){
+    public function origem()
+    {
         return $this->belongsTo(Origem::class);
     }
 
-    public function sala(){
+    public function sala()
+    {
         return $this->belongsTo(Sala::class);
     }
 

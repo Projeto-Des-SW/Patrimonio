@@ -20,15 +20,9 @@ return new class extends Migration
             $table->date('data_movimento');
             $table->date('data_conclusao')->nullable();
 
-            $table->unsignedInteger('servidor_destino_id');
-            $table->foreign('servidor_destino_id')->references('id')->on('servidores');
-
-            $table->unsignedInteger('servidor_origem_id');
-            $table->foreign('servidor_origem_id')->references('id')->on('servidores');
-
-
-            $table->unsignedInteger('tipo_movimento_id');
-            $table->foreign('tipo_movimento_id')->references('id')->on('tipos_movimento');
+            $table->foreignId('servidor_destino_id')->constrainedTo('servidores');
+            $table->foreignId('servidor_origem_id')->constrained('servidores');
+            $table->foreignId('tipo_movimento_id')->constrainedTo('tipos_movimento');
 
             $table->timestamps();
         });

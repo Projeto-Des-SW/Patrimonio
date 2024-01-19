@@ -15,7 +15,6 @@ return new class extends Migration
     {
         Schema::create('tipos_movimento', function (Blueprint $table) {
             $table->id();
-
             $table->string('nome');
 
             $table->timestamps();
