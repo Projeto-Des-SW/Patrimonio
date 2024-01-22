@@ -47,43 +47,43 @@
             </tbody>
         </table>
     </div>
-@if (isset($setor_pai))
-    <div class="row mt-4">
-        <div class="col-3">
-            <button class="btn btn-secondary w-100" onclick="window.history.go(-1); return false;">Voltar</button>
-        </div>
-    </div>
-@endif
-
-<div class="col-3">
     @if (isset($setor_pai))
-        <a class="w-100 btn btn-primary" style="max-width: 200px"
-            href="{{ route('setor.create', ['setor_pai_id' => $setor_pai->id]) }}">Cadastrar</a>
-    @else
-        <a class="w-100 btn btn-primary" style="max-width: 200px" href="{{ route('setor.create') }}">Cadastrar</a>
+        <div class="row mt-4">
+            <div class="col-3">
+                <button class="btn btn-secondary w-100" onclick="window.history.go(-1); return false;">Voltar</button>
+            </div>
+        </div>
     @endif
-</div>
 
-<script>
-    $(document).ready(function() {
-        $('#setor_table').DataTable({
-            searching: true,
-            "language": {
-                "search": "Pesquisar: ",
-                "lengthMenu": "Mostrar _MENU_ registros por página",
-                "info": "Exibindo página _PAGE_ de _PAGES_",
-                "infoEmpty": "Nenhum registro disponível",
-                "zeroRecords": "Nenhum registro disponível",
-                "paginate": {
-                    "previous": "Anterior",
-                    "next": "Próximo"
-                }
-            },
-            "columnDefs": [{
-                "targets": [3],
-                "orderable": false
-            }]
+    <div class="col-3">
+        @if (isset($setor_pai))
+            <a class="w-100 btn btn-primary" style="max-width: 200px"
+                href="{{ route('setor.create', ['setor_pai_id' => $setor_pai->id]) }}">Cadastrar</a>
+        @else
+            <a class="w-100 btn btn-primary" style="max-width: 200px" href="{{ route('setor.create') }}">Cadastrar</a>
+        @endif
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            $('#setor_table').DataTable({
+                searching: true,
+                "language": {
+                    "search": "Pesquisar: ",
+                    "lengthMenu": "Mostrar _MENU_ registros por página",
+                    "info": "Exibindo página _PAGE_ de _PAGES_",
+                    "infoEmpty": "Nenhum registro disponível",
+                    "zeroRecords": "Nenhum registro disponível",
+                    "paginate": {
+                        "previous": "Anterior",
+                        "next": "Próximo"
+                    }
+                },
+                "columnDefs": [{
+                    "targets": [3],
+                    "orderable": false
+                }]
+            });
         });
-    });
-</script>
+    </script>
 @endsection

@@ -16,7 +16,7 @@ footer{
     background-color: #1A2876;
     
     height:max-content;
-    position: static;
+    position: relative;
     bottom: 0;
 }
 

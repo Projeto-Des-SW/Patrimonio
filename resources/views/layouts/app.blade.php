@@ -19,8 +19,6 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
-        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css">
 
     <!-- Scripts -->
@@ -32,7 +30,6 @@
     </script> --}}
     
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.js"></script>
 
@@ -42,9 +39,10 @@
 <body>
     @include('layouts.components.navbar')
     
-    <main class="p-1 w-100 whitesmoke-background" style="height: 95vh;">
+    @include('layouts.components.messages')
+    <main class="p-1 w-100 whitesmoke-background">
         
-        @include('layouts.components.messages')
+        
         @yield('content')
             
         

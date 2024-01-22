@@ -98,6 +98,7 @@ Route::prefix('patrimonio')->name('patrimonio.')->controller(PatrimonioControlle
     Route::get('/{patrimonio_id}/codigos', 'codigosPatrimonio')->name('codigo.index');
     Route::get('/codigos/{codigo_id}/delete', 'codigoDelete')->name('codigo.delete');
     Route::post('/codigo/store', 'codigoStore')->name('codigo.store');
+    Route::get('/busca', 'busca')->name('busca.get');
 
     Route::get('/getSalas', 'getSalas')->name('getSalas');
     Route::get('/gerar-relatorio-patrimonio', 'gerarRelatorio')->name('pdf.patrimonio');

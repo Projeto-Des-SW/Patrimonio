@@ -1,14 +1,20 @@
 @extends('layouts.app')
 @section('content')
-    <div class="row">
-        <div class="">
-            @include('layouts.components.header', ['page_title' => 'Patrimônios', 'back' => false])
-        </div>
-
+    
+<div class="container">
+    <div>
+        <a href="{{ route('patrimonio.create') }}">Patrimônio <p><img class="rounded-4" style="background-color: #1A2876" src="{{asset('images/adicionar.png')}}" alt=""></p></a>
     </div>
-
-    <div class="container">
-        <table class="table table-hover shadow-lg" style="border-radius: 10px; overflow:hidden; ">
+    <div class="d-flex justify-content-center">
+        <form action="{{route('patrimonio.busca.get')}}" method="get">
+            <div class="input-group">
+                <input  class="form-control-md" type="text" name="busca" id="busca">
+                <button type="submit"><img src="{{asset('images/busca.png')}}" alt=""></button>
+            </div>
+        </form>
+        <button>filtro</button>
+    </div>
+    <table class="table table-hover shadow-lg" style="border-radius: 10px; overflow:hidden; ">
             <thead class="text-md-center" style="background-color: #1A2876; color: white;">
                 <tr>
                     <th >ID</th>
@@ -48,13 +54,14 @@
                 @endforeach
             </tbody>
         </table>
+        <div class="d-flex justify-content-center mt-5">
+            {{ $patrimonios->links('pagination::bootstrap-4') }}
+          </div>
+           
     </div>
-
-    <div class="d-flex" style="max-width:300px">
-        <a class="w-100 btn btn-primary" style="margin-right: 10px" href="{{ route('patrimonio.create') }}">Cadastrar
-            item</a>
-    </div>
-
+    
+    
+  
 
 
     <!-- Modal -->
