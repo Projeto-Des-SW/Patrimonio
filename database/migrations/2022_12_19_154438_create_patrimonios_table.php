@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('nota_fiscal')->nullable(); //VerificarDepois
             $table->string('descricao');
             $table->boolean('aprovado')->default(true);
-            $table->string('observacao')->nullable();
+            $table->text('observacao')->nullable();
             $table->date('data_compra')->nullable();
             $table->double('valor');
 

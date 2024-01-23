@@ -34,13 +34,13 @@
                 <div class="mb-3">
                     <div class="row">
                         <div class="col">
-                            <label for="nomeItem" class="form-label labels">Nome do
+                            <label for="nome" class="form-label labels">Nome do
                                 item:</label>
-                            <input type="text" class="form-control" name="nomeItem" id="nomeItem">
+                            <input type="text" class="form-control" name="nome" id="nome" required>
                         </div>
                         <div class="col">
                             <label for="descricao" class="form-label labels">Descrição:</label>
-                            <input type="text" class="form-control" name="descricao" id="descricao">
+                            <input type="text" class="form-control" name="descricao" id="descricao" required>
                         </div>
                     </div>
                 </div>
@@ -49,23 +49,32 @@
                     <div class="row">
                         <div class="col">
                             <label for="classificacao" class="form-label labels">Classificação:</label>
-                            <select class="form-select selects" aria-label="Selecione uma classificação" id="classificacao"
-                                name="classificacao">
+                            <select class="form-select selects" aria-label="Selecione uma classificação" id="subgrupo_id"
+                                name="subgrupo_id">
                                 <option selected>Selecione uma classificação</option>
+                                @foreach ($subgrupos as $subgrupo)
+                                    <option value="{{ $subgrupo->id }}">{{ $subgrupo->nome }}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="col">
                             <label for="origem" class="form-label labels">Origem:</label>
-                            <select class="form-select selects" aria-label="Selecione uma Origem" id="origem"
-                                name="origem">
+                            <select class="form-select selects" aria-label="Selecione uma Origem" id="origem_id"
+                                name="origem_id">
                                 <option selected>Selecione uma Origem</option>
+                                @foreach ($origens as $origem)
+                                    <option value="{{ $origem->id }}">{{ $origem->nome }}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="col">
                             <label for="situacao" class="form-label labels">Situação:</label>
-                            <select class="form-select selects" aria-label="Selecione uma Situação" id="situacao"
-                                name="situacao">
+                            <select class="form-select selects" aria-label="Selecione uma Situação" id="situacao_id"
+                                name="situacao_id">
                                 <option selected>Selecione uma Situação</option>
+                                @foreach ($situacoes as $situacao)
+                                    <option value="{{ $situacao->id }}">{{ $situacao->nome }}</option>
+                                @endforeach
                             </select>
                         </div>
                     </div>
@@ -75,23 +84,29 @@
                     <div class="row">
                         <div class="col">
                             <label for="predio" class="form-label labels">Predio:</label>
-                            <select class="form-select selects" aria-label="Default select example" id="predio"
-                                name="predio">
+                            <select class="form-select selects" onchange="filtrarSalas()" aria-label="Selecione um predio"
+                                id="predio_id" name="predio_id">
                                 <option selected>Selecione um predio</option>
+                                @foreach ($predios as $predio)
+                                    <option value="{{ $predio->id }}">{{ $predio->nome }}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="col">
                             <label for="sala" class="form-label labels">Sala:</label>
-                            <select class="form-select selects" aria-label="Default select example" id="sala"
-                                name="sala">
+                            <select class="form-select selects" aria-label="Selecione uma sala" id="sala_id"
+                                name="sala_id">
                                 <option selected>Selecione uma sala</option>
                             </select>
                         </div>
                         <div class="col">
                             <label for="servidor" class="form-label labels">Servidor:</label>
-                            <select class="form-select selects" aria-label="Default select example" id="servidor"
-                                name="servidor">
+                            <select class="form-select selects" aria-label="Selecione um servidor" id="servidor_id"
+                                name="servidor_id">
                                 <option selected>Selecione um servidor</option>
+                                @foreach ($servidores as $servidor)
+                                    <option value="{{ $servidor->id }}">{{ $servidor->user->name }}</option>
+                                @endforeach
                             </select>
                         </div>
                     </div>
@@ -100,16 +115,16 @@
                 <div class="mb-3">
                     <div class="row">
                         <div class="col">
-                            <label for="dataCompra" class="form-label labels">Data de compra:</label>
-                            <input type="date" class="form-control selects" name="dataCompra" id="dataCompra">
+                            <label for="data_compra" class="form-label labels">Data de compra:</label>
+                            <input type="date" class="form-control selects" name="data_compra" id="data_compra">
                         </div>
                         <div class="col">
-                            <label for="valorItem" class="form-label labels">Valor do item:</label>
-                            <input type="number" class="form-control" name="valorItem" id="valorItem">
+                            <label for="valor" class="form-label labels">Valor do item:</label>
+                            <input type="number" class="form-control" name="valor" id="valor" required>
                         </div>
                         <div class="col">
                             <label for="contaContabil" class="form-label labels">Conta contábil:</label>
-                            <input type="number" class="form-control" name="contaContabil" id="contaContabil">
+                            <input type="text" class="form-control" name="contaContabil" id="contaContabil" required>
                         </div>
                     </div>
                 </div>
@@ -118,11 +133,11 @@
                     <div class="row">
                         <div class="col">
                             <label for="empenho" class="form-label labels">Empenho:</label>
-                            <input type="text" class="form-control" name="empenho" id="empenho">
+                            <input type="text" class="form-control" name="empenho" id="empenho" required>
                         </div>
                         <div class="col">
-                            <label for="notaFiscal" class="form-label labels">Nota fiscal:</label>
-                            <input type="text" class="form-control" name="notaFiscal" id="notaFiscal">
+                            <label for="nota_fiscal" class="form-label labels">Nota fiscal:</label>
+                            <input type="text" class="form-control" name="nota_fiscal" id="nota_fiscal">
                         </div>
                         <div class="col">
                             <label for="processoLicitacao" class="form-label labels">Processo de licitação:</label>
@@ -150,9 +165,9 @@
                             </div>
                         </div>
                         <div class="col">
-                            <label for="observacoes" class="form-label labels">Observações pertinentes a este
+                            <label for="observacao" class="form-label labels">Observações pertinentes a este
                                 patrimônio:</label>
-                            <textarea class="form-control" id="observacoes" rows="3"></textarea>
+                            <textarea class="form-control" id="observacao" name="observacao" rows="3"></textarea>
                         </div>
                     </div>
                 </div>
@@ -168,13 +183,35 @@
         </div>
     </div>
 
-    {{-- <form method="POST" action="{{ route('patrimonio.store') }}" enctype="multipart/form-data">
-        @csrf
-        @include('patrimonio.form')
-        <div class="row mt-4">
-            <div class="">
-                <button style="max-width: 200px" type="submit" class="btn btn-success w-100">Salvar</button>
-            </div>
-        </div>
-    </form> --}}
+    <script>
+        // Convertendo os dados PHP para JavaScript
+        var predios = {!! json_encode($predios) !!};
+
+        function filtrarSalas() {
+            // Obter o valor selecionado do prédio
+            var predioSelecionadoId = document.getElementById("predio_id").value;
+
+            // Encontrar o prédio selecionado nos dados carregados
+            var predioSelecionado = predios.find(function(predio) {
+                return predio.id == predioSelecionadoId;
+            });
+
+            // Obter as salas do prédio selecionado
+            var salasDoPredio = predioSelecionado ? predioSelecionado.salas : [];
+
+            // Atualizar as opções do select de salas
+            var selectSala = document.getElementById("sala_id");
+
+            // Limpar as opções existentes
+            selectSala.innerHTML = "";
+
+            // Adicionar as novas opções
+            for (var i = 0; i < salasDoPredio.length; i++) {
+                var option = document.createElement("option");
+                option.text = salasDoPredio[i].nome;
+                option.value = salasDoPredio[i].id;
+                selectSala.add(option);
+            }
+        }
+    </script>
 @endsection
