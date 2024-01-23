@@ -19,7 +19,6 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
-    integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css">
 
     <!-- Scripts -->
@@ -35,7 +34,7 @@
 <body>
     @include('layouts.components.navbar')
 
-    <main class="p-1 w-100 whitesmoke-background" style="height: 100vh;">
+    <main class="p-1 w-100 whitesmoke-background" style="height: 88vh;">
 
         @include('layouts.components.messages')
         @yield('content')
