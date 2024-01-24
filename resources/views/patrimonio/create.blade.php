@@ -24,7 +24,7 @@
 
         .radio-label {
             font-size: 22px;
-            border-radius: 9px;
+            border-radius: 8px;
             width: 120px
         }
     </style>
@@ -38,7 +38,7 @@
                     <strong>
                         <a href="{{ route('patrimonio.index') }}" class="text-decoration-none link-primary"><span
                                 style="color: #3252C1">Patrimônio</span></a>
-                        > Cadastrar patrimônio
+                        > Cadastrar Patrimônio
                     </strong>
                 </h1>
             </div>
@@ -207,8 +207,8 @@
                 <div class="mb-5">
                     <div class="row justify-content-center">
                         <div class="col-auto">
-                            <button class="btn btn-primary submit"
-                                style="background-color: #3252C1; height: 120%; width: 130%; font-weight: 600; font-size: 150%">Cadastrar</button>
+                            <button class="btn btn-primary submit radio-label p-2"
+                                style="background-color: #3252C1; height: 120%; width: 140%; font-weight: 500; font-size: 27px">Cadastrar</button>
                         </div>
                     </div>
                 </div>
