@@ -63,7 +63,7 @@
                                     class="red-asterisk">*</span></label>
                             <select class="form-select selects inputs" aria-label="Selecione uma classificação"
                                 id="subgrupo_id" name="subgrupo_id">
-                                <option selected>Selecione uma classificação</option>
+                                <option selected value="">Selecione uma classificação</option>
                                 @foreach ($subgrupos as $subgrupo)
                                     <option value="{{ $subgrupo->id }}">{{ $subgrupo->nome }}</option>
                                 @endforeach
@@ -74,7 +74,7 @@
                                     class="red-asterisk">*</span></label>
                             <select class="form-select selects inputs" aria-label="Selecione uma Origem" id="origem_id"
                                 name="origem_id">
-                                <option selected>Selecione uma Origem</option>
+                                <option selected value="">Selecione uma Origem</option>
                                 @foreach ($origens as $origem)
                                     <option value="{{ $origem->id }}">{{ $origem->nome }}</option>
                                 @endforeach
@@ -85,7 +85,7 @@
                                     class="red-asterisk">*</span></label>
                             <select class="form-select selects inputs" aria-label="Selecione uma Situação" id="situacao_id"
                                 name="situacao_id">
-                                <option selected>Selecione uma Situação</option>
+                                <option selected value="">Selecione uma Situação</option>
                                 @foreach ($situacoes as $situacao)
                                     <option value="{{ $situacao->id }}">{{ $situacao->nome }}</option>
                                 @endforeach
@@ -101,7 +101,7 @@
                                     class="red-asterisk">*</span></label>
                             <select class="form-select selects inputs" onchange="filtrarSalas()"
                                 aria-label="Selecione um prédio" id="predio_id" name="predio_id">
-                                <option selected>Selecione um prédio</option>
+                                <option selected value="">Selecione um prédio</option>
                                 @foreach ($predios as $predio)
                                     <option value="{{ $predio->id }}">{{ $predio->nome }}</option>
                                 @endforeach
@@ -112,7 +112,7 @@
                                     class="red-asterisk">*</span></label>
                             <select class="form-select selects inputs" aria-label="Selecione uma sala" id="sala_id"
                                 name="sala_id">
-                                <option selected>Selecione uma sala</option>
+                                <option selected value="">Selecione uma sala</option>
                             </select>
                         </div>
                         <div class="col">
@@ -120,7 +120,7 @@
                                     class="red-asterisk">*</span></label>
                             <select class="form-select selects inputs" aria-label="Selecione um servidor" id="servidor_id"
                                 name="servidor_id">
-                                <option selected>Selecione um servidor</option>
+                                <option selected value="">Selecione um servidor</option>
                                 @foreach ($servidores as $servidor)
                                     <option value="{{ $servidor->id }}">{{ $servidor->user->name }}</option>
                                 @endforeach
@@ -165,7 +165,7 @@
                             <label for="processoLicitacao" class="form-label labels">Processo de licitação:</label>
                             <select class="form-select selects inputs" aria-label="Selecione o processo de licitação"
                                 id="processoLicitacao" name="processoLicitacao">
-                                <option selected>Selecione o processo de licitação</option>
+                                <option selected value="">Selecione o processo de licitação</option>
                             </select>
                         </div>
                     </div>
