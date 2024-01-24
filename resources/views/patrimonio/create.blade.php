@@ -177,11 +177,13 @@
                             <label for="#" class="mb-2 labels">Bem privado? <span
                                     class="red-asterisk">*</span></label>
                             <div class="form-check d-flex justify-content-between px-0 me-4">
-                                <input class="btn-check" type="radio" name="bemPrivado" id="privadoSim">
+                                <input class="btn-check" type="radio" name="bemPrivado" id="privadoSim"
+                                    value="1">
                                 <label class="btn btn-primary col-5" for="privadoSim" style="background-color: #1A2876;">
                                     SIM
                                 </label>
-                                <input class="btn-check" type="radio" name="bemPrivado" id="privadoNao" checked>
+                                <input class="btn-check" type="radio" name="bemPrivado" id="privadoNao"
+                                    value="0" checked>
                                 <label class="btn btn-secondary col-5" for="privadoNao">
                                     NÃO
                                 </label>
