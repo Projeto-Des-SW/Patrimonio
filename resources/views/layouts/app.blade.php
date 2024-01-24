@@ -32,17 +32,21 @@
 </head>
 
 <body>
-    @include('layouts.components.navbar')
+    <header class="fixed-top">
+        @include('layouts.components.navbar')
+    </header>
 
-    <main class="p-1 w-100 whitesmoke-background" style="height: 88vh;">
+    <div class="mb-5"></div>
 
+    <main class="whitesmoke-background" style="min-height: 87vh">
         @include('layouts.components.messages')
+
         @yield('content')
-
-
     </main>
 
-    @include('layouts.components.footer')
+    <footer>
+        @include('layouts.components.footer')
+    </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">

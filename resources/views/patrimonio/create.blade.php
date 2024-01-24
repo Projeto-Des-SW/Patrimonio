@@ -21,6 +21,12 @@
         .red-asterisk {
             color: #AA2E2E;
         }
+
+        .radio-label {
+            font-size: 22px;
+            border-radius: 9px;
+            width: 120px
+        }
     </style>
 @endsection
 
@@ -179,12 +185,13 @@
                             <div class="form-check d-flex justify-content-between px-0 me-4">
                                 <input class="btn-check" type="radio" name="bemPrivado" id="privadoSim"
                                     value="1">
-                                <label class="btn btn-primary col-5" for="privadoSim" style="background-color: #1A2876;">
+                                <label class="btn btn-primary col-5 py-2 radio-label" for="privadoSim"
+                                    style="background-color: #1A2876;">
                                     SIM
                                 </label>
                                 <input class="btn-check" type="radio" name="bemPrivado" id="privadoNao"
                                     value="0" checked>
-                                <label class="btn btn-secondary col-5" for="privadoNao">
+                                <label class="btn btn-secondary col-5 py-2 radio-label" for="privadoNao">
                                     NÃO
                                 </label>
                             </div>
@@ -197,7 +204,7 @@
                     </div>
                 </div>
 
-                <div class="mb-4">
+                <div class="mb-5">
                     <div class="row justify-content-center">
                         <div class="col-auto">
                             <button class="btn btn-primary submit"
