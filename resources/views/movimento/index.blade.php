@@ -7,54 +7,54 @@
 
     </div>
 
-    <table class="table table-hover table-responsive mx-2 mt-4" id="movimento_table">
-        <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Servidor de Origem</th>
-            <th scope="col">Servidor de Destino</th>
-            <th scope="col">Tipo do Movimento</th>
-            <th scope="col">Itens do Movimento</th>
-            <th class="text-center" scope="col">Ações</th>
-        </tr>
-        </thead>
-        <tbody>
-        @foreach($movimentos as $movimento)
+    <div class="container">
+        <table class="table table-hover shadow-lg" style="border-radius: 10px; overflow:hidden; ">
+            <thead class="text-md-center" style="background-color: #1A2876; color: white;">
             <tr>
-                <td>{{$movimento->id}}</td>
-                <td>{{$movimento->servidor_origem->user->name}}</td>
-                <td>{{$movimento->servidor_destino->user->name}}</td>
-                <td>{{$movimento->tipo_movimento->nome}}</td>
-                <td>
-                    @foreach($movimento->itens_movimento->take(3) as $index => $item)
-                        {{Str::limit($item->nome, 15)}}@if($index < 2)
-                            ,
-                        @endif
-                    @endforeach
-                </td>
-                <td class="d-flex justify-content-around">
-                    @if($movimento->status != 'Concluido')
-                        <a class="btn btn-primary rounded-circle d-flex justify-content-center align-items-center action-button"
-                           href="{{route('movimento.edit', ['movimento_id' => $movimento->id])}}">
-                            <img src="{{URL::asset('/assets/edit_icon.svg')}}" width="15px" alt="Icon de edição">
-                        </a>
-                        <a class="btn btn-danger rounded-circle d-flex justify-content-center align-items-center action-button"
-                           href="{{route('movimento.delete', ['movimento_id' => $movimento->id])}}">
-                            <img src="{{URL::asset('/assets/delete.svg')}}" width="20px" alt="Icon de remoção">
-                        </a>
-                    @else
-                        <button class="btn btn-primary rounded-circle d-flex justify-content-center align-items-center action-button" disabled>
-                            <img src="{{URL::asset('/assets/edit_icon.svg')}}" width="15px" alt="Icon de edição">
-                        </button>
-                        <button class="btn btn-danger rounded-circle d-flex justify-content-center align-items-center action-button" disabled>
-                            <img src="{{URL::asset('/assets/delete.svg')}}" width="20px" alt="Icon de remoção">
-                        </button>
-                    @endif
-                </td>
+                <th>#</th>
+                <th>Servidor de Origem</th>
+                <th>Servidor de Destino</th>
+                <th>Tipo do Movimento</th>
+                <th>Itens do Movimento</th>
+                <th>Ações</th>
             </tr>
-        @endforeach
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+            @foreach($movimentos as $movimento)
+                <tr class="text-md-center">
+                    <td class="py-4">{{$movimento->id}}</td>
+                    <td class="py-4">{{$movimento->servidor_origem->user->name}}</td>
+                    <td class="py-4">{{$movimento->servidor_destino->user->name}}</td>
+                    <td class="py-4">{{$movimento->tipo_movimento->nome}}</td>
+                    <td class="py-4">
+                        @foreach($movimento->itens_movimento->take(3) as $index => $item)
+                            {{Str::limit($item->nome, 15)}}@if($index < 2)
+                                ,
+                            @endif
+                        @endforeach
+                    </td>
+                    <td class="py-4">
+                        @if($movimento->status != 'Concluido')
+                            <a href="{{route('movimento.edit', ['movimento_id' => $movimento->id])}}">
+                                <img src="{{asset('/images/pencil.png')}}" width="24px" alt="Icon de edição">
+                            </a>
+                            <a href="{{route('movimento.delete', ['movimento_id' => $movimento->id])}}">
+                                <img src="{{asset('/images/delete.png')}}" width="24px" alt="Icon de remoção">
+                            </a>
+                        @else
+                            <button class="btn btn-primary rounded-circle d-flex justify-content-center align-items-center action-button" disabled>
+                                <img src="{{asset('/images/pencil.png')}}" width="24px" alt="Icon de edição">
+                            </button>
+                            <button class="btn btn-danger rounded-circle d-flex justify-content-center align-items-center action-button" disabled>
+                                <img src="{{asset('/images/delete.png')}}" width="24px" alt="Icon de remoção">
+                            </button>
+                        @endif
+                    </td>
+                </tr>
+            @endforeach
+            </tbody>
+        </table>
+    </div>
 
     <div class="d-flex" style="max-width:600px">
         <a class="w-100 btn btn-primary" style="margin-right: 10px" href="{{route('movimento.create')}}">Cadastrar

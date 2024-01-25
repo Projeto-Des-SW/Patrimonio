@@ -24,7 +24,8 @@ class PatrimonioController extends Controller
 {
     public function index()
     {
-        $patrimonios = Patrimonio::all();
+
+        $patrimonios = Patrimonio::paginate(1);
 
         return view('patrimonio.index', compact('patrimonios'));
     }
@@ -117,5 +118,12 @@ class PatrimonioController extends Controller
         $patrimonio = Patrimonio::find($codigo->patrimonio_id);
         $codigo->delete();
         return view('patrimonio.codigo.index_create', compact('patrimonio'));
+    }
+
+    public function busca(Request $request){
+        $item = $request->input('busca');
+        $patrimonios = Patrimonio::where('nome', 'ilike',  '%' . $item . '%')->paginate(10);
+
+        return view('patrimonio.index', compact('patrimonios'));
     }
 }

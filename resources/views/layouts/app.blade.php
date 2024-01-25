@@ -32,14 +32,15 @@
 </head>
 
 <body>
-    <header class="fixed-top">
-        @include('layouts.components.navbar')
-    </header>
 
-    <div class="mb-5"></div>
+    @include('layouts.components.navbar')
+    
+    @include('layouts.components.messages')
+    <main class="p-1 w-100 whitesmoke-background">
+        
+        
 
-    <main class="whitesmoke-background" style="min-height: 87vh">
-        @include('layouts.components.messages')
+
 
         @yield('content')
     </main>
