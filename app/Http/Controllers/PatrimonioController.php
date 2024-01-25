@@ -16,6 +16,7 @@ use App\Models\Setor;
 use App\Models\Situacao;
 use Illuminate\Http\Request;
 use App\Models\Patrimonio;
+use App\Models\Subgrupo;
 use Illuminate\Support\Facades\Auth;
 use PDF;
 
@@ -23,22 +24,28 @@ class PatrimonioController extends Controller
 {
     public function index()
     {
+
         $patrimonios = Patrimonio::paginate(1);
+
         return view('patrimonio.index', compact('patrimonios'));
     }
 
     public function create()
     {
         $setores = Setor::all();
-        $origens = Origem::all();
-        $predios = Predio::all();
-        $situacoes = Situacao::all();
-        $classificacoes = Classificacao::all();
-        $servidores = Servidor::all();
-        return view('patrimonio.create', compact('setores', 'origens', 'predios', 'situacoes', 'servidores', 'classificacoes'));
+        $origens = Origem::orderBy('nome')->get();
+        $predios = Predio::with('salas')->orderBy('nome')->get();
+        $situacoes = Situacao::orderBy('nome')->get();
+        $subgrupos = Subgrupo::orderBy('nome')->get();
+        $servidores = Servidor::with(['user' => function ($query) {
+            $query->orderBy('name');
+        }])->get();
+
+        return view('patrimonio.create', compact('setores', 'origens', 'predios', 'situacoes', 'servidores', 'subgrupos'));
     }
 
-    public function gerarRelatorio() {
+    public function gerarRelatorio()
+    {
         $patrimonio = Patrimonio::all();
         $pdf = PDF::loadView('pdf.patrimonio', ['patrimonio' => $patrimonio]);
         return $pdf->stream('relatorio_patrimonio.pdf');
@@ -47,34 +54,11 @@ class PatrimonioController extends Controller
 
     public function store(StorePatrimonioRequest $request)
     {
-        if (Auth::user()->user_id == 1) {
-            $patrimonio = Patrimonio::create([
-                'nome' => $request->nome,
-                'descricao' => $request->descricao,
-                'classificacao_id' => $request->classificacao_id,
-                'origem_id' => $request->origem_id,
-                'situacao_id' => $request->situacao_id,
-                'sala_id' => $request->sala_id,
-                'servidor_id' => $request->servidor_id,
-                'data_compra' => $request->data_compra,
-                'valor' => $request->valor,
-                'observacao' => $request->observacao
-            ]);
-        } else {
-            $patrimonio = Patrimonio::create([
-                'nome' => $request->nome,
-                'descricao' => $request->descricao,
-                'classificacao_id' => $request->classificacao_id,
-                'origem_id' => $request->origem_id,
-                'situacao_id' => $request->situacao_id,
-                'sala_id' => $request->sala_id,
-                'servidor_id' => $request->servidor_id,
-                'data_compra' => $request->data_compra,
-                'valor' => $request->valor,
-                'observacao' => $request->observacao,
-                'nota_fiscal' => $request->nota_fiscal
-            ]);
-        }
+        $this->authorize('create', Patrimonio::class);
+        $validatedData = $request->validated();
+
+        $patrimonio = Patrimonio::create($validatedData);
+
         return redirect()->route('patrimonio.codigo.index', ['patrimonio_id' => $patrimonio->id])->with('success', 'Patrimônio Cadastrado com Sucesso, Adicione os Códigos ao Patrimônio.');
     }
 
@@ -115,7 +99,8 @@ class PatrimonioController extends Controller
         return response()->json($salas);
     }
 
-    public function codigosPatrimonio($patrimonio_id){
+    public function codigosPatrimonio($patrimonio_id)
+    {
         $patrimonio = Patrimonio::find($patrimonio_id);
         return view('patrimonio.codigo.index_create', compact('patrimonio'));
     }
@@ -127,7 +112,8 @@ class PatrimonioController extends Controller
         return redirect()->route('patrimonio.codigo.index', ['patrimonio_id' => $request->patrimonio_id])->with('success', 'Código Cadastrado com Sucesso!');
     }
 
-    public function codigoDelete($codigo_id){
+    public function codigoDelete($codigo_id)
+    {
         $codigo = Codigo::find($codigo_id);
         $patrimonio = Patrimonio::find($codigo->patrimonio_id);
         $codigo->delete();
