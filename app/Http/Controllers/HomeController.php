@@ -24,7 +24,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $patrimonios = Patrimonio::all();
+        $patrimonios = Patrimonio::paginate(2);
         return view('patrimonio.index', compact('patrimonios'));
     }
 }
