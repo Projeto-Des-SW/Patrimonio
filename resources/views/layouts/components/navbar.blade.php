@@ -46,7 +46,3 @@
         </div>
     </div>
 </nav>
-
-<script>
-    
-</script>

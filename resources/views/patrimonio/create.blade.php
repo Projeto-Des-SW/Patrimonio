@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('css')
+@push('styles')
     <style>
         .labels {
             color: #1A2876;
@@ -28,7 +28,7 @@
             width: 120px
         }
     </style>
-@endsection
+@endpush
 
 @section('content')
     <div class="container mt-5 mx-auto">

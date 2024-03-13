@@ -29,19 +29,23 @@
 
         <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.js"></script>
 
-        @yield('css')
+        @stack('styles')
     </head>
 
-    <body>
-        @include('layouts.components.navbar')
+    <body class="d-flex flex-column h-100">
+        <header>
+            @include('layouts.components.navbar')
 
-        @include('layouts.components.messages')
-
+            @include('layouts.components.messages')
+        </header>
+        
         <main>
             @yield('content')
         </main>
 
         @include('layouts.components.footer')
+        
+        @stack('scripts')
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">

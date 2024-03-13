@@ -1,34 +1,12 @@
-
-body {
-    display: flex;
-    min-height: 100vh;
-    flex-direction: column;
-
-}
-body a{
-    text-decoration: none;
-}
-
-main{
-    flex-grow: 1;
-    padding-bottom: 12rem;
-}
-
 footer{
     align-items: center;
     background-color: #1A2876;
-
-  
 }
 
 .logo-ufape{
     width: 60px;
 }
+
 .logo-lmts{
     width: 110px;
 }
-
-
-
-
-
