@@ -46,6 +46,9 @@
                     @endempty
             </tbody>
         </table>
+        <div class="d-flex justify-content-center mt-5">
+            {{ $setores->links('pagination::bootstrap-4') }}
+        </div>
     </div>
     @if (isset($setor_pai))
         <div class="row mt-4">

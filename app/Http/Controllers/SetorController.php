@@ -13,7 +13,7 @@ class SetorController extends Controller
 {
     public function index($setor_pai_id = null)
     {
-        $setores = Setor::where('setor_pai_id', null)->get();
+        $setores = Setor::where('setor_pai_id', null)->paginate(5);
         if ($setor_pai_id != null) {
             $setor_pai = Setor::find($setor_pai_id);
             $setores = $setor_pai->setores;

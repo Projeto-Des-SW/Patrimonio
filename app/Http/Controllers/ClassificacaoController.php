@@ -13,11 +13,11 @@ use Illuminate\Http\Request;
 class ClassificacaoController extends Controller
 {
     public function index(){
-        $classificacaos = Classificacao::all();
+        $classificacaos = Classificacao::paginate(5);
         return view('classificacao.index', compact('classificacaos'));
     }
 
-    public function create()
+aA    public function create()
     {
         return view('classificacao.create');
     }

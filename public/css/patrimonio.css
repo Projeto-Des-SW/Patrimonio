@@ -1,0 +1,9 @@
+table{
+    border-radius: 10px; 
+    overflow:hidden; 
+
+}
+thead{
+    background-color: #1A2876; 
+    color: white;
+}

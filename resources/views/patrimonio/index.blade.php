@@ -1,62 +1,70 @@
 @extends('layouts.app')
 @section('content')
-    
+   
+ <link rel="stylesheet" href="/css/patrimonio.css">
+
+
 <div class="container">
     <div>
-        <a href="{{ route('patrimonio.create') }}">Patrimônio <p><img class="rounded-4" style="background-color: #1A2876" src="{{asset('images/adicionar.png')}}" alt=""></p></a>
+        <h3>
+            Patrimônio <a href="{{ route('patrimonio.create') }}"> <img class="rounded-4" style="background-color: #1A2876" src="{{asset('images/adicionar.png')}}" alt=""></a>
+        </h3>
     </div>
-    <div class="d-flex justify-content-center">
-        <form action="{{route('patrimonio.busca.get')}}" method="get">
-            <div class="input-group">
-                <input  class="form-control-md" type="text" name="busca" id="busca">
-                <button type="submit"><img src="{{asset('images/busca.png')}}" alt=""></button>
-            </div>
-        </form>
-        <button>filtro</button>
+    
+    <div class="row justify-content-center">
+        <div class="col-md-11">
+            <form action="{{route('patrimonio.busca.get')}}" method="get">
+                <div class="input-group">
+                    <input  class="form-control" type="text" name="busca" id="busca" placeholder="Pesquisar por nome">
+                    <button style="background-color: #1A2876" class="btn" type="submit"><img src="{{asset('images/busca.png')}}" alt=""></button>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-1">
+            <button class="btn btn-primary">filtro</button>
+        </div>
     </div>
-    <table class="table table-hover shadow-lg" style="border-radius: 10px; overflow:hidden; ">
-            <thead class="text-md-center" style="background-color: #1A2876; color: white;">
-                <tr>
-                    <th >ID</th>
-                    <th >Nome</th>
-                    <th >Prédio</th>
-                    <th >Sala</th>
-                    <th >Ações</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($patrimonios as $patrimonio)
-                    <tr class="text-md-center">
-                        <td class="py-4">{{ $patrimonio->id }}</td>
-                        <td class="py-4">{{ $patrimonio->nome }}</td>
-                        <td class="py-4">{{ $patrimonio->sala->predio->nome }}</td>
-                        <td class="py-4">{{ $patrimonio->sala->nome }}</td>
-                        <td class="py-4">
-                            <div>
-                                <a class=""
-                                    href="{{ route('patrimonio.edit', ['patrimonio_id' => $patrimonio->id]) }}">
-                                    <img src="{{asset('/images/pencil.png')}}" width="24px" alt="Icon de edição">
-
-                                </a>
-                                <a class=""
-                                    href="{{ route('patrimonio.delete', ['patrimonio_id' => $patrimonio->id]) }}">
-                                    <img src="{{asset('/images/delete.png')}}" width="24px" alt="Icon de remoção">
-                                    
-                                </a>
-                                <a type="button" data-bs-toggle="modal" data-bs-target="#myModal"
-                                    data-param1="{{ $patrimonio }}" data-param2="{{ $patrimonio->classificacao }}">
-                                    <img src="{{asset('/images/info.png')}}" width="24px" alt="Icon de edição">
-
-                                </a>
-                            </div>
-                        </td>
+    <div>
+        <table class="table table-hover shadow-lg">
+                <thead class="text-md-center">
+                    <tr>
+                        <th >ID</th>
+                        <th >Nome</th>
+                        <th >Prédio</th>
+                        <th >Sala</th>
+                        <th >Ações</th>
                     </tr>
-                @endforeach
-            </tbody>
-        </table>
-        <div class="d-flex justify-content-center mt-5">
-            {{ $patrimonios->links('pagination::bootstrap-4') }}
-          </div>
+                </thead>
+                <tbody>
+                    @foreach ($patrimonios as $patrimonio)
+                        <tr class="text-md-center">
+                            <td class="py-4">{{ $patrimonio->id }}</td>
+                            <td class="py-4">{{ $patrimonio->nome }}</td>
+                            <td class="py-4">{{ $patrimonio->sala->predio->nome }}</td>
+                            <td class="py-4">{{ $patrimonio->sala->nome }}</td>
+                            <td class="py-4">
+                                <div>
+                                    <a href="{{ route('patrimonio.edit', ['patrimonio_id' => $patrimonio->id]) }}">
+                                        <img src="{{asset('/images/pencil.png')}}" width="24px" alt="Icon de edição">
+                                    </a>
+                                    <a href="{{ route('patrimonio.delete', ['patrimonio_id' => $patrimonio->id]) }}">
+                                        <img src="{{asset('/images/delete.png')}}" width="24px" alt="Icon de remoção">
+        
+                                    </a>
+                                    <a type="button" data-bs-toggle="modal" data-bs-target="#myModal"
+                                        data-param1="{{ $patrimonio }}" data-param2="{{ $patrimonio->classificacao }}">
+                                        <img src="{{asset('/images/info.png')}}" width="24px" alt="Icon de edição">
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+            <div class="d-flex justify-content-center mt-5">
+                {{ $patrimonios->links('pagination::bootstrap-4') }}
+            </div>
+    </div>
            
     </div>
     

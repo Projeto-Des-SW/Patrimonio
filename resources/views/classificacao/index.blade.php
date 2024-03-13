@@ -27,17 +27,20 @@
                                 <a href="{{ route('classificacao.edit', ['classificacao_id' => $classificacao->id]) }}">
                                     <img src="{{asset('/images/pencil.png')}}" width="24px" alt="Icon de edição">
                                 </a>
-                                <a href="{{ route('classificacao.delete', ['classificacao_id' => $classificacao->id]) }}">
-                                    <a>
-                                        <img src="{{asset('/images/delete.png')}}" width="24px" alt="Icon de remoção">
-                                    </a>
-                                </a>
+                               
+                                @include('classificacao.modal_delete')
+                                <button type="button"  data-toggle="modal" data-target="#deleteModal">
+                                    <img src="{{asset('/images/delete.png')}}" width="24px" alt="Icon de remoção">
+                                </button>
                             </div>
                         </td>
                     </tr>
                 @endforeach
             </tbody>
         </table>
+        <div class="d-flex justify-content-center mt-5">
+            {{ $classificacaos->links('pagination::bootstrap-4') }}
+        </div>
     </div>
     <div class="col-3">
         <a class="w-100 btn btn-primary" href="{{ route('classificacao.create') }}">Cadastrar</a>

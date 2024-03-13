@@ -1,23 +1,24 @@
 
 body {
-    height: 100vh ;
-    width: 100%; 
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+
 }
 body a{
     text-decoration: none;
 }
 
+main{
+    flex-grow: 1;
+    padding-bottom: 12rem;
+}
+
 footer{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: flex-start;
     align-items: center;
     background-color: #1A2876;
-    
-    height:max-content;
-    position: relative;
-    bottom: 0;
+
+  
 }
 
 .logo-ufape{
@@ -31,27 +32,3 @@ footer{
 
 
 
-@media (width < 992px) {
-    .Text-conteudo-homepage{
-        font-size: 16px;
-        width: 100%;
-    }
-}
-@media (width < 768px) {
-    .home-page-container{
-        flex-direction: column;
-    }
-    .Text-conteudo-homepage{
-        font-size: 14px;
-        width: 100%;
-    }
-}
-@media (width < 576px) {
-    .form-homepage{
-        width: 60vh;
-    }
-    .Text-conteudo-homepage{
-        font-size: 12px;
-        width: 75%;
-    }
-}

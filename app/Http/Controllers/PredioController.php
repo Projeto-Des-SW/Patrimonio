@@ -12,7 +12,7 @@ class PredioController extends Controller
 {
     public function index()
     {
-        $predios = Predio::all();
+        $predios = Predio::paginate(5);
         return view('predio.index', compact('predios'));
     }
 
