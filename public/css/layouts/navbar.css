@@ -1,9 +1,9 @@
-.nav-item a{
-    text-decoration: none;
-    color: black;
-    margin: 0 10px 0 10px;
+nav .nav-link {
+    color: rgb(104, 104, 104);
+    font-weight: bold;
+    font-size: large;
 }
 
-.nav-item a:active{
-    color: #1A2876;
+nav .nav-link.active{
+    color:blue;
 }
