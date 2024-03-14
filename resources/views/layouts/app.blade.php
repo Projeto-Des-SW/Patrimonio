@@ -33,11 +33,9 @@
     </head>
 
     <body class="d-flex flex-column h-100">
-        <header>
-            @include('layouts.components.navbar')
+        @include('layouts.components.navbar')
 
-            @include('layouts.components.messages')
-        </header>
+        @include('layouts.components.messages')
         
         <main>
             @yield('content')

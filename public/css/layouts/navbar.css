@@ -3,6 +3,7 @@
     color: black;
     margin: 0 10px 0 10px;
 }
+
 .nav-item a:active{
     color: #1A2876;
 }
