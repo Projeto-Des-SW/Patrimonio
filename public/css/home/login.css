@@ -1,18 +1,35 @@
 
-
-
 .form-home{
     border-radius: 10px;
     background-color: white;
     width: 500px;
-    height: 450px;
+    height: 480px;
     padding: 20px 30px;
     
 }
 .form-home div{
-    padding: 15px 0px;
+    padding: 15px 5px;
 }
+
+.form-home div.sub-password{
+    padding-top: 0%;
+    padding-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+} 
 
 @media (width < 800px) {
     
+}
+
+h2{
+    color: #3252C1; 
+}
+
+.form-home button[type="submit"] {
+    background-color: #3252C1;
+    border-color: #3252C1;
+    padding: 8px 20px; 
+    font-weight: bold; 
 }
