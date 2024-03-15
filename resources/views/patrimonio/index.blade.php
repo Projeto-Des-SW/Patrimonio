@@ -1,38 +1,48 @@
 @extends('layouts.app')
 @section('content')
    
- <link rel="stylesheet" href="/css/patrimonio.css">
-
-
-<div class="container">
-    <div>
-        <h3>
-            Patrimônio <a href="{{ route('patrimonio.create') }}"> <img class="rounded-4" style="background-color: #1A2876" src="{{asset('images/adicionar.png')}}" alt=""></a>
-        </h3>
-    </div>
+<link rel="stylesheet" href="/css/patrimonio.css">
     
-    <div class="row justify-content-center">
-        <div class="col-md-11">
-            <form action="{{route('patrimonio.busca.get')}}" method="get">
-                <div class="input-group">
-                    <input  class="form-control" type="text" name="busca" id="busca" placeholder="Pesquisar por nome">
-                    <button style="background-color: #1A2876" class="btn" type="submit"><img src="{{asset('images/busca.png')}}" alt=""></button>
-                </div>
-            </form>
+    <div class="titulo mt-5 mb-5">
+        <div class="d-flex align-items-center">
+            <h3 class="mr-3">Patrimônio</h3>
+            <a href="{{ route('patrimonio.create') }}" style="margin-left: 5px;">
+                <img src="{{ asset('assets/plus-circle-fill.svg') }}" alt="Ícone de Adição" style="width: 30px; height: 30px;">
+            </a>
         </div>
-        <div class="col-md-1">
-            <button class="btn btn-primary">filtro</button>
+    
+        <div class="row justify-content-center mt-2 mb-1">
+            <div class="col-md-10">
+                <form action="{{route('patrimonio.busca.get')}}" method="get">
+                    <div class="input-group">
+                        <input class="form-control" type="text" name="busca" id="busca" placeholder="Pesquisar por nome">
+                        <button style="background-color: #1A2876" class="btn" type="submit">
+                            <img src="{{asset('images/busca.png')}}" alt="">
+                        </button>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-2">
+                <button style="background-color: transparent; border: none; display: flex; align-items: center;">
+                    <img src="{{ asset('assets/Vector.svg') }}" alt="Ícone de filtro" style="margin-right: 10px;">
+                    <span style="color: #1A2876;">Filtrar</span>
+                </button>
+            </div>
         </div>
     </div>
-    <div>
-        <table class="table table-hover shadow-lg">
+
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-10">
+                <table class="table table-hover mx-auto">
                 <thead class="text-md-center">
                     <tr>
-                        <th >ID</th>
-                        <th >Nome</th>
-                        <th >Prédio</th>
-                        <th >Sala</th>
-                        <th >Ações</th>
+                        <th class= "col-2" >ID</th>
+                        <th class= "col-2" >Nome</th>
+                        <th class= "col-2"  >Prédio</th>
+                        <th class= "col-2" >Sala</th>
+                        <th class= "col-2" >Ações</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -43,19 +53,11 @@
                             <td class="py-4">{{ $patrimonio->sala->predio->nome }}</td>
                             <td class="py-4">{{ $patrimonio->sala->nome }}</td>
                             <td class="py-4">
-                                <div>
-                                    <a href="{{ route('patrimonio.edit', ['patrimonio_id' => $patrimonio->id]) }}">
-                                        <img src="{{asset('/images/pencil.png')}}" width="24px" alt="Icon de edição">
-                                    </a>
-                                    <a href="{{ route('patrimonio.delete', ['patrimonio_id' => $patrimonio->id]) }}">
-                                        <img src="{{asset('/images/delete.png')}}" width="24px" alt="Icon de remoção">
-        
-                                    </a>
-                                    <a type="button" data-bs-toggle="modal" data-bs-target="#myModal"
-                                        data-param1="{{ $patrimonio }}" data-param2="{{ $patrimonio->classificacao }}">
-                                        <img src="{{asset('/images/info.png')}}" width="24px" alt="Icon de edição">
-                                    </a>
-                                </div>
+                            <div>
+                                <a href="{{ route('patrimonio.edit', ['patrimonio_id' => $patrimonio->id]) }}" style="margin-right: 10px;"><img src="{{asset('/images/pencil.png')}}" width="24px" alt="Icon de edição"></a>
+                                <a href="{{ route('patrimonio.delete', ['patrimonio_id' => $patrimonio->id]) }}" style="margin-right: 10px;"><img src="{{asset('/images/delete.png')}}" width="24px" alt="Icon de remoção"></a>
+                                <a type="button" data-bs-toggle="modal" data-bs-target="#myModal" style="margin-right: 10px;" data-param1="{{ $patrimonio }}" data-param2="{{ $patrimonio->classificacao }}"><img src="{{asset('/images/info.png')}}" width="24px" alt="Icon de edição"></a>
+                            </div>
                             </td>
                         </tr>
                     @endforeach
@@ -65,44 +67,30 @@
                 {{ $patrimonios->links('pagination::bootstrap-4') }}
             </div>
     </div>
-           
-    </div>
-    
-    
-  
-
 
     <!-- Modal -->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="myModalLabel"></h5>
-                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Fechar">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+                    <h5 class="modal-title" id="myModalLabel">Detalhes do Patrimônio</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
                 </div>
                 <div class="modal-body">
-                    <p class="info-label">Classificação: <span class="info-value" id="classificacao"></span></p>
-                    <p class="info-label">Valor residual: <span class="info-value" id="valor_residual"></span></p>
-                    <p class="info-label">Vida útil: <span class="info-value" id="vida_util"></span></p>
-
-                    <div style="margin-top: 45px">
-                        <p class="info-label">Meses de depreciação: <span class="info-value" id="meses"></span></p>
-                        <p class="info-label">Valor inicial do item: <span class="info-value" id="valor_inicial">R$</span>
-                        </p>
-                        <p class="info-label">Depreciação atual do item: <span class="info-value"
-                                id="depreciacao_atual"></span></p>
-                        <p class="info-label">Valor atual do item: <span class="info-value" id="valor_atual"></span></p>
-                    </div>
-
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                    <p><strong>Nome do Patrimônio:</strong> <span id="patrimonio_nome"></span></p>
+                    <p><strong>Classificação:</strong> <span id="classificacao"></span></p>
+                    <p><strong>Valor Residual:</strong> <span id="valor_residual"></span></p>
+                    <p><strong>Vida Útil:</strong> <span id="vida_util"></span> meses</p>
+                    <hr>
+                    <p><strong>Meses de Depreciação:</strong> <span id="meses"></span></p>
+                    <p><strong>Valor Inicial do Item:</strong> R$ <span id="valor_inicial"></span></p>
+                    <p><strong>Depreciação Atual do Item:</strong> R$ <span id="depreciacao_atual"></span></p>
+                    <p><strong>Valor Atual do Item:</strong> R$ <span id="valor_atual"></span></p>
                 </div>
             </div>
         </div>
     </div>
+
 @endsection
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

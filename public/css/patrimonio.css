@@ -1,9 +1,29 @@
 table{
     border-radius: 10px; 
     overflow:hidden; 
+    box-shadow: none;
 
 }
-thead{
+
+.table thead th {
+    font-weight: 500;
+    color: #FFFFFF;
+    background-color:#1A2876 ;
+    padding-top: 12px; 
+    padding-bottom: 12px;
+    box-shadow: none;
+}
+
+.titulo {
+    margin-left: 130px; 
+}
+
+h3{
+    font-weight: 650;
+    color: #3252C1;
+}
+
+.modal-header {
     background-color: #1A2876; 
-    color: white;
+    color: #ffffff; 
 }

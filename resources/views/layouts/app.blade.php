@@ -32,7 +32,7 @@
         @stack('styles')
     </head>
 
-    <body class="d-flex flex-column min-vh-100">
+    <body class="d-flex flex-column min-vh-100 bg-light">
         @include('layouts.components.navbar')
 
         @include('layouts.components.messages')
