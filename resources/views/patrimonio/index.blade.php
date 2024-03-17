@@ -3,17 +3,17 @@
 @section('content')
     <link rel="stylesheet" href="/css/patrimonio.css">
 
-    <div class="titulo mt-5 mb-5">
-        <div class="d-flex align-items-center">
-            <h3 class="mr-3">Patrimônio</h3>
+    <div class="my-5 col-md-8 mx-auto">
+        <div class="d-flex align-items-center mb-2">
+            <h3>Patrimônio</h3>
             <a href="{{ route('patrimonio.create') }}" style="margin-left: 5px;">
                 <img src="{{ asset('assets/plus-circle-fill.svg') }}" alt="Ícone de Adição" style="width: 30px; height: 30px;">
             </a>
         </div>
 
-        <div class="row justify-content-center mt-2 mb-1 w-100">
-            <div class="col-md-10">
-                <form action="{{ route('patrimonio.busca.get') }}" method="get">
+        <div class="d-flex justify-content-center align-items-center">
+            <div class="flex-fill">
+                <form class="mb-0" action="{{ route('patrimonio.busca.get') }}" method="get">
                     <div class="input-group">
                         <input class="form-control" type="text" name="busca" id="busca"
                             placeholder="Pesquisar por nome">
@@ -23,7 +23,7 @@
                     </div>
                 </form>
             </div>
-            <div class="col-md-2">
+            <div class="ms-3">
                 <button style="background-color: transparent; border: none; display: flex; align-items: center;">
                     <img src="{{ asset('assets/Vector.svg') }}" alt="Ícone de filtro" style="margin-right: 10px;">
                     <span style="color: #1A2876;">Filtrar</span>
