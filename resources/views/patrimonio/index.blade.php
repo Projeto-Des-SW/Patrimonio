@@ -1,8 +1,8 @@
 @extends('layouts.app')
+
 @section('content')
-   
 <link rel="stylesheet" href="/css/patrimonio.css">
-    
+
     <div class="titulo mt-5 mb-5">
         <div class="d-flex align-items-center">
             <h3 class="mr-3">Patrimônio</h3>
@@ -11,7 +11,7 @@
             </a>
         </div>
     
-        <div class="row justify-content-center mt-2 mb-1">
+        <div class="row justify-content-center mt-2 mb-1 w-100">
             <div class="col-md-10">
                 <form action="{{route('patrimonio.busca.get')}}" method="get">
                     <div class="input-group">
@@ -30,7 +30,6 @@
             </div>
         </div>
     </div>
-
 
     <div class="container">
         <div class="row justify-content-center">
@@ -90,7 +89,6 @@
             </div>
         </div>
     </div>
-
 @endsection
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
