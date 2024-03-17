@@ -17,15 +17,13 @@ use App\Models\Situacao;
 use Illuminate\Http\Request;
 use App\Models\Patrimonio;
 use App\Models\Subgrupo;
-use Illuminate\Support\Facades\Auth;
 use PDF;
 
 class PatrimonioController extends Controller
 {
     public function index()
     {
-
-        $patrimonios = Patrimonio::paginate(1);
+        $patrimonios = Patrimonio::paginate(5);
 
         return view('patrimonio.index', compact('patrimonios'));
     }

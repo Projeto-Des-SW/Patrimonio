@@ -101,7 +101,7 @@ Route::prefix('patrimonio')->name('patrimonio.')->controller(PatrimonioControlle
     Route::get('/busca', 'busca')->name('busca.get');
 
     Route::get('/getSalas', 'getSalas')->name('getSalas');
-    Route::get('/gerar-relatorio-patrimonio', 'gerarRelatorio')->name('pdf.patrimonio');
+    Route::get('/gerar-relatorio-patrimonio', 'gerarRelatorio')->name('pdf');
 });
 
 Route::prefix('movimento')->name('movimento.')->controller(MovimentoController::class)->group(function () {

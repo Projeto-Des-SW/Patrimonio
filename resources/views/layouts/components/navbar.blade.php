@@ -7,9 +7,17 @@
         <div class="collapse navbar-collapse align-items-center" id="navbarSupportedContent">
             @auth
                 <ul class="navbar-nav mx-auto">
-                    <li class="nav-item me-4">
-                        <a class="nav-link @if(Str::startsWith(request()->path(), 'patrimonio')) active @endif" href="{{ route('patrimonio.index') }}">Patrimônio</a>
-                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle @if(Str::startsWith(request()->path(), 'patrimonio')) active @endif" href="{{ route('predio.index') }}" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          Patrimônio
+                        </a>
+                        <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" href="{{ route('patrimonio.index') }}">Patrimônio</a></li>
+                          <li><a class="dropdown-item" href="{{ route('classificacao.index') }}">Classificação contábil</a></li>
+                          <li><hr class="dropdown-divider"></li>
+                          <li><a class="dropdown-item" href="{{ route('patrimonio.pdf') }}">Relatório</a></li>
+                        </ul>
+                      </li>
                     <li class="nav-item mx-4">
                         <a class="nav-link @if(Str::startsWith(request()->path(), 'predio')) active @endif" href="{{ route('predio.index') }}">Prédios</a>
                     </li>
