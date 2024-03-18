@@ -1,10 +1,9 @@
-<div class="my-5 col-md-8 mx-auto">
+<div id="searchbar" class="my-5 col-md-8 mx-auto">
     <div class="d-flex align-items-center mb-2">
-        <h3>{{ $title }}</h3>
+        <h3 id="title">{{ $title }}</h3>
         @if (isset($addButton))
-            <a href="{{ $addButton }}" style="margin-left: 5px;">
-                <img src="{{ asset('assets/plus-circle-fill.svg') }}" alt="Ícone de Adição"
-                    style="width: 30px; height: 30px;">
+            <a href="{{ $addButton }}" class="ms-2">
+                <img src="{{ asset('assets/plus-circle-fill.svg') }}" alt="Ícone de Adição" id="addButton">
             </a>
         @endif
     </div>
@@ -16,16 +15,16 @@
                     <div class="input-group">
                         <input class="form-control" type="text" name="busca" id="busca"
                             placeholder="Pesquisar por nome">
-                        <button style="background-color: #1A2876" class="btn" type="submit">
+                        <button class="btn" type="submit" id="searchButton">
                             <img src="{{ asset('images/busca.png') }}" alt="Buscar">
                         </button>
                     </div>
                 </form>
             </div>
             <div class="ms-3">
-                <button style="background-color: transparent; border: none; display: flex; align-items: center;">
-                    <img src="{{ asset('assets/Vector.svg') }}" alt="Ícone de filtro" style="margin-right: 10px;">
-                    <span style="color: #1A2876;">Filtrar</span>
+                <button id="filterButton">
+                    <img src="{{ asset('assets/Vector.svg') }}" alt="Ícone de filtro" class="me-1">
+                    <span>Filtrar</span>
                 </button>
             </div>
         </div>
