@@ -1,7 +1,13 @@
 <div id="searchbar" class="my-5">
     <div class="d-flex align-items-center mb-2">
-        <h3 id="title">{{ $title }}</h3>
-
+        @php
+            $title = explode('>', $title);
+        @endphp
+        @if (count($title) > 1)
+            <h3 id="subtitle"><a class="text-decoration-none" href="{{ $titleLink }}">{{ $title[0] }}</a> > {{ $title[1] }}</h3>
+        @else
+            <h3 id="title">{{ $title[0] }}</h3>
+        @endif
         @if (isset($addButton))
             <a href="{{ $addButton }}" class="ms-2">
                 <img src="{{ asset('assets/plus-circle-fill.svg') }}" alt="Ícone de Adição" id="addButton">

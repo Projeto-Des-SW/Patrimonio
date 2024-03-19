@@ -3,6 +3,11 @@
     color: #3252c1;
 }
 
+#searchbar #subtitle {
+    font-weight: 650;
+    color: #676767;
+}
+
 #addButton {
     width: 30px;
     height: 30px;
@@ -21,4 +26,9 @@
     border: none;
     display: flex;
     align-items: center;
+}
+
+#searchbar a {
+    font-weight: 650;
+    color: #3252c1;
 }
