@@ -17,7 +17,7 @@ class ClassificacaoController extends Controller
         return view('classificacao.index', compact('classificacaos'));
     }
 
-aA    public function create()
+    public function create()
     {
         return view('classificacao.create');
     }
