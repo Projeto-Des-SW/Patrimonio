@@ -1,4 +1,4 @@
-<div id="searchbar" class="my-5 col-md-8 mx-auto">
+<div id="searchbar" class="my-5 container">
     <div class="d-flex align-items-center mb-2">
         <h3 id="title">{{ $title }}</h3>
         @if (isset($addButton))
