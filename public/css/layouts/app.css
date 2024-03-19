@@ -1,18 +1,3 @@
-table {
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: none;
-}
-
-.table thead th {
-    font-weight: 500;
-    color: #ffffff;
-    background-color: #1a2876;
-    padding-top: 12px;
-    padding-bottom: 12px;
-    box-shadow: none;
-}
-
 .modal-header {
     background-color: #1a2876;
     color: #ffffff;
