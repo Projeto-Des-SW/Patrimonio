@@ -1,0 +1,13 @@
+.modal-header-predio {
+    background-color: white;
+    color: #3252C1;
+    padding: 15px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+}
+
+.modal-title {
+    font-weight: bold;
+}

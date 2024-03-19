@@ -38,6 +38,7 @@ Route::prefix('predio')->name('predio.')->controller(PredioController::class)->g
     Route::get('/{predio_id}/editar', 'edit')->name('edit');
     Route::put('/update', 'update')->name('update');
     Route::delete('/{predio_id}/delete', 'delete')->name('delete');
+    Route::get('/predio/busca', 'busca')->name('busca.get');
 });
 
 Route::prefix('predio')->name('sala.')->controller(SalaController::class)->group(function () {

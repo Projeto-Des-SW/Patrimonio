@@ -50,4 +50,12 @@ class PredioController extends Controller
             return redirect(route('predio.index'))->with('fail', 'É Necessário Remover todas as Salas do Prédio Antes!');
         }
     }
+
+    public function busca(Request $request)
+    {
+        $termo = $request->input('busca');
+        $predios = Predio::busca($termo);
+    
+        return view('predio.index', compact('predios'));
+    }
 }

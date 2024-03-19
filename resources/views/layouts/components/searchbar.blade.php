@@ -13,6 +13,15 @@
                 <img src="{{ asset('assets/plus-circle-fill.svg') }}" alt="Ícone de Adição" id="addButton">
             </a>
         @endif
+        @if (isset($addButtonModal))
+            <button style="background-color: transparent; border: none; margin-left: 5px;"
+                    @if(isset($addButtonModal['modal']))
+                        data-bs-toggle="modal" data-bs-target="#{{ $addButtonModal['modal'] }}" 
+                    @endif>
+                <img src="{{ asset('assets/plus-circle-fill.svg') }}" alt="Ícone de Adição"
+                    style="width: 30px; height: 30px;">
+            </button>
+        @endif
     </div>
 
     @if (isset($searchForm))
