@@ -1,13 +1,15 @@
 @extends('layouts.app')
 @section('content')
    
-<link rel="stylesheet" href="/css/patrimonio.css">
-<link rel="stylesheet" href="/css/modal.css">
+
+
 @push('styles')
     <link rel="stylesheet" href="/css/layouts/searchbar.css">
+    <link rel="stylesheet" href="/css/layouts/table.css">
+    <link rel="stylesheet" href="/css/modal.css">
 @endpush
 
-@include('layouts.components.searchbar', ['title' => 'Predios', 'addButtonModal' => ['modal' => 'cadastrarPredioModal'], 'searchForm' => route('predio.busca.get')]);
+@include('layouts.components.searchbar', ['title' => 'Predios', 'addButtonModal' => ['modal' => 'cadastrarPredioModal'], 'searchForm' => route('predio.busca.get')])
 
 
 <div class="container">

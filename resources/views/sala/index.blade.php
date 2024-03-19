@@ -6,12 +6,14 @@
 
 @push('styles')
     <link rel="stylesheet" href="/css/layouts/searchbar.css">
+    <link rel="stylesheet" href="/css/layouts/table.css">
 @endpush
 
-@include('layouts.components.searchbar', 
-['title' => 'Predios > Salas',
-'addButtonModal' => ['modal' => 'cadastrarSalaModal'], 
-'searchForm' =>('#')]);
+@include('layouts.components.searchbar', [
+    'title' => 'Predios > Salas',
+    'titleLink' => Route('sala.index', ['predio_id' => $predio->id]),
+    'addButtonModal' => ['modal' => 'cadastrarSalaModal'], 
+    'searchForm' =>('#')]);
 
 <div class="container">
         <div class="row justify-content-center">
