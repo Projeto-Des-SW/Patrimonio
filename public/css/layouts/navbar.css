@@ -1,9 +1,9 @@
 nav .nav-link {
-    color: rgb(104, 104, 104);
+    color: black;
     font-weight: bold;
     font-size: large;
 }
 
 nav .nav-link.active{
-    color:blue;
+    color:#3252C1 !important;
 }

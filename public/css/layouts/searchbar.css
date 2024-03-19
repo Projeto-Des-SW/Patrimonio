@@ -1,0 +1,24 @@
+#searchbar #title {
+    font-weight: 650;
+    color: #3252c1;
+}
+
+#addButton {
+    width: 30px;
+    height: 30px;
+}
+
+#searchButton {
+    background-color: #1a2876;
+}
+
+#searchbar span {
+    color: #1a2876;
+}
+
+#filterButton {
+    background-color: transparent;
+    border: none;
+    display: flex;
+    align-items: center;
+}

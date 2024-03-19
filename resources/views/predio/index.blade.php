@@ -3,6 +3,9 @@
    
 <link rel="stylesheet" href="/css/patrimonio.css">
 <link rel="stylesheet" href="/css/modal.css">
+@push('styles')
+    <link rel="stylesheet" href="/css/layouts/searchbar.css">
+@endpush
 
 @include('layouts.components.searchbar', ['title' => 'Predios', 'addButtonModal' => ['modal' => 'cadastrarPredioModal'], 'searchForm' => route('predio.busca.get')]);
 

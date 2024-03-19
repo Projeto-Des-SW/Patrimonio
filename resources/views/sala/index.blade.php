@@ -1,16 +1,22 @@
 @extends('layouts.app')
 @section('content')
 
-<link rel="stylesheet" href="/css/patrimonio.css">
 <link rel="stylesheet" href="/css/modal.css">
 
-@include('layouts.components.searchbar', ['title' => 'Predios > Salas', 'addButtonModal' => ['modal' => 'cadastrarSalaModal'], 'searchForm' =>('#')]);
+@push('styles')
+    <link rel="stylesheet" href="/css/layouts/searchbar.css">
+@endpush
+
+@include('layouts.components.searchbar', 
+['title' => 'Predios > Salas',
+'addButtonModal' => ['modal' => 'cadastrarSalaModal'], 
+'searchForm' =>('#')]);
 
 <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-10">
             <div class="Nome-predio text-center">
-                <h3>{{ $predio->nome }}</h3>
+                <h3 style="color: #3252c1; font-weight: bold;" >{{ $predio->nome }}</h3>
             </div>
             <table class="table table-hover mt-2">
                 <thead class="text-md-center">
