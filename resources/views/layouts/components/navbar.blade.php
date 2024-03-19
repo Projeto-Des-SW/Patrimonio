@@ -12,7 +12,7 @@
                           Patrimônio
                         </a>
                         <ul class="dropdown-menu">
-                          <li><a class="dropdown-item" href="{{ route('patrimonio.index') }}">Patrimônio</a></li>
+                          <li><a class="dropdown-item" href="{{ route('patrimonio.index') }}">Listar</a></li>
                           <li><a class="dropdown-item" href="{{ route('classificacao.index') }}">Classificação contábil</a></li>
                           <li><hr class="dropdown-divider"></li>
                           <li><a class="dropdown-item" href="{{ route('patrimonio.pdf') }}">Relatório</a></li>
