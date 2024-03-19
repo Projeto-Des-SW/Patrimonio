@@ -49,4 +49,12 @@ class CargoController extends Controller
             return redirect(route('cargo.index'))->with('fail', 'Não é possivel remover este cargo, há servidores vinculados a ele!');
         }
     }
+
+    public function busca(Request $request)
+{
+    $item = $request->input('busca');
+    $cargos = Cargo::where('nome', 'ilike', '%' . $item . '%')->paginate(10);
+
+    return view('cargo.index', ['cargos' => $cargos]);
+}
 }

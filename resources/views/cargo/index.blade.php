@@ -25,68 +25,23 @@
 
     </div>
 
-    <!-- Modal Cadastrar Cargo -->
-<div class="modal fade" id="cadastrarCargoModal" tabindex="-1" aria-labelledby="cadastrarCargoModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content custom-modal bg-light">
-            <div class="modal-header-predio">  
-                <a href="#" data-bs-dismiss="modal" aria-label="Fechar">
-                    <img src="{{ asset('assets/back.svg') }}" alt="Voltar">
-                </a>
-                <h5 class="modal-title mx-auto" id="cadastrarCargoModalLabel">Cadastrar Cargo</h5>
-            </div>
-            <div class="modal-body">
-                <form action="{{ route('cargo.store') }}" method="POST">
-                    @csrf
-                    <div class="mb-3">
-                        <label for="nome" class="form-label">
-                            Nome <span class="text-danger">*</span>
-                        </label>
-                        <input type="text" class="form-control mb-3" id="nome" name="nome">
-                    </div>
-                    <div class="text-center">
-                        <button type="submit" class="btn btn-primary button-add"> Adicionar </button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
+@include('layouts.components.modais.ModalCreate', [
+    'modalId' => 'cadastrarCargoModal',
+    'modalTitle' => 'Cadastrar Cargo',
+    'formAction' => route('cargo.store')
+])
 
-<!-- Modal Editar Cargo -->
-<div class="modal fade" id="editarCargoModal" tabindex="-1" aria-labelledby="editarCargoModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content custom-modal bg-light">
-            <div class="modal-header-predio">  
-                <a href="#" data-bs-dismiss="modal" aria-label="Fechar">
-                    <img src="{{ asset('assets/back.svg') }}" alt="Voltar">
-                </a>
-                <h5 class="modal-title mx-auto" id="editarCargoModalLabel">Editar Cargo</h5>
-            </div>
-            <div class="modal-body">
-                <form id="editarCargoForm" action="{{ route('cargo.update', ['cargo_id' => '']) }}" method="POST">
-                    @csrf
-                    @method('PUT')
-                    <input type="hidden" name="cargo_id" id="cargo_id">
-                    <div class="mb-3">
-                        <label for="nome" class="form-label">
-                            Nome <span class="text-danger">*</span>
-                        </label>
-                        <input type="text" class="form-control mb-3" id="nome" name="nome">
-                    </div>
-                    <div class="text-center">
-                        <button type="submit" class="btn btn-primary button-edit"> Salvar </button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
+@include('layouts.components.modais.ModalEdit', [
+    'modalId' => 'editarCargoModal',
+    'modalTitle' => 'Editar Cargo',
+    'formAction' => route('cargo.update', ['cargo_id' => ''])
+])
 
 <script>
     function openEditarCargoModal(cargoId, cargoNome) {
         $('#editarCargoModal').modal('show');
         $('#cargo_id').val(cargoId);
+        $('#nome').val(cargoNome);
     }
 </script>
 
