@@ -11,47 +11,51 @@
         'searchForm' => route('patrimonio.busca.get'),
     ])
 
-    <div class="container">
-        <div class="col-md-10 mx-auto">
-            <table class="table table-hover">
-                <thead class="text-md-center">
-                    <tr>
-                        <th>ID</th>
-                        <th>Nome</th>
-                        <th>Prédio</th>
-                        <th>Sala</th>
-                        <th>Ações</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($patrimonios as $patrimonio)
-                        <tr class="text-md-center">
-                            <td class="py-4">{{ $patrimonio->id }}</td>
-                            <td class="py-4">{{ $patrimonio->nome }}</td>
-                            <td class="py-4">{{ $patrimonio->sala->predio->nome }}</td>
-                            <td class="py-4">{{ $patrimonio->sala->nome }}</td>
-                            <td class="py-4">
-                                <div>
-                                    <a href="{{ route('patrimonio.edit', ['patrimonio_id' => $patrimonio->id]) }}"
-                                        style="margin-right: 10px;"><img src="{{ asset('/images/pencil.png') }}"
-                                            width="24px" alt="Icon de edição"></a>
-                                    <a href="{{ route('patrimonio.delete', ['patrimonio_id' => $patrimonio->id]) }}"
-                                        style="margin-right: 10px;"><img src="{{ asset('/images/delete.png') }}"
-                                            width="24px" alt="Icon de remoção"></a>
-                                    <a type="button" data-bs-toggle="modal" data-bs-target="#myModal"
-                                        style="margin-right: 10px;" data-param1="{{ $patrimonio }}"
-                                        data-param2="{{ $patrimonio->classificacao }}"><img
-                                            src="{{ asset('/images/info.png') }}" width="24px" alt="Icon de edição"></a>
-                                </div>
-                            </td>
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
+    <div class="col-md-10 mx-auto">
+        <table class="table table-hover">
+            <thead class="text-md-center">
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Prédio</th>
+                    <th>Sala</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
 
-            <div class="d-flex justify-content-center">
-                {{ $patrimonios->links('pagination::bootstrap-5') }}
-            </div>
+            <tbody>
+                @foreach ($patrimonios as $patrimonio)
+                    <tr class="text-md-center">
+                        <td class="py-4">{{ $patrimonio->id }}</td>
+                        <td class="py-4">{{ $patrimonio->nome }}</td>
+                        <td class="py-4">{{ $patrimonio->sala->predio->nome }}</td>
+                        <td class="py-4">{{ $patrimonio->sala->nome }}</td>
+                        <td class="py-4">
+                            <div>
+                                <a href="{{ route('patrimonio.edit', ['patrimonio_id' => $patrimonio->id]) }}"
+                                    style="margin-right: 10px;"><img src="{{ asset('/images/pencil.png') }}" width="24px"
+                                        alt="Icon de edição">
+                                </a>
+
+                                <a href="{{ route('patrimonio.delete', ['patrimonio_id' => $patrimonio->id]) }}"
+                                    style="margin-right: 10px;"><img src="{{ asset('/images/delete.png') }}" width="24px"
+                                        alt="Icon de remoção">
+                                </a>
+                                
+                                <a type="button" data-bs-toggle="modal" data-bs-target="#myModal"
+                                    style="margin-right: 10px;" data-param1="{{ $patrimonio }}"
+                                    data-param2="{{ $patrimonio->classificacao }}"><img
+                                        src="{{ asset('/images/info.png') }}" width="24px" alt="Icon de edição">
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+
+        <div class="d-flex justify-content-center">
+            {{ $patrimonios->links('pagination::bootstrap-5') }}
         </div>
     </div>
 

@@ -29,7 +29,7 @@
 
         @include('layouts.components.messages')
 
-        <main>
+        <main class="container">
             @yield('content')
         </main>
 

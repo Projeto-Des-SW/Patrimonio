@@ -1,6 +1,7 @@
-<div id="searchbar" class="my-5 container">
+<div id="searchbar" class="my-5">
     <div class="d-flex align-items-center mb-2">
         <h3 id="title">{{ $title }}</h3>
+
         @if (isset($addButton))
             <a href="{{ $addButton }}" class="ms-2">
                 <img src="{{ asset('assets/plus-circle-fill.svg') }}" alt="Ícone de Adição" id="addButton">
@@ -22,7 +23,7 @@
                 </form>
             </div>
             <div class="ms-3">
-                <button id="filterButton">
+                <button class="px-0" id="filterButton">
                     <img src="{{ asset('assets/Vector.svg') }}" alt="Ícone de filtro" class="me-1">
                     <span>Filtrar</span>
                 </button>
