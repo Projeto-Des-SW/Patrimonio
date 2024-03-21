@@ -2,16 +2,17 @@
 
 @section('content')
 
-<link rel="stylesheet" href="/css/modal.css">
-
 @push('styles')
     <link rel="stylesheet" href="/css/layouts/searchbar.css">
+    <link rel="stylesheet" href="/css/layouts/table.css">
+    <link rel="stylesheet" href="/css/modal.css">
 @endpush
 
-@include('layouts.components.searchbar', 
-['title' => 'Predios > Salas',
-'addButtonModal' => ['modal' => 'cadastrarSalaModal'], 
-'searchForm' =>('#')]);
+@include('layouts.components.searchbar', [
+    'title' => 'Predios > Salas',
+    'titleLink' => Route('sala.index', ['predio_id' => $predio->id]),
+    'addButtonModal' => ['modal' => 'cadastrarSalaModal'], 
+    'searchForm' =>('#')]);
 
 <div class="container">
         <div class="row justify-content-center">
@@ -60,80 +61,17 @@
 </div>
 
 
-<!-- Modal Cadastrar Sala -->
-<div class="modal fade" id="cadastrarSalaModal" tabindex="-1" aria-labelledby="cadastrarSalaModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" style="max-width: 800px;">
-        <div class="modal-content custom-modal bg-light">
-            <div class="modal-header-predio">  
-                <a href="#" data-bs-dismiss="modal" aria-label="Fechar">
-                    <img src="{{ asset('assets/back.svg') }}" alt="Voltar">
-                </a>
-                <h5 class="modal-title mx-auto" id="cadastrarSalaModalLabel">Cadastrar Sala</h5>
-            </div>
-            <div class="modal-body">
-                <form action="{{ route('sala.store') }}" method="POST">
-                    @csrf
-                    <input type="hidden" name="predio_id" value="{{ $predio->id }}">
-                    <div class="mb-3">
-                        <label for="nome" class="form-label">
-                            Nome <span class="text-danger">*</span>
-                        </label>
-                        <input type="text" class="form-control mb-3" id="nome" name="nome">
-                    </div>
-                    <div class="mb-3">
-                        <label for="telefone" class="form-label">
-                            Telefone <span class="text-danger">*</span>
-                        </label>
-                        <input type="text" class="form-control mb-3" id="telefone" name="telefone">
-                    </div>
-                    <div class="text-center">
-                        <button type="submit" class="btn btn-primary button-add"> Adicionar </button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
+@include('layouts.components.modais.ModalCreate', [
+    'modalId' => 'cadastrarSalaModal',
+    'modalTitle' => 'Cadastrar Sala',
+    'formAction' => route('sala.store')
+])
 
-
-<!-- Modal Editar Sala -->
-<div class="modal fade" id="editarSalaModal" tabindex="-1" aria-labelledby="editarSalaModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content custom-modal bg-light">
-            <div class="modal-header-predio">  
-                <a href="#" data-bs-dismiss="modal" aria-label="Fechar">
-                    <img src="{{ asset('assets/back.svg') }}" alt="Voltar">
-                </a>
-                <h5 class="modal-title mx-auto" id="editarSalaModalLabel">Editar Sala</h5>
-            </div>
-            <div class="modal-body">
-                <form id="editarSalaForm" action="{{ route('sala.update', ['sala_id' => '']) }}" method="POST">
-                    @csrf
-                    @method('PUT')
-                    <input type="hidden" name="predio_id" id="predio_id">
-                    <input type="hidden" name="sala_id" id="sala_id">
-                    <div class="mb-3">
-                        <label for="nome" class="form-label">
-                            Nome <span class="text-danger">*</span>
-                        </label>
-                        <input type="text" class="form-control mb-3" id="editar_nome" name="nome">
-                    </div>
-                    <div class="mb-3">
-                        <label for="telefone" class="form-label">
-                            Telefone <span class="text-danger">*</span>
-                        </label>
-                        <input type="text" class="form-control mb-3" id="editar_telefone" name="telefone">
-                    </div>
-                    <div class="text-center">
-                        <button type="submit" class="btn btn-primary button-edit"> Salvar </button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-
-
+@include('layouts.components.modais.ModalEdit', [
+    'modalId' => 'editarSalaModal',
+    'modalTitle' => 'Editar Sala',
+    'formAction' => route('sala.update', ['sala_id' => ''])
+])
 
 <script>
 
