@@ -59,6 +59,7 @@ Route::prefix('cargo')->name('cargo.')->controller(CargoController::class)->grou
     Route::get('/{cargo_id}/editar', 'edit')->name('edit');
     Route::put('/update', 'update')->name('update');
     Route::delete('/{cargo_id}/delete', 'delete')->name('delete');
+    Route::get('/search', 'search')->name('buscar');
 });
 
 Route::prefix('classificacao')->name('classificacao.')->controller(ClassificacaoController::class)->group(function () {

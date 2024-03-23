@@ -7,23 +7,22 @@
     <link rel="stylesheet" href="/css/modal.css">
 @endpush
 
-    @include('layouts.components.searchbar', [
-        'title' => 'Cargos',
-        'addButtonModal' => ['modal' => 'cadastrarCargoModal'],
-        'searchForm' => route('patrimonio.busca.get'),
+@include('layouts.components.searchbar', [
+    'title' => 'Cargos',
+    'addButtonModal' => ['modal' => 'cadastrarCargoModal'],
+    'searchForm' => route('cargo.buscar'),
+])
+
+<div class="col-md-10 mx-auto">
+    @include('layouts.components.table', [
+        'header' => ['ID', 'Nome', 'Data de Criação', 'Ações'],
+        'content' => [$cargos->pluck('id'), $cargos->pluck('nome'), $cargos->pluck('created_at')],
+        'acoes' => [
+            ['modal' => 'editarCargoModal', 'id_param' => 'cargo_id', 'name_param' => 'nome', 'img' => asset('/images/pencil.png')],
+            ['link' => 'cargo.delete', 'param' => 'cargo_id', 'img' => asset('/images/delete.png')]
+        ]
     ])
-
-    <div class="col-md-10 mx-auto">
-        @include('layouts.components.table', [
-            'header' => ['ID', 'Nome', 'Data de Criação', 'Ações'],
-            'content' => [$cargos->pluck('id'), $cargos->pluck('nome'), $cargos->pluck('created_at')],
-            'acoes' => [
-                ['modal' => 'editarCargoModal', 'id_param' => 'cargo_id', 'name_param' => 'nome', 'img' => asset('/images/pencil.png')],
-                ['link' => 'cargo.delete', 'param' => 'cargo_id', 'img' => asset('/images/delete.png')]
-            ]
-        ])
-
-    </div>
+</div>
 
 @include('layouts.components.modais.ModalCreate', [
     'modalId' => 'cadastrarCargoModal',
@@ -44,5 +43,4 @@
         $('#nome').val(cargoNome);
     }
 </script>
-
 @endsection

@@ -10,8 +10,10 @@ use Illuminate\Http\Request;
 
 class CargoController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         $cargos = Cargo::all();
+
         return view('cargo.index', compact('cargos'));
     }
 
@@ -23,18 +25,21 @@ class CargoController extends Controller
     public function store(StoreCargoRequest $request)
     {
         Cargo::create($request->all());
+
         return redirect(route('cargo.index'))->with('success', 'Cargo Cadastrado com Sucesso!');
     }
 
     public function edit($cargo_id)
     {
         $cargo = Cargo::find($cargo_id);
+
         return view('cargo.edit', compact('cargo'));
     }
 
     public function update(UpdateCargoRequest $request)
     {
         Cargo::find($request->cargo_id)->update($request->all());
+        
         return redirect(route('cargo.index'))->with('success', 'Cargo Editado com Sucesso!');
     }
 
@@ -50,11 +55,10 @@ class CargoController extends Controller
         }
     }
 
-    public function busca(Request $request)
-{
-    $item = $request->input('busca');
-    $cargos = Cargo::where('nome', 'ilike', '%' . $item . '%')->paginate(10);
+    public function search(Request $request)
+    {
+        $cargos = Cargo::where('nome', 'ilike', "%$request->busca%")->paginate(10);
 
-    return view('cargo.index', ['cargos' => $cargos]);
-}
+        return view('cargo.index', compact('cargos'));
+    }
 }

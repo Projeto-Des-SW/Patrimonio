@@ -16,12 +16,12 @@
                 <td class="py-4">
                     @foreach ($acoes as $acao)
                         @if (isset($acao['modal']))
-                        <button style="background-color: transparent; border: none; margin-left: 5px;"
-                                onclick="openEditarCargoModal({{ $id }}, '{{ $column[1] }}')">
-                            <img src="{{ $acao['img'] }}" alt="Ícone de Ação" style="width: 30px; height: 30px;">
-                        </button>
+                            <button style="background-color: transparent; border: none; margin-left: 5px;"
+                                    onclick="openEditarCargoModal({{ $id }}, '{{ $content[1] }}')">
+                                <img src="{{ $acao['img'] }}" alt="Ícone de Ação" style="width: 30px; height: 30px;">
+                            </button>
                         @else
-                        @include('layouts.components.action-button', ['link' => route($acao['link'], [$acao['param'] => $id]), 'img' => $acao['img']])
+                            @include('layouts.components.action-button', ['link' => route($acao['link'], [$acao['param'] => $id]), 'img' => $acao['img']])
                         @endif
                     @endforeach
                     
