@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="/css/layouts/table.css">
 @endpush
 
-@include('layouts.components.searchbar', ['title' => 'Predios', 'addButtonModal' => ['modal' => 'cadastrarPredioModal'], 'searchForm' => route('predio.busca.get')])
+@include('layouts.components.searchbar', ['title' => 'Prédios', 'addButtonModal' => ['modal' => 'cadastrarPredioModal'], 'searchForm' => route('predio.busca.get')])
 
 
 <div class="row justify-content-center">

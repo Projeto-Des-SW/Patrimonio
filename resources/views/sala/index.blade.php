@@ -9,8 +9,8 @@
 @endpush
 
 @include('layouts.components.searchbar', [
-    'title' => 'Predios > Salas',
-    'titleLink' => Route('sala.index', ['predio_id' => $predio->id]),
+    'title' => 'Prédios > Salas',
+    'titleLink' => Route('predio.index', ['predio_id' => $predio->id]),
     'addButtonModal' => ['modal' => 'cadastrarSalaModal'], 
     'searchForm' =>('#')]);
 
