@@ -50,6 +50,8 @@ Route::prefix('predio')->name('sala.')->controller(SalaController::class)->group
     Route::delete('/sala/{sala_id}/delete', 'delete')->name('delete');
 });
 
+Route::get('/salas/search', [SalaController::class, 'search'])->name('sala.buscar');
+
 Route::prefix('cargo')->name('cargo.')->controller(CargoController::class)->group(function () {
     Route::get('/listar', 'index')->name('index');
     Route::get('/cadastrar', 'create')->name('create');

@@ -8,18 +8,25 @@
     <link rel="stylesheet" href="/css/modal.css">
 @endpush
 
-@include('layouts.components.searchbar', [
-    'title' => 'Prédios > Salas',
-    'titleLink' => Route('predio.index', ['predio_id' => $predio->id]),
-    'addButtonModal' => ['modal' => 'cadastrarSalaModal'], 
-    'searchForm' =>('#')]);
+@if (isset($predio))
+    @include('layouts.components.searchbar', [
+        'title' => 'Prédios > Salas',
+        'titleLink' => Route('predio.index', ['predio_id' => $predio->id]),
+        'addButtonModal' => ['modal' => 'cadastrarSalaModal'],
+        'searchForm' => route('sala.buscar')]);
+@else
+    @include('layouts.components.searchbar', [
+        'title' => 'Salas',
+        'addButtonModal' => ['modal' => 'cadastrarSalaModal'],
+        'searchForm' => route('sala.buscar')]);
+@endif
 
 <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-10">
-            <div class="Nome-predio text-center">
+            {{-- <div class="Nome-predio text-center">
                 <h3 style="color: #3252c1; font-weight: bold;" >{{ $predio->nome }}</h3>
-            </div>
+            </div> --}}
             <table class="table table-hover mt-2">
                 <thead class="text-md-center">
                     <tr>

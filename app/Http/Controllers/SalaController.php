@@ -56,4 +56,11 @@ class SalaController extends Controller
             return redirect(route('sala.index', ['predio_id' => $sala->predio_id]))->with('fail', 'É Necessário Remover Todos os Patrimônios da Sala Antes!');
         }
     }
+
+    public function search(Request $request)
+    {
+        $salas = Sala::where('nome', 'ilike', "%$request->busca%")->paginate(10);
+
+        return view('sala.index', compact('salas'));
+    }
 }
