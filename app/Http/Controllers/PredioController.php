@@ -33,9 +33,10 @@ class PredioController extends Controller
         return view('predio.edit', compact('predio'));
     }
 
-    public function update(UpdatePredioRequest $request)
+    public function update(UpdatePredioRequest $request, $id)
     {
-        Predio::find($request->predio_id)->update($request->all());
+        Predio::find($id)->update($request->all());
+
         return redirect(route('predio.index'))->with('success', 'Predio Editado com Sucesso!');
     }
 

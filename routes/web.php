@@ -36,7 +36,7 @@ Route::prefix('predio')->name('predio.')->controller(PredioController::class)->g
     Route::get('/cadastrar', 'create')->name('create');
     Route::post('/store', 'store')->name('store');
     Route::get('/{predio_id}/editar', 'edit')->name('edit');
-    Route::put('/update', 'update')->name('update');
+    Route::put('/{id}/update', 'update')->name('update');
     Route::delete('/{predio_id}/delete', 'delete')->name('delete');
     Route::get('/predio/busca', 'busca')->name('busca.get');
 });

@@ -9,9 +9,6 @@
             </div>
             <div class="modal-body">
                 <form action="{{ $formAction }}" method="POST">
-                @isset($campoId)
-                    <input type="hidden" name="predio_id" value="{{ $campoId }}">
-                @endisset
                     @csrf
                     @method('PUT')
                     <div class="mb-3">
