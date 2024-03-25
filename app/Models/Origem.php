@@ -9,6 +9,7 @@ class Origem extends Model
 {
     use HasFactory;
 
+    protected $table = 'origens';
     protected $fillable = ['nome'];
 
     public function patrimonios()

@@ -17,16 +17,12 @@ return new class extends Migration
             $table->id();
             $table->string('observacao')->nullable();
             $table->string('status')->default('Não Concluido');
+            $table->date('data_movimento');
+            $table->date('data_conclusao')->nullable();
 
-            $table->unsignedInteger('servidor_destino_id');
-            $table->foreign('servidor_destino_id')->references('id')->on('servidors');
-
-            $table->unsignedInteger('servidor_origem_id');
-            $table->foreign('servidor_origem_id')->references('id')->on('servidors');
-
-
-            $table->unsignedInteger('tipo_movimento_id');
-            $table->foreign('tipo_movimento_id')->references('id')->on('tipo_movimentos');
+            $table->foreignId('servidor_destino_id')->constrainedTo('servidores');
+            $table->foreignId('servidor_origem_id')->constrained('servidores');
+            $table->foreignId('tipo_movimento_id')->constrainedTo('tipos_movimento');
 
             $table->timestamps();
         });

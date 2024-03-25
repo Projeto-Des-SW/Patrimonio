@@ -12,7 +12,7 @@ class PredioController extends Controller
 {
     public function index()
     {
-        $predios = Predio::all();
+        $predios = Predio::paginate(5);
         return view('predio.index', compact('predios'));
     }
 
@@ -33,9 +33,10 @@ class PredioController extends Controller
         return view('predio.edit', compact('predio'));
     }
 
-    public function update(UpdatePredioRequest $request)
+    public function update(UpdatePredioRequest $request, $id)
     {
-        Predio::find($request->predio_id)->update($request->all());
+        Predio::find($id)->update($request->all());
+
         return redirect(route('predio.index'))->with('success', 'Predio Editado com Sucesso!');
     }
 
@@ -49,5 +50,13 @@ class PredioController extends Controller
         } else {
             return redirect(route('predio.index'))->with('fail', 'É Necessário Remover todas as Salas do Prédio Antes!');
         }
+    }
+
+    public function busca(Request $request)
+    {
+        $termo = $request->input('busca');
+        $predios = Predio::busca($termo);
+    
+        return view('predio.index', compact('predios'));
     }
 }

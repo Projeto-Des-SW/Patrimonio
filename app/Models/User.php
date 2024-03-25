@@ -23,7 +23,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'tipo_usuario_id'
+        'role_id'
     ];
 
     /**
@@ -45,13 +45,19 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function tipo_usuario(){
-        return $this->belongsTo(TipoUsuario::class);
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class, 'role_user', 'user_id', 'role_id');
     }
 
     public function servidor()
     {
         return $this->hasOne(Servidor::class)
             ->withTrashed();
+    }
+
+    public function hasAnyRoles($tipo)
+    {
+        return $this->roles()->whereIn('nome', $tipo)->exists();
     }
 }

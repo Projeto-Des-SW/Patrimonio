@@ -15,11 +15,10 @@ return new class extends Migration
     {
         Schema::create('salas', function (Blueprint $table) {
             $table->id();
-            $table->string('telefone')->nullable();
             $table->string('nome');
+            $table->string('telefone')->nullable();
 
-            $table->unsignedInteger('predio_id');
-            $table->foreign('predio_id')->references('id')->on('predios');
+            $table->foreignId('predio_id')->constrained();
 
             $table->timestamps();
         });

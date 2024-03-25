@@ -1,6 +1,18 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
+
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PredioController;
+use App\Http\Controllers\SalaController;
+use App\Http\Controllers\CargoController;
+use App\Http\Controllers\ClassificacaoController;
+use App\Http\Controllers\ServidorController;
+use App\Http\Controllers\SetorController;
+use App\Http\Controllers\PatrimonioController;
+use App\Http\Controllers\MovimentoController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,82 +24,101 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
 Auth::routes();
 
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index']);
-
-Route::get('predio/listar', [\App\Http\Controllers\PredioController::class, 'index'])->name('predio.index');
-Route::get('predio/cadastrar', [\App\Http\Controllers\PredioController::class, 'create'])->name('predio.create');
-Route::post('predio/store', [\App\Http\Controllers\PredioController::class, 'store'])->name('predio.store');
-Route::get('predio/{predio_id}/editar', [\App\Http\Controllers\PredioController::class, 'edit'])->name('predio.edit');
-Route::post('predio/update', [\App\Http\Controllers\PredioController::class, 'update'])->name('predio.update');
-Route::get('predio/{predio_id}/delete', [\App\Http\Controllers\PredioController::class, 'delete'])->name('predio.delete');
-
-Route::get('predio/{predio_id}/sala/listar', [\App\Http\Controllers\SalaController::class, 'index'])->name('sala.index');
-Route::get('predio/{predio_id}/sala/cadastrar', [\App\Http\Controllers\SalaController::class, 'create'])->name('sala.create');
-Route::post('sala/store', [\App\Http\Controllers\SalaController::class, 'store'])->name('sala.store');
-Route::get('sala/{sala_id}/editar', [\App\Http\Controllers\SalaController::class, 'edit'])->name('sala.edit');
-Route::post('sala/update', [\App\Http\Controllers\SalaController::class, 'update'])->name('sala.update');
-Route::get('sala/{sala_id}/delete', [\App\Http\Controllers\SalaController::class, 'delete'])->name('sala.delete');
-
-Route::get('cargo/listar', [\App\Http\Controllers\CargoController::class, 'index'])->name('cargo.index');
-Route::get('cargo/cadastrar', [\App\Http\Controllers\CargoController::class, 'create'])->name('cargo.create');
-Route::post('cargo/store', [\App\Http\Controllers\CargoController::class, 'store'])->name('cargo.store');
-Route::get('cargo/{cargo_id}/editar', [\App\Http\Controllers\CargoController::class, 'edit'])->name('cargo.edit');
-Route::post('cargo/update', [\App\Http\Controllers\CargoController::class, 'update'])->name('cargo.update');
-Route::get('cargo/{cargo_id}/delete', [\App\Http\Controllers\CargoController::class, 'delete'])->name('cargo.delete');
-
-Route::get('classificacao/listar', [\App\Http\Controllers\ClassificacaoController::class, 'index'])->name('classificacao.index');
-Route::get('classificacao/cadastrar', [\App\Http\Controllers\ClassificacaoController::class, 'create'])->name('classificacao.create');
-Route::post('classificacao/store', [\App\Http\Controllers\ClassificacaoController::class, 'store'])->name('classificacao.store');
-Route::get('classificacao/{classificacao_id}/editar', [\App\Http\Controllers\ClassificacaoController::class, 'edit'])->name('classificacao.edit');
-Route::post('classificacao/update', [\App\Http\Controllers\ClassificacaoController::class, 'update'])->name('classificacao.update');
-Route::get('classificacao/{classificacao_id}/delete', [\App\Http\Controllers\ClassificacaoController::class, 'delete'])->name('classificacao.delete');
-
-Route::get('servidor/listar', [\App\Http\Controllers\ServidorController::class, 'index'])->name('servidor.index');
-Route::get('servidor/cadastrar', [\App\Http\Controllers\ServidorController::class, 'create'])->name('servidor.create');
-Route::post('servidor/store', [\App\Http\Controllers\ServidorController::class, 'store'])->name('servidor.store');
-Route::get('servidor/{servidor_id}/editar', [\App\Http\Controllers\ServidorController::class, 'edit'])->name('servidor.edit');
-Route::post('servidor/update', [\App\Http\Controllers\ServidorController::class, 'update'])->name('servidor.update');
-Route::get('servidor/{servidor_id}/delete', [\App\Http\Controllers\ServidorController::class, 'delete'])->name('servidor.delete');
-Route::get('servidor/{servidor_id}/restore', [\App\Http\Controllers\ServidorController::class, 'restore'])->name('servidor.restore');
-
-Route::get('setor/listar/{setor_pai_id?}', [\App\Http\Controllers\SetorController::class, 'index'])->name('setor.index');
-Route::get('setor/cadastrar/{setor_pai_id?}', [\App\Http\Controllers\SetorController::class, 'create'])->name('setor.create');
-Route::post('setor/store', [\App\Http\Controllers\SetorController::class, 'store'])->name('setor.store');
-Route::get('setor/{setor_id}/editar', [\App\Http\Controllers\SetorController::class, 'edit'])->name('setor.edit');
-Route::post('setor/update', [\App\Http\Controllers\SetorController::class, 'update'])->name('setor.update');
-Route::get('setor/{setor_id}/delete', [\App\Http\Controllers\SetorController::class, 'delete'])->name('setor.delete');
-Route::get('setor/{setor_id}/restore', [\App\Http\Controllers\SetorController::class, 'restore'])->name('setor.restore');
-
-Route::get('patrimonio/listar', [\App\Http\Controllers\PatrimonioController::class, 'index'])->name('patrimonio.index');
-Route::get('patrimonio/cadastrar', [\App\Http\Controllers\PatrimonioController::class, 'create'])->name('patrimonio.create');
-Route::post('patrimonio/store', [\App\Http\Controllers\PatrimonioController::class, 'store'])->name('patrimonio.store');
-Route::get('patrimonio/{patrimonio_id}/editar', [\App\Http\Controllers\PatrimonioController::class, 'edit'])->name('patrimonio.edit');
-Route::post('patrimonio/update', [\App\Http\Controllers\PatrimonioController::class, 'update'])->name('patrimonio.update');
-Route::get('patrimonio/{patrimonio_id}/delete', [\App\Http\Controllers\PatrimonioController::class, 'delete'])->name('patrimonio.delete');
-Route::get('patrimonio/{patrimonio_id}/restore', [\App\Http\Controllers\PatrimonioController::class, 'restore'])->name('patrimonio.restore');
-Route::get('patrimonio/{patrimonio_id}/codigos', [\App\Http\Controllers\PatrimonioController::class, 'codigosPatrimonio'])->name('patrimonio.codigo.index');
-Route::get('patrimonio/codigos/{codigo_id}/delete', [\App\Http\Controllers\PatrimonioController::class, 'codigoDelete'])->name('patrimonio.codigo.delete');
-Route::post('codigo/store', [\App\Http\Controllers\PatrimonioController::class, 'codigoStore'])->name('patrimonio.codigo.store');
-Route::post('patrimonio/getSalas', [\App\Http\Controllers\PatrimonioController::class, 'getSalas'])->name('getSalas');
-
-Route::get('movimento/listar', [\App\Http\Controllers\MovimentoController::class, 'index'])->name('movimento.index');
-Route::get('movimento/cadastrar', [\App\Http\Controllers\MovimentoController::class, 'create'])->name('movimento.create');
-Route::post('movimento/store', [\App\Http\Controllers\MovimentoController::class, 'store'])->name('movimento.store');
-Route::get('movimento/{movimento_id}/editar', [\App\Http\Controllers\MovimentoController::class, 'edit'])->name('movimento.edit');
-Route::post('movimento/update', [\App\Http\Controllers\MovimentoController::class, 'update'])->name('movimento.update');
-Route::get('movimento/{movimento_id}/delete', [\App\Http\Controllers\MovimentoController::class, 'delete'])->name('movimento.delete');
-Route::get('movimento/{movimento_id}/restore', [\App\Http\Controllers\MovimentoController::class, 'restore'])->name('movimento.restore');
-Route::post('movimento/store/patrimonio', [\App\Http\Controllers\MovimentoController::class, 'adicionarPatrimonio'])->name('movimento.patrimonio.store');
-Route::post('movimento/concluir', [\App\Http\Controllers\MovimentoController::class, 'concluirMovimentacao'])->name('movimento.concluir');
-Route::get('movimento/delete/patrimonio/{movimento_patrimonio_id}', [\App\Http\Controllers\MovimentoController::class, 'removerPatrimonio'])->name('movimento.patrimonio.delete');
-
-Route::get('/gerar-relatorio-patrimonio', [\App\Http\Controllers\PatrimonioController::class, 'gerarRelatorio'])->name('pdf.patrimonio');
-
-
-
-
-
+Route::middleware('auth')->group(function () {
+    Route::name('home')->controller(HomeController::class)->group(function () {
+        Route::get('/', 'index');
+        Route::get('/home', 'index');
+    });
+    
+    Route::prefix('predio')->name('predio.')->controller(PredioController::class)->group(function () {
+        Route::get('/listar', 'index')->name('index');
+        Route::get('/cadastrar', 'create')->name('create');
+        Route::post('/store', 'store')->name('store');
+        Route::get('/{predio_id}/editar', 'edit')->name('edit');
+        Route::put('/{id}/update', 'update')->name('update');
+        Route::delete('/{predio_id}/delete', 'delete')->name('delete');
+        Route::get('/predio/busca', 'busca')->name('busca.get');
+    });
+    
+    Route::prefix('predio')->name('sala.')->controller(SalaController::class)->group(function () {
+        Route::get('/{predio_id}/sala/listar', 'index')->name('index');
+        Route::get('/{predio_id}/sala/cadastrar', 'create')->name('create');
+        Route::post('/sala/store', 'store')->name('store');
+        Route::get('/sala/{sala_id}/editar', 'edit')->name('edit');
+        Route::put('/sala/update', 'update')->name('update');
+        Route::delete('/sala/{sala_id}/delete', 'delete')->name('delete');
+    });
+    
+    Route::get('/salas/search', [SalaController::class, 'search'])->name('sala.buscar');
+    
+    Route::prefix('cargo')->name('cargo.')->controller(CargoController::class)->group(function () {
+        Route::get('/listar', 'index')->name('index');
+        Route::get('/cadastrar', 'create')->name('create');
+        Route::post('/store', 'store')->name('store');
+        Route::get('/{cargo_id}/editar', 'edit')->name('edit');
+        Route::put('/update', 'update')->name('update');
+        Route::delete('/{cargo_id}/delete', 'delete')->name('delete');
+        Route::get('/search', 'search')->name('buscar');
+    });
+    
+    Route::prefix('classificacao')->name('classificacao.')->controller(ClassificacaoController::class)->group(function () {
+        Route::get('/listar', 'index')->name('index');
+        Route::get('/cadastrar', 'create')->name('create');
+        Route::post('/store', 'store')->name('store');
+        Route::get('/{classificacao_id}/editar', 'edit')->name('edit');
+        Route::post('/update', 'update')->name('update');
+        Route::delete('/{classificacao_id}/delete', 'delete')->name('delete');
+    });
+    
+    Route::prefix('servidor')->name('servidor.')->controller(ServidorController::class)->group(function () {
+        Route::get('/listar', 'index')->name('index');
+        Route::get('/cadastrar', 'create')->name('create');
+        Route::post('/store', 'store')->name('store');
+        Route::get('/{servidor_id}/editar', 'edit')->name('edit');
+        Route::put('/update', 'update')->name('update');
+        Route::delete('/{servidor_id}/delete', 'delete')->name('delete');
+        Route::get('/{servidor_id}/restore', 'restore')->name('restore');
+    });
+    
+    Route::prefix('setor')->name('setor.')->controller(SetorController::class)->group(function () {
+        Route::get('/listar/{setor_pai_id?}', 'index')->name('index');
+        Route::get('/cadastrar/{setor_pai_id?}', 'create')->name('create');
+        Route::post('/store', 'store')->name('store');
+        Route::get('/{setor_id}/editar', 'edit')->name('edit');
+        Route::put('/update', 'update')->name('update');
+        Route::delete('/{setor_id}/delete', 'delete')->name('delete');
+        // Route::get('/{setor_id}/restore', [SetorController::class, 'restore'])->name('restore');
+    });
+    
+    Route::prefix('patrimonio')->name('patrimonio.')->controller(PatrimonioController::class)->group(function () {
+        Route::get('/listar', 'index')->name('index');
+        Route::get('/cadastrar', 'create')->name('create');
+        Route::post('/store', 'store')->name('store');
+        Route::get('/{patrimonio_id}/editar', 'edit')->name('edit');
+        Route::put('/update', 'update')->name('update');
+        Route::get('/{patrimonio_id}/delete', 'delete')->name('delete');
+        Route::get('/{patrimonio_id}/restore', 'restore')->name('restore');
+        Route::get('/{patrimonio_id}/codigos', 'codigosPatrimonio')->name('codigo.index');
+        Route::get('/codigos/{codigo_id}/delete', 'codigoDelete')->name('codigo.delete');
+        Route::post('/codigo/store', 'codigoStore')->name('codigo.store');
+        Route::get('/busca', 'busca')->name('busca.get');
+    
+        Route::get('/getSalas', 'getSalas')->name('getSalas');
+        Route::get('/gerar-relatorio-patrimonio', 'gerarRelatorio')->name('pdf');
+    });
+    
+    Route::prefix('movimento')->name('movimento.')->controller(MovimentoController::class)->group(function () {
+        Route::get('/listar', 'index')->name('index');
+        Route::get('/cadastrar', 'create')->name('create');
+        Route::post('/store', 'store')->name('store');
+        Route::get('/{movimento_id}/editar', 'edit')->name('edit');
+        Route::post('/update', 'update')->name('update');
+        Route::get('/{movimento_id}/delete', 'delete')->name('delete');
+        Route::get('/{movimento_id}/restore', 'restore')->name('restore');
+        Route::post('/store/patrimonio', 'adicionarPatrimonio')->name('patrimonio.store');
+        Route::post('/concluir', 'concluirMovimentacao')->name('concluir');
+        Route::get('/delete/patrimonio/{movimento_patrimonio_id}', 'removerPatrimonio')->name('patrimonio.delete');
+    });
+});

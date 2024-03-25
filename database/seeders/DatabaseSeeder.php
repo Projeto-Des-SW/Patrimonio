@@ -14,7 +14,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call([
-            TipoUsuarioSeeder::class,
+            RoleSeeder::class,
             CargoSeeder::class,
             UserSeeder::class,
             TipoMovimentoSeeder::class,
@@ -23,10 +23,11 @@ class DatabaseSeeder extends Seeder
             OrigemSeeder::class,
             ClassificacaoSeeder::class,
             SituacaoSeeder::class,
+            SetorSeeder::class,
+            SubgrupoSeeder::class,
             PatrimonioSeeder::class,
             MovimentoSeeder::class,
             MovimentoPatrimonioSeeder::class,
-            SetorSeeder::class
         ]);
     }
 }

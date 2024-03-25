@@ -13,7 +13,7 @@ class SetorController extends Controller
 {
     public function index($setor_pai_id = null)
     {
-        $setores = Setor::where('setor_pai_id', null)->get();
+        $setores = Setor::where('setor_pai_id', null)->paginate(5);
         if ($setor_pai_id != null) {
             $setor_pai = Setor::find($setor_pai_id);
             $setores = $setor_pai->setores;
@@ -62,15 +62,17 @@ class SetorController extends Controller
     {
         $setor = Setor::find($setor_id);
         $patrimonio = Patrimonio::where('setor_id', $setor_id)->first();
-        if (!$patrimonio) {
+
+        if ($patrimonio == null) {
             $setor_filho = Setor::where('setor_pai_id', $setor_id)->first();
+            
             if ($setor_filho) {
                 return redirect()->back()->with('fail', 'Não é possivel remover o setor, existem sub-setores vinculados a ele!');
             }
             $setor->delete();
-            return redirect()->back()->with('success', 'Setor Removido com Sucesso!');
+            return redirect(route('setor.index'))->with('success', 'Setor Removido com Sucesso!');
         } else {
-            return redirect()->back()->with('fail', 'Não é possivel remover o setor, existem patrimônios vinculados a ele!');
+            return redirect(route('setor.index'))->with('fail', 'Não é possivel remover o setor, existem patrimônios vinculados a ele!');
 
         }
 

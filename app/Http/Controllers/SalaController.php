@@ -14,7 +14,7 @@ class SalaController extends Controller
     public function index($predio_id)
     {
         $predio = Predio::find($predio_id);
-        $salas = $predio->salas;
+        $salas = $predio->salas()->paginate(5);
         return view('sala.index', compact('salas', 'predio'));
     }
 
@@ -27,7 +27,8 @@ class SalaController extends Controller
     public function store(StoreSalaRequest $request)
     {
         Sala::create($request->all());
-        return redirect(route('sala.index', ['predio_id' => $request->predio_id]))->with('success', 'Sala Cadastrada com Sucesso!');
+
+        return redirect()->route('sala.index', ['predio_id' => $request->predio_id])->with('success', 'Sala Cadastrada com Sucesso!');
     }
 
     public function edit($sala_id)
@@ -55,5 +56,12 @@ class SalaController extends Controller
         } else {
             return redirect(route('sala.index', ['predio_id' => $sala->predio_id]))->with('fail', 'É Necessário Remover Todos os Patrimônios da Sala Antes!');
         }
+    }
+
+    public function search(Request $request)
+    {
+        $salas = Sala::where('nome', 'ilike', "%$request->busca%")->paginate(10);
+
+        return view('sala.index', compact('salas'));
     }
 }

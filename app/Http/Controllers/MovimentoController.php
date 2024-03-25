@@ -32,6 +32,7 @@ class MovimentoController extends Controller
     public function store(StoreMovimentoRequest $request)
     {
         $data = $request->all();
+        $data['data_movimento'] = now();
         if(!$this->verificarServidores($data))
             return redirect()->back()->with('fail', 'Os servidores de origem e destino não podem ser o mesmo!');
         $movimento = Movimento::create($data);
@@ -157,6 +158,7 @@ class MovimentoController extends Controller
         }
 
         $movimento->status = 'Concluido';
+        $movimento->data_conclusao = now();
         $movimento->update();
 
         return redirect()->route('movimento.index')->with('success', 'Movimento concluido com sucesso!');

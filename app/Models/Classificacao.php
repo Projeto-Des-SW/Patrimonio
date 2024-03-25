@@ -9,6 +9,7 @@ class Classificacao extends Model
 {
     use HasFactory;
 
+    protected $table = 'classificacoes';
     protected $fillable = [
         'nome',
         'codigo',
@@ -16,7 +17,8 @@ class Classificacao extends Model
         'vida_util'
     ];
 
-    public function patrimonios (){
-        return $this->hasMany(Patrimonio::class);
+    public function subgrupos()
+    {
+        return $this->hasMany(Subgrupo::class);
     }
 }

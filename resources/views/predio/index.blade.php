@@ -1,63 +1,106 @@
 @extends('layouts.app')
-@section('content')
-    <div class="row">
-    @include('layouts.components.header', ['page_title' => 'Prédios', 'back' => false])
-    </div>
-    <table class="table table-hover table-responsive mx-2 mt-4" id="predio_table">
-        <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Nome</th>
-            <th scope="col">Data de Criação</th>
-            <th class="text-center" scope="col">Ações</th>
-        </tr>
-        </thead>
-        <tbody>
-        @foreach($predios as $predio)
-            <tr>
-                <td>{{$predio->id}}</td>
-                <td>{{$predio->nome}}</td>
-                <td>{{$predio->created_at}}</td>
-                <td class="text-center d-flex justify-content-around">
-                    <a class="btn btn-primary rounded-circle d-flex justify-content-center align-items-center action-button" href="{{route('predio.edit', ['predio_id' => $predio->id])}}">
-                        <img src="{{URL::asset('/assets/edit_icon.svg')}}" width="15px" alt="Icon de edição">
-                    </a>
-                    <a class="btn btn-danger rounded-circle d-flex justify-content-center align-items-center action-button" href="{{route('predio.delete', ['predio_id' => $predio->id])}}">
-                        <img src="{{URL::asset('/assets/delete.svg')}}" width="20px" alt="Icon de remoção">
-                    </a>
-                    <a class="btn btn-primary rounded-circle d-flex justify-content-center align-items-center action-button" href="{{route('sala.index', ['predio_id' => $predio->id])}}">
-                        <img src="{{URL::asset('/assets/salas.svg')}}" width="20px" alt="Icon de salas">
-                    </a>
-            </td>
-            </tr>
-        @endforeach
-        </tbody>
-    </table>
-    <div class="col-3">
-            <a class="w-100 btn btn-primary" href="{{route('predio.create')}}">Cadastrar</a>
-        </div>
 
+@section('content')
+    @push('styles')
+        <link rel="stylesheet" href="/css/modal.css">
+        <link rel="stylesheet" href="/css/layouts/searchbar.css">
+        <link rel="stylesheet" href="/css/layouts/table.css">
+    @endpush
+
+    @include('layouts.components.searchbar', [
+        'title' => 'Prédios',
+        'addButtonModal' => ['modal' => 'cadastrarPredioModal'],
+        'searchForm' => route('predio.busca.get'),
+    ])
+
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <table class="table table-hover">
+                <thead class="text-md-center">
+                    <tr>
+                        <th class = "col-2">ID</th>
+                        <th class = "col-3">Nome</th>
+                        <th class = "col-3">Data de Criação</th>
+                        <th class = "col-2">Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($predios as $predio)
+                        <tr class="text-md-center">
+                            <td class="py-4">{{ $predio->id }}</td>
+                            <td class="py-4">{{ $predio->nome }}</td>
+                            <td class="py-4">{{ $predio->created_at }}</td>
+                            <td class="py-4">
+                                <div class="d-flex align-items-center">
+                                    <a onclick="openEditModal('{{ $predio->id }}')"
+                                        style="cursor: pointer; margin-right: 5px; text-decoration: none;  margin-left: 60px">
+                                        <img src="{{ asset('/images/pencil.png') }}" width="24px" alt="Icon de edição">
+                                    </a>
+                                    <form id="deleteForm{{ $predio->id }}"
+                                        action="{{ route('predio.delete', ['predio_id' => $predio->id]) }}" method="POST"
+                                        onsubmit="return confirmDelete(event, {{ $predio->id }})">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit"
+                                            style="background: none; border: none; padding: 0; margin-right: 5px;">
+                                            <img src="{{ asset('/images/delete.png') }}" width="24px"
+                                                alt="Icon de remoção">
+                                        </button>
+                                    </form>
+                                    <a href="{{ route('sala.index', ['predio_id' => $predio->id]) }}"
+                                        style="text-decoration: none;">
+                                        <img src="{{ asset('/images/Vector.png') }}" width="19px" alt="Icon de salas">
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+            <div class="d-flex justify-content-center mt-5">
+                {{ $predios->links('pagination::bootstrap-5') }}
+            </div>
+        </div>
+    </div>
+
+    @include('layouts.components.modais.ModalCreate', [
+        'modalId' => 'cadastrarPredioModal',
+        'modalTitle' => 'Cadastrar Prédio',
+        'formAction' => route('predio.store'),
+        'fields' => [
+            ['name' => 'nome', 'id' => 'nome', 'type' => 'text']
+        ]
+    ])
+
+    @include('layouts.components.modais.ModalEdit', [
+        'modalId' => 'editarPredioModal',
+        'modalTitle' => 'Editar Prédio',
+        'formAction' => route('predio.update', ['id' => '0']),
+    ])
+@endsection
+
+@push('scripts')
     <script>
+        const predioUpdateRoute = "http://127.0.0.1:8000/predio/id/update";
+        var predioId = false;
+
         $(document).ready(function () {
-            $('#predio_table').DataTable({
-                searching: true,
-                "language": {
-                    "search": "Pesquisar: ",
-                    "lengthMenu": "Mostrar _MENU_ registros por página",
-                    "info": "Exibindo página _PAGE_ de _PAGES_",
-                    "infoEmpty": "Nenhum registro disponível",
-                    "zeroRecords": "Nenhum registro disponível",
-                    "paginate": {
-                        "previous": "Anterior",
-                        "next": "Próximo"
-                    }
-                },
-                "columnDefs": [{
-                    "targets": [3],
-                    "orderable": false
-                }]
+            $('#editarPredioModal').on('show.bs.modal', function(event) {
+                var formAction = predioUpdateRoute.replace('id', predioId);
+                $(this).find('form').attr('action', formAction);
             });
         });
-    </script>
 
-@endsection
+        function openEditModal(id) {
+            predioId = id;
+            $('#editarPredioModal').modal('show');
+        }
+
+        function confirmDelete(event, predioId) {
+            event.preventDefault();
+            if (confirm("Tem certeza que deseja excluir este prédio?")) {
+                document.getElementById("deleteForm" + predioId).submit();
+            }
+        }
+    </script>
+@endpush

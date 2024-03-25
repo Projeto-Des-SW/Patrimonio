@@ -55,13 +55,13 @@
 
 <div class="row mt-4">
     <div class="col-sm-6">
-        <label for="tipo_usuario">Tipo do Usuário:<strong style="color: red">*</strong></label>
-        <select class="form-control @error('tipo_usuario_id') is-invalid @enderror" id="tipo_usuario"
-                name="tipo_usuario_id" required>
+        <label for="role">Tipo do Usuário:<strong style="color: red">*</strong></label>
+        <select class="form-control @error('role_id') is-invalid @enderror" id="role"
+                name="role_id" required>
             <option selected disabled>Selecione um Tipo de Usuário</option>
-            @foreach($tipo_usuarios as $tipo_usuario)
-                <option value="{{$tipo_usuario->id}}"
-                        @if(isset($servidor) && $servidor->user->tipo_usuario_id == $tipo_usuario->id || old('tipo_usuario_id') == $tipo_usuario->id) selected @endif>{{$tipo_usuario->nome}}</option>
+            @foreach($roles as $role)
+                <option value="{{$role->id}}"
+                        @if(isset($servidor) && $servidor->user->role_id == $role->id || old('role_id') == $role->id) selected @endif>{{$role->nome}}</option>
             @endforeach
         </select>
     </div>

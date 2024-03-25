@@ -14,4 +14,9 @@ class Predio extends Model
     public function salas(){
         return $this->hasMany(Sala::class);
     }
+
+    public static function busca($termo)
+    {
+        return static::where('nome', 'ilike',  '%' . $termo . '%')->paginate(10);
+    }
 }

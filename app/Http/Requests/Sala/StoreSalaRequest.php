@@ -14,7 +14,6 @@ class StoreSalaRequest extends FormRequest
             'telefone' => 'required|regex:/^\(\d{2}\) 9 \d{4}-\d{4}$/|unique:tenants,',
             'nome' => 'required|unique:salas|max:255',
             'predio_id' => 'required|integer|exists:predios,id'
-            
         ];
     }
 
