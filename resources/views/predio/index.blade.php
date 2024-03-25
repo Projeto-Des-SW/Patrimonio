@@ -67,6 +67,9 @@
         'modalId' => 'cadastrarPredioModal',
         'modalTitle' => 'Cadastrar Prédio',
         'formAction' => route('predio.store'),
+        'fields' => [
+            ['name' => 'nome', 'id' => 'nome', 'type' => 'text']
+        ]
     ])
 
     @include('layouts.components.modais.ModalEdit', [
