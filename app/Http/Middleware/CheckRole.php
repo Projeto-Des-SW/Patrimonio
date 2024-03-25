@@ -14,14 +14,12 @@ class CheckRole
      * @param  \Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse)  $next
      * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
      */
-    public function handle(Request $request, Closure $next, $role)
+    public function handle(Request $request, Closure $next, ...$roles)
     {
-        if(auth()->check && $request->user()->hasAnyRoles($role)){
-            
+        if($request->user() && $request->user()->hasAnyRoles($roles)) {
             return $next($request);
-
-        }else{
-            return redirect->back()->with('error', 'Você não possui o privilégio necessário!');
         }
+
+        return abort(403, 'Acesso Negado');
     }
 }

@@ -56,7 +56,7 @@ class User extends Authenticatable
             ->withTrashed();
     }
 
-    public function hasAnyRoles(array $tipo)
+    public function hasAnyRoles($tipo)
     {
         return $this->roles()->whereIn('nome', $tipo)->exists();
     }
