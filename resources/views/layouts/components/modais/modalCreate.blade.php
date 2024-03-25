@@ -1,7 +1,8 @@
-<div class="modal fade" id="{{ $modalId }}" tabindex="-1" aria-labelledby="{{ $modalId }}Label" aria-hidden="true">
+<div class="modal fade" id="{{ $modalId }}" tabindex="-1" aria-labelledby="{{ $modalId }}Label"
+    aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content custom-modal bg-light">
-            <div class="modal-header-predio">  
+            <div class="modal-header-predio">
                 <a href="#" data-bs-dismiss="modal" aria-label="Fechar">
                     <img src="{{ asset('assets/back.svg') }}" alt="Voltar">
                 </a>
@@ -10,16 +11,19 @@
             <div class="modal-body">
                 <form action="{{ $formAction }}" method="POST">
                     @csrf
-                    <div class="mb-3">
-                        <label for="nome" class="form-label">Nome</label>
-                        <input type="text" class="form-control" id="nome" name="nome">
-                    </div>
-                    @if(isset($campoAdicional))                  
-                    <div class="mb-3">
-                        <label for="{{ $inputName }}" class="form-label">{{ $label }}</label>
-                        <input type="text" class="form-control" id="{{ $inputName }}" name="{{ $inputName }}">
-                    </div>
-                    @endif
+
+                    @foreach ($fields as $field)
+                        @if ($field['type'] == 'text')
+                            <div class="mb-3">
+                                <label for="{{ $field['name'] }}" class="form-label">{{ $field['name'] }}</label>
+                                <input type="{{ $field['type'] }}" class="form-control" id="{{ $field['id'] }}"
+                                    name="{{ $field['name'] }}" @if(isset($field['value'])) value="{{ $field['value'] }}" @endif">
+                            </div>
+                        @elseif ($field['type'] == 'hidden')
+                            <input type="{{ $field['type'] }}" class="form-control" id="{{ $field['id'] }}"
+                                name="{{ $field['name'] }}" @if(isset($field['value'])) value="{{ $field['value'] }}" @endif>
+                        @endif
+                    @endforeach
                     <div class="text-center">
                         <button type="submit" class="btn btn-primary">Enviar</button>
                     </div>
